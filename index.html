@@ -3,1197 +3,304 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>杜绝加密 · 影视导航</title>
+<title>杜绝加密</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='12' fill='%23e0332f'/%3E%3Ctext x='50' y='50' font-size='58' fill='%23fff' text-anchor='middle' dominant-baseline='central' font-family='serif'%3E杜%3C/text%3E%3C/svg%3E">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  :root {
-    --bg: #0a0a0c;
-    --surface: #131317;
-    --surface-hi: #1b1b21;
-    --border: #26262d;
-    --border-hi: #38383f;
-    --text: #ececef;
-    --muted: #86868f;
-    --seal: #e0332f;
-    --seal-dim: #a8231f;
-    --amber: #f0a04b;
-  }
-
-  html { -webkit-text-size-adjust: 100%; }
-
   body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-    line-height: 1.55;
-    -webkit-font-smoothing: antialiased;
     min-height: 100vh;
-    padding-bottom: 40px;
-  }
-
-  /* 顶栏 */
-  .topbar {
+    background: #0a0a0c;
+    color: #ececef;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    -webkit-font-smoothing: antialiased;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 10px;
-    padding: 16px 20px;
-    max-width: 1080px;
-    margin: 0 auto;
-  }
-  .seal-img { width: 30px; height: 30px; display: block; flex-shrink: 0; }
-  .brand {
-    font-family: "Songti SC", "STSong", "SimSun", serif;
-    font-size: 17px;
-    font-weight: 700;
-    letter-spacing: 1px;
-  }
-  .brand-sub {
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 2px;
-    margin-left: 2px;
-    padding-left: 10px;
-    border-left: 1px solid var(--border);
-  }
-  .edit-btn {
-    margin-left: auto;
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    padding: 6px 12px;
-    font-size: 12px;
-    font-family: inherit;
-    color: var(--muted);
-    background: transparent;
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    cursor: pointer;
-    transition: color .18s, border-color .18s;
-  }
-  .edit-btn:hover { color: var(--text); border-color: var(--border-hi); }
-  .edit-btn svg { width: 12px; height: 12px; }
-  .edit-btn.on {
-    color: #fff;
-    background: var(--seal);
-    border-color: var(--seal);
+    justify-content: center;
+    padding: 40px 22px;
   }
 
-  /* 主容器 */
-  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
-
-  /* 编辑工具栏 */
-  .editbar {
-    display: none;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 18px;
-    padding: 10px 14px;
-    background: rgba(224,51,47,.08);
-    border: 1px solid rgba(224,51,47,.35);
-    border-radius: 9px;
-    font-size: 12.5px;
+  .seal {
+    width: 72px;
+    height: 72px;
+    display: block;
+    margin-bottom: 22px;
   }
-  .editbar.show { display: flex; }
-  .editbar .lbl { color: #ff8a85; margin-right: auto; }
-  .mini {
-    padding: 5px 11px;
-    font-size: 12px;
-    font-family: inherit;
-    border-radius: 6px;
-    cursor: pointer;
-    border: 1px solid var(--border-hi);
-    background: transparent;
-    color: var(--text);
-    transition: background .18s, border-color .18s;
-  }
-  .mini:hover { background: var(--surface-hi); }
-  .mini.primary { background: var(--seal); border-color: var(--seal); color: #fff; font-weight: 600; }
-  .mini.primary:hover { background: #f0443f; }
 
-  /* 标题区 */
-  .hero { padding: 12px 0 26px; }
-  .hero h1 {
+  h1 {
     font-family: "Songti SC", "STSong", "SimSun", serif;
     font-size: 30px;
     font-weight: 700;
-    letter-spacing: 3px;
-    line-height: 1.2;
+    letter-spacing: 4px;
+    margin-bottom: 10px;
   }
-  .hero p { margin-top: 8px; font-size: 13px; color: var(--muted); }
 
-  /* 搜索 */
-  .search-box { position: relative; margin-bottom: 22px; }
-  .search-box svg {
-    position: absolute; left: 16px; top: 50%;
-    transform: translateY(-50%);
-    color: var(--muted); pointer-events: none;
+  .sub {
+    font-size: 13px;
+    color: #86868f;
+    letter-spacing: 1px;
+    margin-bottom: 38px;
   }
-  #q {
+
+  .links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     width: 100%;
-    padding: 14px 16px 14px 46px;
-    background: var(--surface);
-    border: 1px solid var(--border);
+    max-width: 300px;
+  }
+
+  .item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px 16px;
+    background: #131317;
+    border: 1px solid #26262d;
     border-radius: 10px;
-    color: var(--text);
-    font-size: 16px;
-    font-family: inherit;
-    outline: none;
-    transition: border-color .18s;
-  }
-  #q::placeholder { color: #5c5c66; }
-  #q:focus { border-color: var(--seal-dim); }
-
-  /* 分类 */
-  .chips {
-    display: flex; gap: 8px; overflow-x: auto;
-    padding-bottom: 4px; margin-bottom: 20px;
-    scrollbar-width: none;
-  }
-  .chips::-webkit-scrollbar { display: none; }
-  .chip {
-    flex-shrink: 0; padding: 7px 15px;
-    font-size: 13px; color: var(--muted);
-    background: transparent;
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    cursor: pointer; font-family: inherit;
-    transition: color .18s, border-color .18s, background .18s;
-  }
-  .chip:hover { color: var(--text); border-color: var(--border-hi); }
-  .chip[aria-pressed="true"] { color: #fff; background: var(--seal); border-color: var(--seal); }
-
-  /* 网格 */
-  .grid { display: grid; grid-template-columns: 1fr; gap: 10px; }
-
-  .tile {
-    position: relative;
-    display: flex; align-items: flex-start; gap: 13px;
-    padding: 15px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    text-decoration: none;
     color: inherit;
-    transition: border-color .18s, background .18s, transform .18s;
+    text-decoration: none;
+    font-size: 15px;
+    font-family: inherit;
+    text-align: left;
+    cursor: pointer;
+    transition: border-color .18s, background .18s;
   }
-  .tile:hover {
-    background: var(--surface-hi);
-    border-color: var(--border-hi);
-    transform: translateY(-2px);
-  }
-  .tile:hover .tile-name { color: #fff; }
-  .tile.editing { cursor: default; }
-  .tile.editing:hover { transform: none; border-color: var(--border); background: var(--surface); }
+  .item:hover { background: #1b1b21; border-color: #38383f; }
 
-  .mk {
-    width: 40px; height: 40px; flex-shrink: 0;
-    border-radius: 7px;
-    display: grid; place-items: center;
-    font-family: "Songti SC", "STSong", "SimSun", serif;
-    font-size: 19px; font-weight: 700;
+  .item .ic {
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    border-radius: 6px;
     border: 1.5px solid currentColor;
   }
-  .mk.c1 { color: #e5736f; background: rgba(224,51,47,.1); }
-  .mk.c2 { color: #f0a04b; background: rgba(240,160,75,.1); }
-  .mk.c3 { color: #6fb3d9; background: rgba(111,179,217,.1); }
-  .mk.c4 { color: #9b8ec4; background: rgba(155,142,196,.1); }
+  .item .ic svg { width: 15px; height: 15px; }
+  .ic.a { color: #6fb3d9; background: rgba(111,179,217,.1); }
+  .ic.b { color: #9b8ec4; background: rgba(155,142,196,.1); }
 
-  .tile-body { flex: 1; min-width: 0; }
-  .tile-name { font-size: 14.5px; font-weight: 600; margin-bottom: 2px; transition: color .18s; }
-  .tile-desc {
-    font-size: 12.5px; color: var(--muted); line-height: 1.5;
-    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
-  }
-  .tile-tag {
-    flex-shrink: 0; align-self: center;
-    font-size: 11px; color: #5c5c66;
-    padding: 3px 8px;
-    border: 1px solid var(--border);
+  .item .txt { flex: 1; min-width: 0; }
+  .item .tag {
+    font-size: 11px;
+    color: #e0332f;
+    border: 1px solid rgba(224,51,47,.4);
     border-radius: 4px;
-    white-space: nowrap;
+    padding: 2px 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
   }
+  .item .tag svg { width: 9px; height: 9px; }
 
-  /* 精选 */
-  .tile.featured {
-    grid-column: 1 / -1;
-    border-color: var(--seal-dim);
-    background: linear-gradient(135deg, rgba(224,51,47,.08), var(--surface) 55%);
-  }
-  .tile.featured .mk { width: 46px; height: 46px; font-size: 21px; }
-  .tile.featured .tile-name { font-size: 16px; }
-
-  /* 加密卡片 */
-  .tile.locked .tile-tag {
-    color: var(--seal);
-    border-color: rgba(224,51,47,.4);
-    display: inline-flex; align-items: center; gap: 3px;
-  }
-  .tile.locked .tile-tag svg { width: 9px; height: 9px; }
-
-  /* 编辑态按钮 */
-  .tile-acts { display: none; gap: 5px; flex-shrink: 0; align-self: center; }
-  .editing .tile-acts { display: flex; }
-  .editing .tile-tag { display: none; }
-  .iact {
-    width: 28px; height: 28px;
-    display: grid; place-items: center;
-    background: transparent;
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    color: var(--muted);
-    cursor: pointer;
-    transition: color .18s, border-color .18s;
-  }
-  .iact:hover { color: var(--text); border-color: var(--border-hi); }
-  .iact.del:hover { color: #ff6b66; border-color: rgba(224,51,47,.5); }
-  .iact svg { width: 13px; height: 13px; }
-
-  /* 添加卡片 */
-  .add-tile {
-    display: none;
-    align-items: center; justify-content: center; gap: 7px;
-    min-height: 74px;
-    border: 1px dashed var(--border-hi);
-    border-radius: 10px;
-    background: transparent;
-    color: var(--muted);
-    font-size: 13px;
-    font-family: inherit;
-    cursor: pointer;
-    transition: color .18s, border-color .18s;
-  }
-  .editing-mode .add-tile { display: flex; }
-  .add-tile:hover { color: var(--seal); border-color: var(--seal-dim); }
-  .add-tile svg { width: 14px; height: 14px; }
-
-  /* 空态 */
-  .empty {
-    display: none; padding: 48px 16px; text-align: center;
-    color: var(--muted); font-size: 13.5px;
-    border: 1px dashed var(--border); border-radius: 10px;
-  }
-  .empty.show { display: block; }
-
-  /* 提示 */
-  .hint {
-    margin-top: 26px; padding: 14px 16px;
-    background: var(--surface);
-    border-left: 2px solid var(--border-hi);
-    border-radius: 0 8px 8px 0;
-    font-size: 12.5px; color: var(--muted); line-height: 1.65;
-  }
-  .hint code {
-    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-    font-size: 11.5px; color: var(--amber);
-    background: rgba(240,160,75,.08);
-    padding: 1px 5px; border-radius: 3px;
-  }
-
-  /* 页脚 */
   footer {
-    max-width: 1080px; margin: 40px auto 0;
-    padding: 18px 20px 0;
-    border-top: 1px solid var(--border);
-    display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between;
-    font-size: 11.5px; color: #5c5c66;
+    margin-top: 44px;
+    font-size: 11.5px;
+    color: #5c5c66;
   }
   footer a { color: #5c5c66; text-decoration: none; }
-  footer a:hover { color: var(--muted); }
+  footer a:hover { color: #86868f; }
 
-  /* ===== 通用弹窗 ===== */
+  /* 密码弹窗 */
   .modal {
-    position: fixed; inset: 0; display: none;
-    align-items: center; justify-content: center;
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
     padding: 20px;
     background: rgba(0,0,0,.72);
     backdrop-filter: blur(3px);
-    z-index: 200;
-    overflow-y: auto;
+    z-index: 50;
   }
   .modal.show { display: flex; }
 
-  .modal-card {
-    width: 100%; max-width: 360px;
+  .card {
+    width: 100%;
+    max-width: 330px;
     background: #16161b;
-    border: 1px solid var(--border-hi);
+    border: 1px solid #38383f;
     border-radius: 12px;
     padding: 22px;
-    animation: pop .18s ease-out;
-    margin: auto;
   }
-  .modal-card.wide { max-width: 420px; }
-  @keyframes pop { from { opacity: 0; transform: scale(.96); } to { opacity: 1; transform: scale(1); } }
+  .card h2 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .card h2 svg { color: #e0332f; flex-shrink: 0; }
 
-  .modal-head { display: flex; align-items: center; gap: 9px; margin-bottom: 4px; }
-  .modal-head svg { color: var(--seal); flex-shrink: 0; }
-  .modal-head h3 { font-size: 15px; font-weight: 600; }
-  .modal-target { font-size: 12px; color: var(--muted); margin-bottom: 16px; padding-left: 26px; }
-  .modal-sub { font-size: 12px; color: var(--muted); margin-bottom: 16px; line-height: 1.6; }
-
-  .modal-card > input[type="password"],
-  .modal-card > input[type="text"] {
+  #pw {
     width: 100%;
     padding: 11px 13px;
-    background: var(--bg);
-    border: 1px solid var(--border);
+    background: #0a0a0c;
+    border: 1px solid #26262d;
     border-radius: 8px;
-    color: var(--text);
+    color: #ececef;
     font-size: 16px;
     font-family: inherit;
     outline: none;
-    transition: border-color .18s;
   }
-  .modal-card > input:focus { border-color: var(--seal-dim); }
+  #pw:focus { border-color: #a8231f; }
 
-  .fld { margin-bottom: 12px; }
-  .fld label {
-    display: block; font-size: 11.5px; color: var(--muted);
-    margin-bottom: 5px; letter-spacing: .5px;
+  .err {
+    height: 17px;
+    margin-top: 6px;
+    font-size: 12px;
+    color: #ff6b66;
+    opacity: 0;
+    transition: opacity .15s;
   }
-  .fld input, .fld select, .fld textarea {
-    width: 100%;
-    padding: 10px 12px;
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    color: var(--text);
-    font-size: 16px;
-    font-family: inherit;
-    outline: none;
-    transition: border-color .18s;
-    resize: vertical;
-  }
-  .fld input:focus, .fld select:focus, .fld textarea:focus { border-color: var(--seal-dim); }
-  .fld input:disabled { color: #6a6a75; background: #101013; cursor: not-allowed; }
-  .fld .note { font-size: 11px; color: #6a6a75; margin-top: 4px; }
-  .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .err.show { opacity: 1; }
 
-  .modal-err {
-    height: 17px; margin-top: 2px;
-    font-size: 12px; color: #ff6b66;
-    opacity: 0; transition: opacity .15s;
-  }
-  .modal-err.show { opacity: 1; }
-
-  .modal-actions { display: flex; gap: 9px; margin-top: 8px; }
+  .acts { display: flex; gap: 9px; margin-top: 6px; }
   .btn {
-    flex: 1; padding: 10px;
-    font-size: 13.5px; font-family: inherit;
-    border-radius: 8px; cursor: pointer;
-    border: 1px solid var(--border);
-    background: transparent; color: var(--muted);
-    transition: color .18s, border-color .18s, background .18s;
+    flex: 1;
+    padding: 10px;
+    font-size: 13.5px;
+    font-family: inherit;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 1px solid #26262d;
+    background: transparent;
+    color: #86868f;
+    transition: color .18s, border-color .18s;
   }
-  .btn:hover { color: var(--text); border-color: var(--border-hi); }
-  .btn.primary { background: var(--seal); border-color: var(--seal); color: #fff; font-weight: 600; }
+  .btn:hover { color: #ececef; border-color: #38383f; }
+  .btn.primary {
+    background: #e0332f;
+    border-color: #e0332f;
+    color: #fff;
+    font-weight: 600;
+  }
   .btn.primary:hover { background: #f0443f; border-color: #f0443f; }
 
-  .shake { animation: shake .3s; }
   @keyframes shake {
     0%,100% { transform: translateX(0); }
     25% { transform: translateX(-6px); }
     75% { transform: translateX(6px); }
   }
+  .shake { animation: shake .3s; }
 
-  /* 提示条 */
-  #toast {
-    position: fixed; bottom: 26px; left: 50%;
-    transform: translateX(-50%) translateY(60px);
-    background: var(--surface-hi); color: var(--text);
-    border: 1px solid var(--border-hi);
-    padding: 9px 18px; border-radius: 8px;
-    font-size: 12.5px; opacity: 0; pointer-events: none;
-    transition: opacity .25s, transform .25s;
-    z-index: 300; max-width: 90vw;
-  }
-
-  /* 桌面 */
-  @media (min-width: 640px) {
-    .grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-    .hero h1 { font-size: 36px; }
-    .tile { padding: 16px; }
-  }
-  @media (min-width: 900px) {
-    .grid { grid-template-columns: repeat(3, 1fr); }
-    .tile.featured { grid-column: span 2; }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    * { transition: none !important; }
-    .tile:hover { transform: none; }
-  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 </style>
 </head>
 <body>
 
-<div class="topbar">
-  <img class="seal-img" src="assets/avatar.png" alt="杜绝加密">
-  <span class="brand">杜绝加密</span>
-  <span class="brand-sub">影视导航</span>
-  <button class="edit-btn" id="editBtn" type="button">
-    <svg id="editIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
-      <rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>
-    </svg>
-    <span id="editLabel">编辑</span>
+<img class="seal" src="assets/avatar.png" alt="杜绝加密">
+<h1>杜绝加密</h1>
+<p class="sub">站点整理中</p>
+
+<div class="links">
+  <a class="item" href="https://radio.mydjjm.cn" target="_blank" rel="noopener">
+    <span class="ic a">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="22"/>
+      </svg>
+    </span>
+    <span class="txt">电台</span>
+  </a>
+
+  <button class="item" type="button" id="treeBtn">
+    <span class="ic b">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/>
+      </svg>
+    </span>
+    <span class="txt">族谱</span>
+    <span class="tag">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+      加密
+    </span>
   </button>
 </div>
 
-<div class="wrap">
+<footer>© 2026 杜绝加密 · <a href="https://github.com/qinvision">GitHub</a></footer>
 
-  <div class="editbar" id="editbar">
-    <span class="lbl">编辑模式 · 改动先存本机</span>
-    <button class="mini" id="btnAddTop" type="button">＋ 添加卡片</button>
-    <button class="mini primary" id="btnPublish" type="button">发布到线上</button>
-    <button class="mini" id="btnExit" type="button">退出编辑</button>
-  </div>
-
-  <div class="hero">
-    <h1>看片，从这里进</h1>
-    <p id="count">正片平台、评分社区、短视频与自有应用，一处收录。</p>
-  </div>
-
-  <div class="search-box">
-    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-      <circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/>
-    </svg>
-    <input id="q" type="search" placeholder="搜索平台、影片或类型…" autocomplete="off">
-  </div>
-
-  <div class="chips" id="chips"></div>
-
-  <div class="grid" id="grid"></div>
-  <div class="empty" id="empty">没有匹配的站点，换个关键词试试。</div>
-
-  <div class="hint">
-    卡片数据存在仓库的 <code>cards.json</code>，编辑后点「发布到线上」才会对所有人生效。要发布需填写一次 GitHub 令牌，令牌只保存在你本机浏览器，不会写进网页代码。
-  </div>
-
-</div>
-
-<footer>
-  <span>© 2026 杜绝加密</span>
-  <span><a href="https://github.com/qinvision">GitHub</a> · <a href="https://mydjjm.cn">mydjjm.cn</a></span>
-</footer>
-
-<!-- 解锁 -->
-<div class="modal" id="unlockModal" role="dialog" aria-modal="true">
-  <div class="modal-card" id="unlockCard">
-    <div class="modal-head">
-      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
-        <rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>
-      </svg>
-      <h3>编辑需要密码</h3>
-    </div>
-    <div class="modal-target">每次打开网页都会重新上锁</div>
+<div class="modal" id="modal" role="dialog" aria-modal="true">
+  <div class="card" id="card">
+    <h2>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+      族谱需要密码
+    </h2>
     <input id="pw" type="password" placeholder="密码" autocomplete="off" spellcheck="false">
-    <div class="modal-err" id="modalErr">密码不对，再试一次</div>
-    <div class="modal-actions">
+    <div class="err" id="err">密码不对，再试一次</div>
+    <div class="acts">
       <button class="btn" type="button" id="btnCancel">取消</button>
-      <button class="btn primary" type="button" id="btnOk">解锁</button>
+      <button class="btn primary" type="button" id="btnOk">打开</button>
     </div>
   </div>
 </div>
-
-<!-- 卡片表单 -->
-<div class="modal" id="formModal" role="dialog" aria-modal="true">
-  <div class="modal-card wide" id="formCard">
-    <div class="modal-head">
-      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
-        <path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/>
-      </svg>
-      <h3 id="formTitle">添加卡片</h3>
-    </div>
-    <div class="fld">
-      <label for="fName">名称</label>
-      <input id="fName" type="text" placeholder="例如：爱奇艺" maxlength="20">
-    </div>
-    <div class="fld">
-      <label for="fDesc">描述</label>
-      <textarea id="fDesc" rows="2" placeholder="一句话说明它是干什么的" maxlength="60"></textarea>
-    </div>
-    <div class="fld">
-      <label for="fHref">网址</label>
-      <input id="fHref" type="url" placeholder="https://" >
-      <div class="note" id="hrefNote"></div>
-    </div>
-    <div class="row2">
-      <div class="fld">
-        <label for="fCat">分类</label>
-        <select id="fCat"></select>
-      </div>
-      <div class="fld">
-        <label for="fTag">角标</label>
-        <input id="fTag" type="text" placeholder="自有 / 会员" maxlength="4">
-      </div>
-    </div>
-    <div class="fld">
-      <label for="fMark">单字标记</label>
-      <input id="fMark" type="text" placeholder="1 个字" maxlength="2">
-    </div>
-    <div class="modal-err" id="formErr"></div>
-    <div class="modal-actions">
-      <button class="btn" type="button" id="btnFormCancel">取消</button>
-      <button class="btn primary" type="button" id="btnFormSave">保存</button>
-    </div>
-  </div>
-</div>
-
-<!-- 发布令牌 -->
-<div class="modal" id="tokenModal" role="dialog" aria-modal="true">
-  <div class="modal-card" id="tokenCard">
-    <div class="modal-head">
-      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
-        <rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-      </svg>
-      <h3>填写 GitHub 令牌</h3>
-    </div>
-    <div class="modal-sub">
-      发布需要写入仓库的权限。令牌只保存在本机浏览器的 localStorage，网页源码里没有。<br>
-      去 GitHub → Settings → Developer settings → Personal access tokens (classic)，勾选 <b>repo</b> 生成。
-    </div>
-    <input id="tokenInput" type="password" placeholder="ghp_..." autocomplete="off" spellcheck="false">
-    <div class="modal-err" id="tokenErr"></div>
-    <div class="modal-actions">
-      <button class="btn" type="button" id="btnTokenCancel">取消</button>
-      <button class="btn primary" type="button" id="btnTokenSave">保存并发布</button>
-    </div>
-  </div>
-</div>
-
-<div id="toast"></div>
 
 <script>
-/* ===================================================================
-   一、分类与默认卡片
-   =================================================================== */
-const CATS = [
-  { id: 'video',  label: '综合平台' },
-  { id: 'rating', label: '评分社区' },
-  { id: 'short',  label: '短视频' },
-  { id: 'mine',   label: '我的应用' }
-];
+/* 族谱链接以 AES-GCM 加密保存，源码中没有密码与真实地址 */
+const ENC = { salt: 'fyfZqoWZ7Tv60rKHi7k1HQ==', iv: 'llH2E/skyASQZf3i', ct: 'nnsy+QejN/a4SQkv5rHFVE8blhxMIM50P01lmlF13tMP7h10s+g=', iter: 210000 };
 
-const DEFAULT_CARDS = [
-  { name: '影视 TV', desc: '自建影视播放应用，适配电视大屏，支持 iPhone 与安卓端。', href: 'https://github.com/qinvision', cat: 'mine', tag: '自有', mark: '视', featured: true },
-  { name: '电台 App', desc: '多端电台收听，手机与电视通用。', href: 'https://radio.mydjjm.cn', cat: 'mine', tag: '自有', mark: '电' },
-  { name: '族谱 · 家谱', desc: '家族谱系查询与世系图展示。', cat: 'mine', tag: '加密', mark: '谱',
-    enc: { salt: 'fyfZqoWZ7Tv60rKHi7k1HQ==', iv: 'llH2E/skyASQZf3i', ct: 'nnsy+QejN/a4SQkv5rHFVE8blhxMIM50P01lmlF13tMP7h10s+g=', iter: 210000 } },
+const modal = document.getElementById('modal');
+const card = document.getElementById('card');
+const pw = document.getElementById('pw');
+const err = document.getElementById('err');
 
-  { name: '爱奇艺', desc: '长视频平台，院线新片、剧集与综艺覆盖最全。', href: 'https://www.iqiyi.com', cat: 'video', tag: '会员', mark: '爱' },
-  { name: '腾讯视频', desc: '剧集与自制综艺为主，独播内容多。', href: 'https://v.qq.com', cat: 'video', tag: '会员', mark: '腾' },
-  { name: '优酷', desc: '老片库厚，港剧与经典电影资源多。', href: 'https://www.youku.com', cat: 'video', tag: '会员', mark: '优' },
-  { name: '芒果 TV', desc: '综艺见长，青春剧与自制内容集中。', href: 'https://www.mgtv.com', cat: 'video', tag: '会员', mark: '芒' },
-  { name: '哔哩哔哩', desc: '番剧、纪录片与二创生态，弹幕氛围。', href: 'https://www.bilibili.com', cat: 'video', tag: '免费', mark: 'B' },
-  { name: 'Netflix', desc: '海外剧集与电影，原创内容质量高。', href: 'https://www.netflix.com', cat: 'video', tag: '海外', mark: 'N' },
-  { name: 'YouTube', desc: '全球视频平台，预告片、幕后与影评频道齐全。', href: 'https://www.youtube.com', cat: 'video', tag: '海外', mark: 'Y' },
-
-  { name: '豆瓣电影', desc: '评分、影评与各类榜单，选片先看这里。', href: 'https://movie.douban.com', cat: 'rating', tag: '评分', mark: '豆' },
-  { name: '猫眼电影', desc: '院线排片、票房数据与购票信息。', href: 'https://www.maoyan.com', cat: 'rating', tag: '票房', mark: '猫' },
-  { name: 'IMDb', desc: '全球影视资料库，查演员、剧组与技术参数。', href: 'https://www.imdb.com', cat: 'rating', tag: '资料', mark: 'I' },
-  { name: 'TMDB', desc: '开放影视数据库，接口友好，元数据齐全。', href: 'https://www.themoviedb.org', cat: 'rating', tag: '资料', mark: 'T' },
-
-  { name: '抖音', desc: '短剧与影视解说，竖屏观看。', href: 'https://www.douyin.com', cat: 'short', tag: '竖屏', mark: '抖' },
-  { name: '快手', desc: '短剧与生活类视频，地域内容多。', href: 'https://www.kuaishou.com', cat: 'short', tag: '竖屏', mark: '快' },
-  { name: '西瓜视频', desc: '横屏中长视频，影视解说与纪录片合集。', href: 'https://www.ixigua.com', cat: 'short', tag: '横屏', mark: '西' }
-];
-
-/* 编辑密码校验密文（明文为 "UNLOCK-OK"，密码不在此文件中） */
-const GATE = { salt: 'hubyRhWnjT6bIYtWPAknbA==', iv: 'pyDxLHo3whqtm8NS', ct: 'qodq5ZeW+dN6cS8jadO9CMlIf0ITzTpKFg==', iter: 210000 };
-
-const REPO = 'qinvision/qinvision.github.io';
-const DATA_PATH = 'cards.json';
-const LS_CARDS = 'mydjjm.cards';
-const LS_TOKEN = 'mydjjm.ghtoken';
-
-/* ===================================================================
-   二、状态
-   =================================================================== */
-let cards = DEFAULT_CARDS.slice();
-let unlocked = false;            // 每次加载都为 false
-let activeCat = 'all';
-let keyword = '';
-let editingIndex = -1;           // -1 = 新增
-
-const gridEl = document.getElementById('grid');
-const chipsEl = document.getElementById('chips');
-const emptyEl = document.getElementById('empty');
-const qEl = document.getElementById('q');
-const countEl = document.getElementById('count');
-const editBtn = document.getElementById('editBtn');
-const editLabel = document.getElementById('editLabel');
-const editIcon = document.getElementById('editIcon');
-const editbar = document.getElementById('editbar');
-const toastEl = document.getElementById('toast');
-
-const MARK_CLASS = { video: 'c1', rating: 'c2', short: 'c3', mine: 'c4' };
-
-/* ===================================================================
-   三、工具
-   =================================================================== */
 function b64ToBytes(b64) {
   const bin = atob(b64);
   const out = new Uint8Array(bin.length);
   for (let i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i);
   return out;
 }
-function bytesToB64(bytes) {
-  let bin = '';
-  const arr = new Uint8Array(bytes);
-  for (let i = 0; i < arr.length; i++) bin += String.fromCharCode(arr[i]);
-  return btoa(bin);
-}
-function utf8ToB64(str) {
-  return bytesToB64(new TextEncoder().encode(str));
-}
 
-async function deriveKey(password, saltB64, iter) {
-  const baseKey = await crypto.subtle.importKey(
-    'raw', new TextEncoder().encode(password), 'PBKDF2', false, ['deriveKey']
+async function decryptUrl(password) {
+  const base = await crypto.subtle.importKey('raw', new TextEncoder().encode(password), 'PBKDF2', false, ['deriveKey']);
+  const key = await crypto.subtle.deriveKey(
+    { name: 'PBKDF2', salt: b64ToBytes(ENC.salt), iterations: ENC.iter, hash: 'SHA-256' },
+    base, { name: 'AES-GCM', length: 256 }, false, ['decrypt']
   );
-  return crypto.subtle.deriveKey(
-    { name: 'PBKDF2', salt: b64ToBytes(saltB64), iterations: iter, hash: 'SHA-256' },
-    baseKey, { name: 'AES-GCM', length: 256 }, false, ['decrypt']
-  );
-}
-
-let toastTimer = null;
-function toast(msg) {
-  toastEl.textContent = msg;
-  toastEl.style.opacity = '1';
-  toastEl.style.transform = 'translateX(-50%) translateY(0)';
-  clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => {
-    toastEl.style.opacity = '0';
-    toastEl.style.transform = 'translateX(-50%) translateY(60px)';
-  }, 2400);
-}
-
-function saveLocal() {
-  try {
-    localStorage.setItem(LS_CARDS, JSON.stringify(cards));
-  } catch (e) { /* 隐私模式可能禁止写入 */ }
-}
-
-/* ===================================================================
-   四、加载数据
-   =================================================================== */
-async function loadCards() {
-  // 先看线上数据（本地 file:// 预览时跳过请求，避免无谓报错）
-  if (location.protocol !== 'file:') {
-    try {
-      const res = await fetch(DATA_PATH + '?t=' + Date.now(), { cache: 'no-store' });
-      if (res.ok) {
-        const json = await res.json();
-        if (Array.isArray(json.cards) && json.cards.length) {
-          cards = json.cards;
-          return;
-        }
-      }
-    } catch (e) { /* 网络问题则退回本机数据 */ }
-  }
-
-  // 再看本机草稿
-  try {
-    const raw = localStorage.getItem(LS_CARDS);
-    if (raw) {
-      const list = JSON.parse(raw);
-      if (Array.isArray(list) && list.length) { cards = list; return; }
-    }
-  } catch (e) { /* ignore */ }
-
-  cards = DEFAULT_CARDS.slice();
-}
-
-/* ===================================================================
-   五、渲染
-   =================================================================== */
-function renderChips() {
-  chipsEl.innerHTML = '';
-  const all = [{ id: 'all', label: '全部' }].concat(CATS);
-  all.forEach(c => {
-    const b = document.createElement('button');
-    b.className = 'chip';
-    b.type = 'button';
-    b.textContent = c.label;
-    b.setAttribute('aria-pressed', String(c.id === activeCat));
-    b.addEventListener('click', () => {
-      activeCat = c.id;
-      renderChips();
-      renderGrid();
-    });
-    chipsEl.appendChild(b);
-  });
-}
-
-function matchCard(s) {
-  if (activeCat !== 'all' && s.cat !== activeCat) return false;
-  if (!keyword) return true;
-  return (s.name + s.desc + s.tag).toLowerCase().includes(keyword);
-}
-
-const ICON_EDIT = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>';
-const ICON_DEL = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18"/><path d="M8 6V4h8v2"/><path d="M19 6l-1 14H6L5 6"/></svg>';
-const ICON_LOCK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>';
-const ICON_PLUS = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>';
-
-function buildTile(site, index) {
-  const locked = !!site.enc;
-  const a = document.createElement('a');
-  a.className = 'tile'
-    + (site.featured && activeCat === 'all' && !keyword ? ' featured' : '')
-    + (locked ? ' locked' : '')
-    + (unlocked ? ' editing' : '');
-  a.href = locked ? '#' : (site.href || '#');
-  a.target = '_blank';
-  a.rel = 'noopener';
-
-  a.addEventListener('click', ev => {
-    if (unlocked) { ev.preventDefault(); return; }
-    if (!locked) return;
-    ev.preventDefault();
-    const cached = sessionStorage.getItem('unlocked:' + site.name);
-    if (cached) { window.open(cached, '_blank', 'noopener'); return; }
-    openLinkUnlock(site);
-  });
-
-  const mk = document.createElement('span');
-  mk.className = 'mk ' + (MARK_CLASS[site.cat] || 'c1');
-  mk.textContent = site.mark || site.name.slice(0, 1);
-
-  const body = document.createElement('span');
-  body.className = 'tile-body';
-  const nm = document.createElement('span');
-  nm.className = 'tile-name';
-  nm.textContent = site.name;
-  const ds = document.createElement('span');
-  ds.className = 'tile-desc';
-  ds.textContent = site.desc;
-  body.appendChild(nm);
-  body.appendChild(ds);
-
-  const tg = document.createElement('span');
-  tg.className = 'tile-tag';
-  if (locked) {
-    tg.innerHTML = ICON_LOCK;
-    tg.appendChild(document.createTextNode(site.tag || '加密'));
-  } else {
-    tg.textContent = site.tag || '';
-  }
-
-  const acts = document.createElement('span');
-  acts.className = 'tile-acts';
-  const eb = document.createElement('button');
-  eb.className = 'iact';
-  eb.type = 'button';
-  eb.title = '编辑';
-  eb.innerHTML = ICON_EDIT;
-  eb.addEventListener('click', ev => { ev.preventDefault(); ev.stopPropagation(); openForm(realIndex(site)); });
-  const db = document.createElement('button');
-  db.className = 'iact del';
-  db.type = 'button';
-  db.title = '删除';
-  db.innerHTML = ICON_DEL;
-  db.addEventListener('click', ev => {
-    ev.preventDefault(); ev.stopPropagation();
-    const i = realIndex(site);
-    if (!window.confirm('删除「' + site.name + '」？')) return;
-    cards.splice(i, 1);
-    saveLocal();
-    renderGrid();
-    toast('已删除，记得点发布');
-  });
-  acts.appendChild(eb);
-  acts.appendChild(db);
-
-  a.appendChild(mk);
-  a.appendChild(body);
-  a.appendChild(tg);
-  a.appendChild(acts);
-  return a;
-}
-
-function realIndex(site) {
-  return cards.indexOf(site);
-}
-
-function renderGrid() {
-  const list = cards.filter(matchCard);
-  gridEl.innerHTML = '';
-  list.forEach(s => gridEl.appendChild(buildTile(s, realIndex(s))));
-
-  const add = document.createElement('button');
-  add.className = 'add-tile';
-  add.type = 'button';
-  add.innerHTML = ICON_PLUS + '<span>添加卡片</span>';
-  add.addEventListener('click', () => openForm(-1));
-  gridEl.appendChild(add);
-
-  document.body.classList.toggle('editing-mode', unlocked);
-
-  emptyEl.classList.toggle('show', list.length === 0);
-
-  const catLabel = activeCat === 'all' ? '全部' : (CATS.find(c => c.id === activeCat) || {}).label;
-  countEl.textContent = keyword
-    ? '“' + keyword + '” 匹配到 ' + list.length + ' 个站点'
-    : catLabel + ' · 共 ' + list.length + ' 个站点';
-}
-
-/* ===================================================================
-   六、解锁（编辑锁 + 单卡链接锁共用一套密钥派生）
-   =================================================================== */
-const unlockModal = document.getElementById('unlockModal');
-const unlockCard = document.getElementById('unlockCard');
-const pwEl = document.getElementById('pw');
-const modalErr = document.getElementById('modalErr');
-let unlockPurpose = null;   // 'edit' | {site}
-
-function openUnlock(purpose) {
-  unlockPurpose = purpose;
-  pwEl.value = '';
-  modalErr.classList.remove('show');
-  unlockModal.classList.add('show');
-  setTimeout(() => pwEl.focus(), 50);
-}
-
-function openLinkUnlock(site) {
-  document.querySelector('#unlockModal h3').textContent = '输入访问密码';
-  document.querySelector('#unlockModal .modal-target').textContent = site.name;
-  openUnlock({ site: site });
-}
-
-function openEditUnlock() {
-  document.querySelector('#unlockModal h3').textContent = '编辑需要密码';
-  document.querySelector('#unlockModal .modal-target').textContent = '每次打开网页都会重新上锁';
-  openUnlock('edit');
-}
-
-function closeUnlock() {
-  unlockModal.classList.remove('show');
-  unlockPurpose = null;
-}
-
-async function verifyGate(pw) {
-  const key = await deriveKey(pw, GATE.salt, GATE.iter);
-  const plain = await crypto.subtle.decrypt(
-    { name: 'AES-GCM', iv: b64ToBytes(GATE.iv) }, key, b64ToBytes(GATE.ct)
-  );
-  return new TextDecoder().decode(plain) === 'UNLOCK-OK';
-}
-
-async function decryptUrl(pw, enc) {
-  const key = await deriveKey(pw, enc.salt, enc.iter);
-  const plain = await crypto.subtle.decrypt(
-    { name: 'AES-GCM', iv: b64ToBytes(enc.iv) }, key, b64ToBytes(enc.ct)
-  );
+  const plain = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: b64ToBytes(ENC.iv) }, key, b64ToBytes(ENC.ct));
   return new TextDecoder().decode(plain);
 }
 
-function gateFail(msg, targetCard) {
-  modalErr.textContent = msg;
-  modalErr.classList.add('show');
-  targetCard.classList.add('shake');
-  setTimeout(() => targetCard.classList.remove('shake'), 320);
-  pwEl.select();
+function openModal() {
+  pw.value = '';
+  err.classList.remove('show');
+  modal.classList.add('show');
+  setTimeout(() => pw.focus(), 50);
 }
+function closeModal() { modal.classList.remove('show'); }
 
-async function submitUnlock() {
-  const pw = pwEl.value;
-  if (!pw) { pwEl.focus(); return; }
+async function submit() {
+  const v = pw.value;
+  if (!v) { pw.focus(); return; }
+  err.classList.remove('show');
+
   if (!(window.crypto && crypto.subtle)) {
-    gateFail('当前环境不支持加解密，请用 https 访问', unlockCard);
+    err.textContent = '当前环境不支持解密，请用 https 访问';
+    err.classList.add('show');
     return;
   }
 
-  modalErr.classList.remove('show');
-
-  if (unlockPurpose === 'edit') {
-    try {
-      const ok = await verifyGate(pw);
-      if (!ok) throw new Error('bad');
-      unlocked = true;
-      closeUnlock();
-      enterEditMode();
-      toast('已解锁编辑模式');
-    } catch (e) {
-      gateFail('密码不对，再试一次', unlockCard);
-    }
-    return;
-  }
-
-  const site = unlockPurpose && unlockPurpose.site;
-  if (!site) return;
   try {
-    const url = await decryptUrl(pw, site.enc);
-    sessionStorage.setItem('unlocked:' + site.name, url);
-    closeUnlock();
+    const url = await decryptUrl(v);
+    closeModal();
     window.open(url, '_blank', 'noopener');
   } catch (e) {
-    gateFail('密码不对，再试一次', unlockCard);
+    err.textContent = '密码不对，再试一次';
+    err.classList.add('show');
+    card.classList.add('shake');
+    setTimeout(() => card.classList.remove('shake'), 320);
+    pw.select();
   }
 }
 
-document.getElementById('btnOk').addEventListener('click', submitUnlock);
-document.getElementById('btnCancel').addEventListener('click', closeUnlock);
-pwEl.addEventListener('keydown', e => {
-  if (e.key === 'Enter') { e.preventDefault(); submitUnlock(); }
-});
-unlockModal.addEventListener('click', e => { if (e.target === unlockModal) closeUnlock(); });
-
-/* ===================================================================
-   七、编辑模式
-   =================================================================== */
-function enterEditMode() {
-  editbar.classList.add('show');
-  editBtn.classList.add('on');
-  editLabel.textContent = '编辑中';
-  editIcon.innerHTML = '<path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/>';
-  renderGrid();
-}
-
-function exitEditMode() {
-  unlocked = false;
-  editbar.classList.remove('show');
-  editBtn.classList.remove('on');
-  editLabel.textContent = '编辑';
-  editIcon.innerHTML = '<rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>';
-  document.body.classList.remove('editing-mode');
-  renderGrid();
-}
-
-editBtn.addEventListener('click', () => {
-  if (unlocked) exitEditMode();
-  else openEditUnlock();
-});
-document.getElementById('btnExit').addEventListener('click', () => {
-  exitEditMode();
-  toast('已退出编辑');
-});
-document.getElementById('btnAddTop').addEventListener('click', () => openForm(-1));
-
-/* ===================================================================
-   八、卡片表单
-   =================================================================== */
-const formModal = document.getElementById('formModal');
-const formCard = document.getElementById('formCard');
-const formTitle = document.getElementById('formTitle');
-const fName = document.getElementById('fName');
-const fDesc = document.getElementById('fDesc');
-const fHref = document.getElementById('fHref');
-const fCat = document.getElementById('fCat');
-const fTag = document.getElementById('fTag');
-const fMark = document.getElementById('fMark');
-const formErr = document.getElementById('formErr');
-const hrefNote = document.getElementById('hrefNote');
-let editingEnc = null;
-
-CATS.forEach(c => {
-  const o = document.createElement('option');
-  o.value = c.id;
-  o.textContent = c.label;
-  fCat.appendChild(o);
-});
-
-function openForm(index) {
-  editingIndex = index;
-  formErr.classList.remove('show');
-
-  if (index === -1) {
-    formTitle.textContent = '添加卡片';
-    fName.value = '';
-    fDesc.value = '';
-    fHref.value = '';
-    fCat.value = 'mine';
-    fTag.value = '';
-    fMark.value = '';
-    editingEnc = null;
-    fHref.disabled = false;
-    hrefNote.textContent = '';
-  } else {
-    const s = cards[index];
-    formTitle.textContent = '编辑卡片';
-    fName.value = s.name;
-    fDesc.value = s.desc;
-    fCat.value = s.cat;
-    fTag.value = s.tag || '';
-    fMark.value = s.mark || '';
-    editingEnc = s.enc || null;
-    if (editingEnc) {
-      fHref.value = '（已加密，地址不显示）';
-      fHref.disabled = true;
-      hrefNote.textContent = '这条卡片的地址用 AES-GCM 加密，源码里看不到，改不了。';
-    } else {
-      fHref.value = s.href || '';
-      fHref.disabled = false;
-      hrefNote.textContent = '';
-    }
-  }
-
-  formModal.classList.add('show');
-  setTimeout(() => fName.focus(), 50);
-}
-
-function closeForm() {
-  formModal.classList.remove('show');
-  editingIndex = -1;
-  editingEnc = null;
-}
-
-function saveForm() {
-  const name = fName.value.trim();
-  const desc = fDesc.value.trim();
-  const cat = fCat.value;
-  const tag = fTag.value.trim();
-  let href = editingEnc ? '' : fHref.value.trim();
-  let mark = fMark.value.trim();
-
-  if (!name) { formErr.textContent = '名称不能为空'; formErr.classList.add('show'); fName.focus(); return; }
-  if (!desc) { formErr.textContent = '描述不能为空'; formErr.classList.add('show'); fDesc.focus(); return; }
-  if (!editingEnc) {
-    if (!href) { formErr.textContent = '网址不能为空'; formErr.classList.add('show'); fHref.focus(); return; }
-    if (!/^https?:\/\/.+/.test(href)) {
-      formErr.textContent = '网址要以 http:// 或 https:// 开头';
-      formErr.classList.add('show'); fHref.focus(); return;
-    }
-  }
-  if (!mark) mark = name.slice(0, 1);
-
-  const next = { name: name, desc: desc, cat: cat, tag: tag, mark: mark };
-  if (editingEnc) next.enc = editingEnc;
-  else next.href = href;
-
-  if (editingIndex === -1) {
-    cards.push(next);
-  } else {
-    const old = cards[editingIndex];
-    if (old.featured) next.featured = true;
-    cards[editingIndex] = next;
-  }
-
-  saveLocal();
-  closeForm();
-  renderGrid();
-  toast('已保存到本机，点「发布到线上」同步');
-}
-
-document.getElementById('btnFormSave').addEventListener('click', saveForm);
-document.getElementById('btnFormCancel').addEventListener('click', closeForm);
-formModal.addEventListener('click', e => { if (e.target === formModal) closeForm(); });
-
-/* ===================================================================
-   九、发布到 GitHub
-   =================================================================== */
-const tokenModal = document.getElementById('tokenModal');
-const tokenCard = document.getElementById('tokenCard');
-const tokenInput = document.getElementById('tokenInput');
-const tokenErr = document.getElementById('tokenErr');
-let publishAfterToken = false;
-
-function openTokenModal(publish) {
-  publishAfterToken = publish;
-  tokenInput.value = '';
-  tokenErr.classList.remove('show');
-  tokenModal.classList.add('show');
-  setTimeout(() => tokenInput.focus(), 50);
-}
-function closeTokenModal() {
-  tokenModal.classList.remove('show');
-  publishAfterToken = false;
-}
-
-async function doPublish(token) {
-  const body = JSON.stringify({ updated: new Date().toISOString(), cards: cards }, null, 2);
-  const content = utf8ToB64(body);
-  const api = 'https://api.github.com/repos/' + REPO + '/contents/' + DATA_PATH;
-  const headers = {
-    'Authorization': 'token ' + token,
-    'Accept': 'application/vnd.github+json',
-    'Content-Type': 'application/json'
-  };
-
-  let sha = null;
-  const got = await fetch(api, { headers: headers });
-  if (got.ok) {
-    const meta = await got.json();
-    sha = meta.sha;
-  } else if (got.status !== 404) {
-    const err = await got.json().catch(() => ({}));
-    throw new Error(err.message || ('读取失败 ' + got.status));
-  }
-
-  const payload = { message: '更新导航卡片', content: content, branch: 'main' };
-  if (sha) payload.sha = sha;
-
-  const put = await fetch(api, {
-    method: 'PUT',
-    headers: headers,
-    body: JSON.stringify(payload)
-  });
-
-  if (!put.ok) {
-    const err = await put.json().catch(() => ({}));
-    throw new Error(err.message || ('提交失败 ' + put.status));
-  }
-}
-
-async function startPublish() {
-  const token = localStorage.getItem(LS_TOKEN);
-  if (!token) { openTokenModal(true); return; }
-  toast('正在发布…');
-  try {
-    await doPublish(token);
-    toast('已发布，约 1 分钟后全站生效');
-  } catch (e) {
-    openTokenModal(false);
-    tokenErr.textContent = '发布失败：' + e.message;
-    tokenErr.classList.add('show');
-  }
-}
-
-document.getElementById('btnPublish').addEventListener('click', startPublish);
-
-document.getElementById('btnTokenSave').addEventListener('click', async () => {
-  const t = tokenInput.value.trim();
-  if (!t) { tokenErr.textContent = '请填写令牌'; tokenErr.classList.add('show'); return; }
-  if (!/^gh[pousr]_/.test(t)) { tokenErr.textContent = '令牌格式不对，应以 ghp_ 开头'; tokenErr.classList.add('show'); return; }
-  tokenErr.classList.remove('show');
-  try {
-    await doPublish(t);
-    localStorage.setItem(LS_TOKEN, t);
-    closeTokenModal();
-    toast('已发布，约 1 分钟后全站生效');
-  } catch (e) {
-    tokenErr.textContent = '发布失败：' + e.message;
-    tokenErr.classList.add('show');
-  }
-});
-document.getElementById('btnTokenCancel').addEventListener('click', closeTokenModal);
-tokenModal.addEventListener('click', e => { if (e.target === tokenModal) closeTokenModal(); });
-
-/* ===================================================================
-   十、启动
-   =================================================================== */
-qEl.addEventListener('input', e => {
-  keyword = e.target.value.trim().toLowerCase();
-  renderGrid();
-});
-
-document.addEventListener('keydown', e => {
-  if (e.key !== 'Escape') return;
-  if (unlockModal.classList.contains('show')) closeUnlock();
-  else if (formModal.classList.contains('show')) closeForm();
-  else if (tokenModal.classList.contains('show')) closeTokenModal();
-});
-
-(async function init() {
-  await loadCards();
-  renderChips();
-  renderGrid();
-  // 强制锁定状态：不读取任何持久化的解锁标记
-  exitEditMode();
-})();
+document.getElementById('treeBtn').addEventListener('click', openModal);
+document.getElementById('btnOk').addEventListener('click', submit);
+document.getElementById('btnCancel').addEventListener('click', closeModal);
+pw.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); submit(); } });
+modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 </script>
 
 </body>
