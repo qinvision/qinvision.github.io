@@ -333,6 +333,21 @@
   .modal-target { font-size: 12px; color: var(--muted); margin-bottom: 16px; padding-left: 26px; }
   .modal-sub { font-size: 12px; color: var(--muted); margin-bottom: 16px; line-height: 1.6; }
 
+  .modal-card > input[type="password"],
+  .modal-card > input[type="text"] {
+    width: 100%;
+    padding: 11px 13px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    font-size: 16px;
+    font-family: inherit;
+    outline: none;
+    transition: border-color .18s;
+  }
+  .modal-card > input:focus { border-color: var(--seal-dim); }
+
   .fld { margin-bottom: 12px; }
   .fld label {
     display: block; font-size: 11.5px; color: var(--muted);
@@ -345,7 +360,7 @@
     border: 1px solid var(--border);
     border-radius: 8px;
     color: var(--text);
-    font-size: 15px;
+    font-size: 16px;
     font-family: inherit;
     outline: none;
     transition: border-color .18s;
@@ -666,17 +681,19 @@ function saveLocal() {
    四、加载数据
    =================================================================== */
 async function loadCards() {
-  // 先看线上数据
-  try {
-    const res = await fetch(DATA_PATH + '?t=' + Date.now(), { cache: 'no-store' });
-    if (res.ok) {
-      const json = await res.json();
-      if (Array.isArray(json.cards) && json.cards.length) {
-        cards = json.cards;
-        return;
+  // 先看线上数据（本地 file:// 预览时跳过请求，避免无谓报错）
+  if (location.protocol !== 'file:') {
+    try {
+      const res = await fetch(DATA_PATH + '?t=' + Date.now(), { cache: 'no-store' });
+      if (res.ok) {
+        const json = await res.json();
+        if (Array.isArray(json.cards) && json.cards.length) {
+          cards = json.cards;
+          return;
+        }
       }
-    }
-  } catch (e) { /* file:// 预览时忽略 */ }
+    } catch (e) { /* 网络问题则退回本机数据 */ }
+  }
 
   // 再看本机草稿
   try {
