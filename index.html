@@ -3,253 +3,487 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>杜绝加密 — 个人主页</title>
-<link rel="icon" href="assets/avatar.png">
+<title>杜绝加密 · 影视导航</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='12' fill='%23e0332f'/%3E%3Ctext x='50' y='50' font-size='58' fill='%23fff' text-anchor='middle' dominant-baseline='central' font-family='serif'%3E杜%3C/text%3E%3C/svg%3E">
 <style>
-  /* ===== Reset & Base ===== */
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
+
+  :root {
+    --bg: #0a0a0c;
+    --surface: #131317;
+    --surface-hi: #1b1b21;
+    --border: #26262d;
+    --border-hi: #38383f;
+    --text: #ececef;
+    --muted: #86868f;
+    --seal: #e0332f;
+    --seal-dim: #a8231f;
+    --amber: #f0a04b;
+  }
+
+  html { -webkit-text-size-adjust: 100%; }
+
   body {
+    background: var(--bg);
+    color: var(--text);
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-    background: #0f1115;
-    color: #e4e4e7;
-    line-height: 1.6;
-    min-height: 100vh;
+    line-height: 1.55;
     -webkit-font-smoothing: antialiased;
-  }
-  a { color: inherit; text-decoration: none; }
-
-  /* ===== Layout ===== */
-  .container {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 0 24px;
+    min-height: 100vh;
+    padding-bottom: 40px;
   }
 
-  /* ===== Hero ===== */
-  .hero {
-    padding: 96px 0 48px;
-    text-align: center;
-  }
-  .avatar {
-    width: 110px;
-    height: 110px;
-    margin: 0 auto 24px;
-    display: block;
-    object-fit: cover;
-  }
-  .hero h1 {
-    font-size: 28px;
-    font-weight: 600;
-    margin-bottom: 8px;
-    letter-spacing: -0.5px;
-  }
-  .hero .tagline {
-    font-size: 15px;
-    color: #a1a1aa;
-    max-width: 420px;
-    margin: 0 auto;
-  }
-
-  /* ===== Section Title ===== */
-  .section-title {
-    font-size: 12px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: #71717a;
-    margin: 48px 0 16px;
-  }
-
-  /* ===== Project Cards ===== */
-  .projects {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
-  .card {
-    display: flex;
-    align-items: flex-start;
-    gap: 16px;
-    padding: 20px;
-    background: #18181b;
-    border-radius: 12px;
-    border: 1px solid #27272a;
-    transition: border-color 0.2s, transform 0.2s;
-  }
-  .card:hover {
-    border-color: #3f3f46;
-    transform: translateY(-1px);
-  }
-  .card-icon {
-    flex-shrink: 0;
-    width: 40px;
-    height: 40px;
-    border-radius: 10px;
+  /* 顶栏 */
+  .topbar {
     display: flex;
     align-items: center;
-    justify-content: center;
-    font-size: 18px;
+    gap: 10px;
+    padding: 16px 20px;
+    max-width: 1080px;
+    margin: 0 auto;
   }
-  .card-icon.genealogy { background: #134e4a; color: #2dd4bf; }
-  .card-icon.radio { background: #1e3a5f; color: #60a5fa; }
-  .card-icon.tv { background: #3b2f4f; color: #c084fc; }
-  .card-icon.github { background: #27272a; color: #e4e4e7; }
-  .card-body { flex: 1; min-width: 0; }
-  .card-title {
-    font-size: 15px;
-    font-weight: 600;
-    margin-bottom: 4px;
-  }
-  .card-desc {
-    font-size: 13px;
-    color: #a1a1aa;
-    line-height: 1.5;
-  }
-  .card-arrow {
+  .seal {
+    width: 30px;
+    height: 30px;
+    display: block;
     flex-shrink: 0;
-    color: #52525b;
-    font-size: 16px;
-    margin-top: 10px;
-    transition: transform 0.2s, color 0.2s;
   }
-  .card:hover .card-arrow {
-    transform: translateX(3px);
-    color: #2dd4bf;
+  .brand {
+    font-family: "Songti SC", "STSong", "SimSun", serif;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  .brand-sub {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 2px;
+    margin-left: 2px;
+    padding-left: 10px;
+    border-left: 1px solid var(--border);
   }
 
-  /* ===== Links Row ===== */
-  .links {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    margin-top: 48px;
-    padding-bottom: 48px;
+  /* 主容器 */
+  .wrap {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 20px;
   }
-  .links a {
+
+  /* 标题区 */
+  .hero {
+    padding: 12px 0 26px;
+  }
+  .hero h1 {
+    font-family: "Songti SC", "STSong", "SimSun", serif;
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    line-height: 1.2;
+  }
+  .hero p {
+    margin-top: 8px;
     font-size: 13px;
-    color: #71717a;
-    transition: color 0.2s;
+    color: var(--muted);
   }
-  .links a:hover { color: #2dd4bf; }
 
-  /* ===== Footer ===== */
-  footer {
+  /* 搜索 */
+  .search-box {
+    position: relative;
+    margin-bottom: 22px;
+  }
+  .search-box svg {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--muted);
+    pointer-events: none;
+  }
+  #q {
+    width: 100%;
+    padding: 14px 16px 14px 46px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: var(--text);
+    font-size: 16px;
+    font-family: inherit;
+    outline: none;
+    transition: border-color .18s;
+  }
+  #q::placeholder { color: #5c5c66; }
+  #q:focus { border-color: var(--seal-dim); }
+
+  /* 分类 */
+  .chips {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    margin-bottom: 20px;
+    scrollbar-width: none;
+  }
+  .chips::-webkit-scrollbar { display: none; }
+  .chip {
+    flex-shrink: 0;
+    padding: 7px 15px;
+    font-size: 13px;
+    color: var(--muted);
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: color .18s, border-color .18s, background .18s;
+  }
+  .chip:hover { color: var(--text); border-color: var(--border-hi); }
+  .chip[aria-pressed="true"] {
+    color: #fff;
+    background: var(--seal);
+    border-color: var(--seal);
+  }
+
+  /* 网格 */
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .tile {
+    display: flex;
+    align-items: flex-start;
+    gap: 13px;
+    padding: 15px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color .18s, background .18s, transform .18s;
+  }
+  .tile:hover {
+    background: var(--surface-hi);
+    border-color: var(--border-hi);
+    transform: translateY(-2px);
+  }
+  .tile:hover .tile-name { color: #fff; }
+
+  .mk {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    border-radius: 7px;
+    display: grid;
+    place-items: center;
+    font-family: "Songti SC", "STSong", "SimSun", serif;
+    font-size: 19px;
+    font-weight: 700;
+    border: 1.5px solid currentColor;
+  }
+  .mk.c1 { color: #e5736f; background: rgba(224,51,47,.1); }
+  .mk.c2 { color: #f0a04b; background: rgba(240,160,75,.1); }
+  .mk.c3 { color: #6fb3d9; background: rgba(111,179,217,.1); }
+  .mk.c4 { color: #9b8ec4; background: rgba(155,142,196,.1); }
+
+  .tile-body { flex: 1; min-width: 0; }
+  .tile-name {
+    font-size: 14.5px;
+    font-weight: 600;
+    margin-bottom: 2px;
+    transition: color .18s;
+  }
+  .tile-desc {
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .tile-tag {
+    flex-shrink: 0;
+    align-self: center;
+    font-size: 11px;
+    color: #5c5c66;
+    padding: 3px 8px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+
+  /* 精选 */
+  .tile.featured {
+    grid-column: 1 / -1;
+    border-color: var(--seal-dim);
+    background: linear-gradient(135deg, rgba(224,51,47,.08), var(--surface) 55%);
+  }
+  .tile.featured .mk {
+    width: 46px;
+    height: 46px;
+    font-size: 21px;
+  }
+  .tile.featured .tile-name { font-size: 16px; }
+
+  /* 空态 */
+  .empty {
+    display: none;
+    padding: 48px 16px;
     text-align: center;
-    padding: 24px 0 40px;
-    font-size: 12px;
-    color: #52525b;
-    border-top: 1px solid #1c1c1f;
+    color: var(--muted);
+    font-size: 13.5px;
+    border: 1px dashed var(--border);
+    border-radius: 10px;
+  }
+  .empty.show { display: block; }
+
+  /* 提示 */
+  .hint {
+    margin-top: 26px;
+    padding: 14px 16px;
+    background: var(--surface);
+    border-left: 2px solid var(--border-hi);
+    border-radius: 0 8px 8px 0;
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+  .hint code {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 11.5px;
+    color: var(--amber);
+    background: rgba(240,160,75,.08);
+    padding: 1px 5px;
+    border-radius: 3px;
   }
 
-  /* ===== Responsive ===== */
+  /* 页脚 */
+  footer {
+    max-width: 1080px;
+    margin: 40px auto 0;
+    padding: 18px 20px 0;
+    border-top: 1px solid var(--border);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-between;
+    font-size: 11.5px;
+    color: #5c5c66;
+  }
+  footer a { color: #5c5c66; text-decoration: none; }
+  footer a:hover { color: var(--muted); }
+
+  /* 提示条 */
+  #toast {
+    position: fixed;
+    bottom: 26px;
+    left: 50%;
+    transform: translateX(-50%) translateY(60px);
+    background: var(--surface-hi);
+    color: var(--text);
+    border: 1px solid var(--border-hi);
+    padding: 9px 18px;
+    border-radius: 8px;
+    font-size: 12.5px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .25s, transform .25s;
+    z-index: 99;
+    max-width: 90vw;
+  }
+
+  /* 桌面 */
   @media (min-width: 640px) {
-    .hero { padding: 120px 0 60px; }
-    .hero h1 { font-size: 32px; }
-    .projects { grid-template-columns: 1fr 1fr; }
+    .grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .hero h1 { font-size: 36px; }
+    .tile { padding: 16px; }
+  }
+  @media (min-width: 900px) {
+    .grid { grid-template-columns: repeat(3, 1fr); }
+    .tile.featured { grid-column: span 2; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+    .tile:hover { transform: none; }
   }
 </style>
 </head>
 <body>
 
-<div class="container">
+<div class="topbar">
+  <img class="seal" src="assets/avatar.png" alt="杜绝加密">
+  <span class="brand">杜绝加密</span>
+  <span class="brand-sub">影视导航</span>
+</div>
 
-  <!-- Hero -->
-  <section class="hero">
-    <img class="avatar" src="assets/avatar.png" alt="杜绝加密">
-    <h1>杜绝加密</h1>
-    <p class="tagline">内容创作者 / 全栈开发者，专注于多媒体应用与个人工具的构建。</p>
-  </section>
+<div class="wrap">
 
-  <!-- Projects -->
-  <div class="section-title">项目</div>
-  <div class="projects">
-
-    <a class="card" href="https://mydjjm.cn" target="_blank" rel="noopener">
-      <div class="card-icon genealogy">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/>
-        </svg>
-      </div>
-      <div class="card-body">
-        <div class="card-title">族谱网站</div>
-        <div class="card-desc">家族谱系记录与展示，静态站点部署。</div>
-      </div>
-      <div class="card-arrow">→</div>
-    </a>
-
-    <a class="card" href="#" onclick="showToast('电台 APK 即将上线'); return false;">
-      <div class="card-icon radio">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/>
-        </svg>
-      </div>
-      <div class="card-body">
-        <div class="card-title">电台 App</div>
-        <div class="card-desc">多端电台应用，手机 / 电视均可使用。</div>
-      </div>
-      <div class="card-arrow">→</div>
-    </a>
-
-    <a class="card" href="#" onclick="showToast('影视 APK 即将上线'); return false;">
-      <div class="card-icon tv">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="2" y="7" width="20" height="15" rx="2"/><polyline points="17 2 12 7 7 2"/>
-        </svg>
-      </div>
-      <div class="card-body">
-        <div class="card-title">影视 TV</div>
-        <div class="card-desc">影视流播放应用，适配电视大屏。</div>
-      </div>
-      <div class="card-arrow">→</div>
-    </a>
-
-    <a class="card" href="https://github.com/qinvision" target="_blank" rel="noopener">
-      <div class="card-icon github">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
-        </svg>
-      </div>
-      <div class="card-body">
-        <div class="card-title">GitHub</div>
-        <div class="card-desc">开源项目与代码仓库。</div>
-      </div>
-      <div class="card-arrow">→</div>
-    </a>
-
+  <div class="hero">
+    <h1>看片，从这里进</h1>
+    <p id="count">正片平台、评分社区、短视频与自有应用，一处收录。</p>
   </div>
 
-  <!-- Footer Links -->
-  <div class="links">
-    <a href="https://github.com/qinvision" target="_blank" rel="noopener">GitHub</a>
-    <a href="mailto:hello@mydjjm.cn">Email</a>
-    <a href="https://mydjjm.cn">mydjjm.cn</a>
+  <div class="search-box">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/>
+    </svg>
+    <input id="q" type="search" placeholder="搜索平台、影片或类型…" autocomplete="off">
+  </div>
+
+  <div class="chips" id="chips"></div>
+
+  <div class="grid" id="grid"></div>
+  <div class="empty" id="empty">没有匹配的站点，换个关键词试试。</div>
+
+  <div class="hint">
+    想加站点？编辑 <code>index.html</code> 里的 <code>SITES</code> 数组，一条记录就是一张卡片：<code>name / desc / href / cat / tag / mark</code>。
   </div>
 
 </div>
 
 <footer>
-  © 2026 杜绝加密 · Powered by GitHub Pages
+  <span>© 2026 杜绝加密</span>
+  <span><a href="https://github.com/qinvision">GitHub</a> · <a href="https://mydjjm.cn">mydjjm.cn</a></span>
 </footer>
 
-<!-- Toast -->
-<div id="toast" style="
-  position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%) translateY(80px);
-  background: #27272a; color: #e4e4e7; padding: 10px 20px; border-radius: 8px;
-  font-size: 13px; border: 1px solid #3f3f46; opacity: 0;
-  transition: opacity 0.3s, transform 0.3s; pointer-events: none; z-index: 999;
-"></div>
+<div id="toast"></div>
 
 <script>
-function showToast(msg) {
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.style.opacity = '1';
-  t.style.transform = 'translateX(-50%) translateY(0)';
-  setTimeout(() => {
-    t.style.opacity = '0';
-    t.style.transform = 'translateX(-50%) translateY(80px)';
-  }, 2000);
+/* ===== 数据 ===== */
+const CATS = [
+  { id: 'all',    label: '全部' },
+  { id: 'video',  label: '综合平台' },
+  { id: 'rating', label: '评分社区' },
+  { id: 'short',  label: '短视频' },
+  { id: 'mine',   label: '我的应用' }
+];
+
+const SITES = [
+  { name: '影视 TV', desc: '自建影视播放应用，适配电视大屏，支持 iPhone 与安卓端。', href: 'https://github.com/qinvision', cat: 'mine', tag: '自有', mark: '视', featured: true },
+  { name: '电台 App', desc: '多端电台收听，手机与电视通用。', href: 'https://radio.mydjjm.cn', cat: 'mine', tag: '自有', mark: '电' },
+  { name: '族谱 · 家谱', desc: '家族谱系查询与世系图展示。', href: 'https://zupu.mydjjm.cn', cat: 'mine', tag: '自有', mark: '谱' },
+
+  { name: '爱奇艺', desc: '长视频平台，院线新片、剧集与综艺覆盖最全。', href: 'https://www.iqiyi.com', cat: 'video', tag: '会员', mark: '爱' },
+  { name: '腾讯视频', desc: '剧集与自制综艺为主，独播内容多。', href: 'https://v.qq.com', cat: 'video', tag: '会员', mark: '腾' },
+  { name: '优酷', desc: '老片库厚，港剧与经典电影资源多。', href: 'https://www.youku.com', cat: 'video', tag: '会员', mark: '优' },
+  { name: '芒果 TV', desc: '综艺见长，青春剧与自制内容集中。', href: 'https://www.mgtv.com', cat: 'video', tag: '会员', mark: '芒' },
+  { name: '哔哩哔哩', desc: '番剧、纪录片与二创生态，弹幕氛围。', href: 'https://www.bilibili.com', cat: 'video', tag: '免费', mark: 'B' },
+  { name: 'Netflix', desc: '海外剧集与电影，原创内容质量高。', href: 'https://www.netflix.com', cat: 'video', tag: '海外', mark: 'N' },
+  { name: 'YouTube', desc: '全球视频平台，预告片、幕后与影评频道齐全。', href: 'https://www.youtube.com', cat: 'video', tag: '海外', mark: 'Y' },
+
+  { name: '豆瓣电影', desc: '评分、影评与各类榜单，选片先看这里。', href: 'https://movie.douban.com', cat: 'rating', tag: '评分', mark: '豆' },
+  { name: '猫眼电影', desc: '院线排片、票房数据与购票信息。', href: 'https://www.maoyan.com', cat: 'rating', tag: '票房', mark: '猫' },
+  { name: 'IMDb', desc: '全球影视资料库，查演员、剧组与技术参数。', href: 'https://www.imdb.com', cat: 'rating', tag: '资料', mark: 'I' },
+  { name: 'TMDB', desc: '开放影视数据库，接口友好，元数据齐全。', href: 'https://www.themoviedb.org', cat: 'rating', tag: '资料', mark: 'T' },
+
+  { name: '抖音', desc: '短剧与影视解说，竖屏观看。', href: 'https://www.douyin.com', cat: 'short', tag: '竖屏', mark: '抖' },
+  { name: '快手', desc: '短剧与生活类视频，地域内容多。', href: 'https://www.kuaishou.com', cat: 'short', tag: '竖屏', mark: '快' },
+  { name: '西瓜视频', desc: '横屏中长视频，影视解说与纪录片合集。', href: 'https://www.ixigua.com', cat: 'short', tag: '横屏', mark: '西' }
+];
+
+/* ===== 渲染 ===== */
+const gridEl = document.getElementById('grid');
+const chipsEl = document.getElementById('chips');
+const emptyEl = document.getElementById('empty');
+const qEl = document.getElementById('q');
+const countEl = document.getElementById('count');
+
+let activeCat = 'all';
+let keyword = '';
+
+const MARK_CLASS = { video: 'c1', rating: 'c2', short: 'c3', mine: 'c4' };
+
+function renderChips() {
+  chipsEl.innerHTML = '';
+  CATS.forEach(c => {
+    const b = document.createElement('button');
+    b.className = 'chip';
+    b.type = 'button';
+    b.textContent = c.label;
+    b.setAttribute('aria-pressed', String(c.id === activeCat));
+    b.addEventListener('click', () => {
+      activeCat = c.id;
+      renderChips();
+      renderGrid();
+    });
+    chipsEl.appendChild(b);
+  });
+}
+
+function match(s) {
+  if (activeCat !== 'all' && s.cat !== activeCat) return false;
+  if (!keyword) return true;
+  const hay = (s.name + s.desc + s.tag).toLowerCase();
+  return hay.includes(keyword);
+}
+
+function renderGrid() {
+  const list = SITES.filter(match);
+  gridEl.innerHTML = '';
+
+  list.forEach(s => {
+    const a = document.createElement('a');
+    a.className = 'tile' + (s.featured && activeCat === 'all' && !keyword ? ' featured' : '');
+    a.href = s.href;
+    a.target = '_blank';
+    a.rel = 'noopener';
+
+    const mk = document.createElement('span');
+    mk.className = 'mk ' + (MARK_CLASS[s.cat] || 'c1');
+    mk.textContent = s.mark;
+
+    const body = document.createElement('span');
+    body.className = 'tile-body';
+    const nm = document.createElement('span');
+    nm.className = 'tile-name';
+    nm.textContent = s.name;
+    const ds = document.createElement('span');
+    ds.className = 'tile-desc';
+    ds.textContent = s.desc;
+    body.appendChild(nm);
+    body.appendChild(ds);
+
+    const tg = document.createElement('span');
+    tg.className = 'tile-tag';
+    tg.textContent = s.tag;
+
+    a.appendChild(mk);
+    a.appendChild(body);
+    a.appendChild(tg);
+    gridEl.appendChild(a);
+  });
+
+  emptyEl.classList.toggle('show', list.length === 0);
+
+  const catLabel = (CATS.find(c => c.id === activeCat) || CATS[0]).label;
+  countEl.textContent = keyword
+    ? `“${keyword}” 匹配到 ${list.length} 个站点`
+    : `${catLabel} · 共 ${list.length} 个站点`;
+}
+
+qEl.addEventListener('input', e => {
+  keyword = e.target.value.trim().toLowerCase();
+  renderGrid();
+});
+
+renderChips();
+renderGrid();
+
+/* 提示条 */
+const toastEl = document.getElementById('toast');
+let toastTimer = null;
+function toast(msg) {
+  toastEl.textContent = msg;
+  toastEl.style.opacity = '1';
+  toastEl.style.transform = 'translateX(-50%) translateY(0)';
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => {
+    toastEl.style.opacity = '0';
+    toastEl.style.transform = 'translateX(-50%) translateY(60px)';
+  }, 2200);
 }
 </script>
 
