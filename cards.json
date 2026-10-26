@@ -1,0 +1,147 @@
+{
+  "updated": "2026-10-26T13:44:16.069Z",
+  "cards": [
+    {
+      "name": "影视 TV",
+      "desc": "自建影视播放应用，适配电视大屏，支持 iPhone 与安卓端。",
+      "href": "https://github.com/qinvision",
+      "cat": "mine",
+      "tag": "自有",
+      "mark": "视",
+      "featured": true
+    },
+    {
+      "name": "电台 App",
+      "desc": "多端电台收听，手机与电视通用。",
+      "href": "https://radio.mydjjm.cn",
+      "cat": "mine",
+      "tag": "自有",
+      "mark": "电"
+    },
+    {
+      "name": "族谱 · 家谱",
+      "desc": "家族谱系查询与世系图展示。",
+      "cat": "mine",
+      "tag": "加密",
+      "mark": "谱",
+      "enc": {
+        "salt": "fyfZqoWZ7Tv60rKHi7k1HQ==",
+        "iv": "llH2E/skyASQZf3i",
+        "ct": "nnsy+QejN/a4SQkv5rHFVE8blhxMIM50P01lmlF13tMP7h10s+g=",
+        "iter": 210000
+      }
+    },
+    {
+      "name": "爱奇艺",
+      "desc": "长视频平台，院线新片、剧集与综艺覆盖最全。",
+      "href": "https://www.iqiyi.com",
+      "cat": "video",
+      "tag": "会员",
+      "mark": "爱"
+    },
+    {
+      "name": "腾讯视频",
+      "desc": "剧集与自制综艺为主，独播内容多。",
+      "href": "https://v.qq.com",
+      "cat": "video",
+      "tag": "会员",
+      "mark": "腾"
+    },
+    {
+      "name": "优酷",
+      "desc": "老片库厚，港剧与经典电影资源多。",
+      "href": "https://www.youku.com",
+      "cat": "video",
+      "tag": "会员",
+      "mark": "优"
+    },
+    {
+      "name": "芒果 TV",
+      "desc": "综艺见长，青春剧与自制内容集中。",
+      "href": "https://www.mgtv.com",
+      "cat": "video",
+      "tag": "会员",
+      "mark": "芒"
+    },
+    {
+      "name": "哔哩哔哩",
+      "desc": "番剧、纪录片与二创生态，弹幕氛围。",
+      "href": "https://www.bilibili.com",
+      "cat": "video",
+      "tag": "免费",
+      "mark": "B"
+    },
+    {
+      "name": "Netflix",
+      "desc": "海外剧集与电影，原创内容质量高。",
+      "href": "https://www.netflix.com",
+      "cat": "video",
+      "tag": "海外",
+      "mark": "N"
+    },
+    {
+      "name": "YouTube",
+      "desc": "全球视频平台，预告片、幕后与影评频道齐全。",
+      "href": "https://www.youtube.com",
+      "cat": "video",
+      "tag": "海外",
+      "mark": "Y"
+    },
+    {
+      "name": "豆瓣电影",
+      "desc": "评分、影评与各类榜单，选片先看这里。",
+      "href": "https://movie.douban.com",
+      "cat": "rating",
+      "tag": "评分",
+      "mark": "豆"
+    },
+    {
+      "name": "猫眼电影",
+      "desc": "院线排片、票房数据与购票信息。",
+      "href": "https://www.maoyan.com",
+      "cat": "rating",
+      "tag": "票房",
+      "mark": "猫"
+    },
+    {
+      "name": "IMDb",
+      "desc": "全球影视资料库，查演员、剧组与技术参数。",
+      "href": "https://www.imdb.com",
+      "cat": "rating",
+      "tag": "资料",
+      "mark": "I"
+    },
+    {
+      "name": "TMDB",
+      "desc": "开放影视数据库，接口友好，元数据齐全。",
+      "href": "https://www.themoviedb.org",
+      "cat": "rating",
+      "tag": "资料",
+      "mark": "T"
+    },
+    {
+      "name": "抖音",
+      "desc": "短剧与影视解说，竖屏观看。",
+      "href": "https://www.douyin.com",
+      "cat": "short",
+      "tag": "竖屏",
+      "mark": "抖"
+    },
+    {
+      "name": "快手",
+      "desc": "短剧与生活类视频，地域内容多。",
+      "href": "https://www.kuaishou.com",
+      "cat": "short",
+      "tag": "竖屏",
+      "mark": "快"
+    },
+    {
+      "name": "西瓜视频",
+      "desc": "横屏中长视频，影视解说与纪录片合集。",
+      "href": "https://www.ixigua.com",
+      "cat": "short",
+      "tag": "横屏",
+      "mark": "西"
+    }
+  ]
+}
