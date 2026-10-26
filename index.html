@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>qinvision — 个人主页</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>Q</text></svg>">
+<style>
+  /* ===== Reset & Base ===== */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #0f1115;
+    color: #e4e4e7;
+    line-height: 1.6;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+
+  /* ===== Layout ===== */
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ===== Hero ===== */
+  .hero {
+    padding: 96px 0 48px;
+    text-align: center;
+  }
+  .avatar {
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #2dd4bf 0%, #0d9488 100%);
+    margin: 0 auto 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    font-weight: 700;
+    color: #0f1115;
+    letter-spacing: -1px;
+  }
+  .hero h1 {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+  }
+  .hero .tagline {
+    font-size: 15px;
+    color: #a1a1aa;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  /* ===== Section Title ===== */
+  .section-title {
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #71717a;
+    margin: 48px 0 16px;
+  }
+
+  /* ===== Project Cards ===== */
+  .projects {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .card {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 20px;
+    background: #18181b;
+    border-radius: 12px;
+    border: 1px solid #27272a;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .card:hover {
+    border-color: #3f3f46;
+    transform: translateY(-1px);
+  }
+  .card-icon {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+  }
+  .card-icon.genealogy { background: #134e4a; color: #2dd4bf; }
+  .card-icon.radio { background: #1e3a5f; color: #60a5fa; }
+  .card-icon.tv { background: #3b2f4f; color: #c084fc; }
+  .card-icon.github { background: #27272a; color: #e4e4e7; }
+  .card-body { flex: 1; min-width: 0; }
+  .card-title {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .card-desc {
+    font-size: 13px;
+    color: #a1a1aa;
+    line-height: 1.5;
+  }
+  .card-arrow {
+    flex-shrink: 0;
+    color: #52525b;
+    font-size: 16px;
+    margin-top: 10px;
+    transition: transform 0.2s, color 0.2s;
+  }
+  .card:hover .card-arrow {
+    transform: translateX(3px);
+    color: #2dd4bf;
+  }
+
+  /* ===== Links Row ===== */
+  .links {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 48px;
+    padding-bottom: 48px;
+  }
+  .links a {
+    font-size: 13px;
+    color: #71717a;
+    transition: color 0.2s;
+  }
+  .links a:hover { color: #2dd4bf; }
+
+  /* ===== Footer ===== */
+  footer {
+    text-align: center;
+    padding: 24px 0 40px;
+    font-size: 12px;
+    color: #52525b;
+    border-top: 1px solid #1c1c1f;
+  }
+
+  /* ===== Responsive ===== */
+  @media (min-width: 640px) {
+    .hero { padding: 120px 0 60px; }
+    .hero h1 { font-size: 32px; }
+    .projects { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="avatar">Q</div>
+    <h1>qinvision</h1>
+    <p class="tagline">内容创作者 / 全栈开发者，专注于多媒体应用与个人工具的构建。</p>
+  </section>
+
+  <!-- Projects -->
+  <div class="section-title">项目</div>
+  <div class="projects">
+
+    <a class="card" href="https://mydjjm.cn" target="_blank" rel="noopener">
+      <div class="card-icon genealogy">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/>
+        </svg>
+      </div>
+      <div class="card-body">
+        <div class="card-title">族谱网站</div>
+        <div class="card-desc">家族谱系记录与展示，静态站点部署。</div>
+      </div>
+      <div class="card-arrow">→</div>
+    </a>
+
+    <a class="card" href="#" onclick="showToast('电台 APK 即将上线'); return false;">
+      <div class="card-icon radio">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/>
+        </svg>
+      </div>
+      <div class="card-body">
+        <div class="card-title">电台 App</div>
+        <div class="card-desc">多端电台应用，手机 / 电视均可使用。</div>
+      </div>
+      <div class="card-arrow">→</div>
+    </a>
+
+    <a class="card" href="#" onclick="showToast('影视 APK 即将上线'); return false;">
+      <div class="card-icon tv">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="7" width="20" height="15" rx="2"/><polyline points="17 2 12 7 7 2"/>
+        </svg>
+      </div>
+      <div class="card-body">
+        <div class="card-title">影视 TV</div>
+        <div class="card-desc">影视流播放应用，适配电视大屏。</div>
+      </div>
+      <div class="card-arrow">→</div>
+    </a>
+
+    <a class="card" href="https://github.com/qinvision" target="_blank" rel="noopener">
+      <div class="card-icon github">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+        </svg>
+      </div>
+      <div class="card-body">
+        <div class="card-title">GitHub</div>
+        <div class="card-desc">开源项目与代码仓库。</div>
+      </div>
+      <div class="card-arrow">→</div>
+    </a>
+
+  </div>
+
+  <!-- Footer Links -->
+  <div class="links">
+    <a href="https://github.com/qinvision" target="_blank" rel="noopener">GitHub</a>
+    <a href="mailto:hello@mydjjm.cn">Email</a>
+    <a href="https://mydjjm.cn">mydjjm.cn</a>
+  </div>
+
+</div>
+
+<footer>
+  © 2026 qinvision · Powered by GitHub Pages
+</footer>
+
+<!-- Toast -->
+<div id="toast" style="
+  position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%) translateY(80px);
+  background: #27272a; color: #e4e4e7; padding: 10px 20px; border-radius: 8px;
+  font-size: 13px; border: 1px solid #3f3f46; opacity: 0;
+  transition: opacity 0.3s, transform 0.3s; pointer-events: none; z-index: 999;
+"></div>
+
+<script>
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.style.opacity = '1';
+  t.style.transform = 'translateX(-50%) translateY(0)';
+  setTimeout(() => {
+    t.style.opacity = '0';
+    t.style.transform = 'translateX(-50%) translateY(80px)';
+  }, 2000);
+}
+</script>
+
+</body>
+</html>
