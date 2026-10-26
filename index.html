@@ -227,6 +227,119 @@
   }
   .tile.featured .tile-name { font-size: 16px; }
 
+  /* 加密卡片 */
+  .tile.locked .tile-tag {
+    color: var(--seal);
+    border-color: rgba(224,51,47,.4);
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+  }
+  .tile.locked .tile-tag svg { width: 9px; height: 9px; }
+
+  /* ===== 密码弹窗 ===== */
+  .modal {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(0,0,0,.72);
+    backdrop-filter: blur(3px);
+    z-index: 200;
+  }
+  .modal.show { display: flex; }
+
+  .modal-card {
+    width: 100%;
+    max-width: 340px;
+    background: #16161b;
+    border: 1px solid var(--border-hi);
+    border-radius: 12px;
+    padding: 22px 22px 18px;
+    animation: pop .18s ease-out;
+  }
+  @keyframes pop {
+    from { opacity: 0; transform: scale(.96); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+
+  .modal-head {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin-bottom: 4px;
+  }
+  .modal-head svg { color: var(--seal); flex-shrink: 0; }
+  .modal-head h3 {
+    font-size: 15px;
+    font-weight: 600;
+  }
+  .modal-target {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 16px;
+    padding-left: 28px;
+  }
+
+  #pw {
+    width: 100%;
+    padding: 11px 13px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    font-size: 16px;
+    font-family: inherit;
+    outline: none;
+    transition: border-color .18s;
+  }
+  #pw:focus { border-color: var(--seal-dim); }
+
+  .modal-err {
+    height: 17px;
+    margin-top: 7px;
+    font-size: 12px;
+    color: #ff6b66;
+    opacity: 0;
+    transition: opacity .15s;
+  }
+  .modal-err.show { opacity: 1; }
+
+  .modal-actions {
+    display: flex;
+    gap: 9px;
+    margin-top: 6px;
+  }
+  .btn {
+    flex: 1;
+    padding: 10px;
+    font-size: 13.5px;
+    font-family: inherit;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--muted);
+    transition: color .18s, border-color .18s, background .18s;
+  }
+  .btn:hover { color: var(--text); border-color: var(--border-hi); }
+  .btn.primary {
+    background: var(--seal);
+    border-color: var(--seal);
+    color: #fff;
+    font-weight: 600;
+  }
+  .btn.primary:hover { background: #f0443f; border-color: #f0443f; }
+
+  .shake { animation: shake .3s; }
+  @keyframes shake {
+    0%,100% { transform: translateX(0); }
+    25% { transform: translateX(-6px); }
+    75% { transform: translateX(6px); }
+  }
+
   /* 空态 */
   .empty {
     display: none;
@@ -339,7 +452,8 @@
   <div class="empty" id="empty">没有匹配的站点，换个关键词试试。</div>
 
   <div class="hint">
-    想加站点？编辑 <code>index.html</code> 里的 <code>SITES</code> 数组，一条记录就是一张卡片：<code>name / desc / href / cat / tag / mark</code>。
+    想加站点？编辑 <code>index.html</code> 里的 <code>SITES</code> 数组：<code>name / desc / href / cat / tag / mark</code>。
+    需要加密的条目去掉 <code>href</code>，改填 <code>enc</code>（盐、IV、密文），源码中不会出现密码与真实地址。
   </div>
 
 </div>
@@ -348,6 +462,24 @@
   <span>© 2026 杜绝加密</span>
   <span><a href="https://github.com/qinvision">GitHub</a> · <a href="https://mydjjm.cn">mydjjm.cn</a></span>
 </footer>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-card" id="modalCard">
+    <div class="modal-head">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+        <rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>
+      </svg>
+      <h3 id="modalTitle">输入访问密码</h3>
+    </div>
+    <div class="modal-target" id="modalTarget"></div>
+    <input id="pw" type="password" placeholder="密码" autocomplete="off" spellcheck="false">
+    <div class="modal-err" id="modalErr">密码不对，再试一次</div>
+    <div class="modal-actions">
+      <button class="btn" type="button" id="btnCancel">取消</button>
+      <button class="btn primary" type="button" id="btnOk">解锁</button>
+    </div>
+  </div>
+</div>
 
 <div id="toast"></div>
 
@@ -364,7 +496,8 @@ const CATS = [
 const SITES = [
   { name: '影视 TV', desc: '自建影视播放应用，适配电视大屏，支持 iPhone 与安卓端。', href: 'https://github.com/qinvision', cat: 'mine', tag: '自有', mark: '视', featured: true },
   { name: '电台 App', desc: '多端电台收听，手机与电视通用。', href: 'https://radio.mydjjm.cn', cat: 'mine', tag: '自有', mark: '电' },
-  { name: '族谱 · 家谱', desc: '家族谱系查询与世系图展示。', href: 'https://zupu.mydjjm.cn', cat: 'mine', tag: '自有', mark: '谱' },
+  { name: '族谱 · 家谱', desc: '家族谱系查询与世系图展示。', cat: 'mine', tag: '加密', mark: '谱',
+    enc: { salt: 'fyfZqoWZ7Tv60rKHi7k1HQ==', iv: 'llH2E/skyASQZf3i', ct: 'nnsy+QejN/a4SQkv5rHFVE8blhxMIM50P01lmlF13tMP7h10s+g=', iter: 210000 } },
 
   { name: '爱奇艺', desc: '长视频平台，院线新片、剧集与综艺覆盖最全。', href: 'https://www.iqiyi.com', cat: 'video', tag: '会员', mark: '爱' },
   { name: '腾讯视频', desc: '剧集与自制综艺为主，独播内容多。', href: 'https://v.qq.com', cat: 'video', tag: '会员', mark: '腾' },
@@ -425,11 +558,23 @@ function renderGrid() {
   gridEl.innerHTML = '';
 
   list.forEach(s => {
+    const locked = !!s.enc;
     const a = document.createElement('a');
-    a.className = 'tile' + (s.featured && activeCat === 'all' && !keyword ? ' featured' : '');
-    a.href = s.href;
+    a.className = 'tile'
+      + (s.featured && activeCat === 'all' && !keyword ? ' featured' : '')
+      + (locked ? ' locked' : '');
+    a.href = locked ? '#' : s.href;
     a.target = '_blank';
     a.rel = 'noopener';
+
+    if (locked) {
+      a.addEventListener('click', ev => {
+        ev.preventDefault();
+        const cached = sessionStorage.getItem('unlocked:' + s.name);
+        if (cached) { window.open(cached, '_blank', 'noopener'); return; }
+        openModal(s);
+      });
+    }
 
     const mk = document.createElement('span');
     mk.className = 'mk ' + (MARK_CLASS[s.cat] || 'c1');
@@ -448,7 +593,12 @@ function renderGrid() {
 
     const tg = document.createElement('span');
     tg.className = 'tile-tag';
-    tg.textContent = s.tag;
+    if (locked) {
+      tg.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>';
+      tg.appendChild(document.createTextNode(s.tag));
+    } else {
+      tg.textContent = s.tag;
+    }
 
     a.appendChild(mk);
     a.appendChild(body);
@@ -485,6 +635,92 @@ function toast(msg) {
     toastEl.style.transform = 'translateX(-50%) translateY(60px)';
   }, 2200);
 }
+
+/* ===== 加密解锁 ===== */
+/* 源码中只保存盐、IV 与密文，密码本身不存在于任何文件里。
+   解密在浏览器本地用 PBKDF2(SHA-256, 21万次) 派生密钥 + AES-GCM 完成。 */
+
+const modalEl = document.getElementById('modal');
+const modalCard = document.getElementById('modalCard');
+const modalTarget = document.getElementById('modalTarget');
+const modalErr = document.getElementById('modalErr');
+const pwEl = document.getElementById('pw');
+let pendingSite = null;
+
+function b64ToBytes(b64) {
+  const bin = atob(b64);
+  const out = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i);
+  return out;
+}
+
+async function decryptText(password, enc) {
+  const baseKey = await crypto.subtle.importKey(
+    'raw', new TextEncoder().encode(password), 'PBKDF2', false, ['deriveKey']
+  );
+  const key = await crypto.subtle.deriveKey(
+    { name: 'PBKDF2', salt: b64ToBytes(enc.salt), iterations: enc.iter, hash: 'SHA-256' },
+    baseKey, { name: 'AES-GCM', length: 256 }, false, ['decrypt']
+  );
+  const plain = await crypto.subtle.decrypt(
+    { name: 'AES-GCM', iv: b64ToBytes(enc.iv) }, key, b64ToBytes(enc.ct)
+  );
+  return new TextDecoder().decode(plain);
+}
+
+function openModal(site) {
+  pendingSite = site;
+  modalTarget.textContent = site.name;
+  pwEl.value = '';
+  modalErr.classList.remove('show');
+  modalEl.classList.add('show');
+  setTimeout(() => pwEl.focus(), 50);
+}
+
+function closeModal() {
+  modalEl.classList.remove('show');
+  pendingSite = null;
+}
+
+async function submitPassword() {
+  if (!pendingSite) return;
+  const pw = pwEl.value;
+  if (!pw) { pwEl.focus(); return; }
+
+  modalErr.classList.remove('show');
+
+  if (!(window.crypto && crypto.subtle)) {
+    modalErr.textContent = '当前环境不支持加解密，请用 https 访问';
+    modalErr.classList.add('show');
+    return;
+  }
+
+  try {
+    const url = await decryptText(pw, pendingSite.enc);
+    sessionStorage.setItem('unlocked:' + pendingSite.name, url);
+    const site = pendingSite;
+    closeModal();
+    toast('已解锁 · ' + site.name);
+    window.open(url, '_blank', 'noopener');
+  } catch (err) {
+    modalErr.textContent = '密码不对，再试一次';
+    modalErr.classList.add('show');
+    modalCard.classList.add('shake');
+    setTimeout(() => modalCard.classList.remove('shake'), 320);
+    pwEl.select();
+  }
+}
+
+document.getElementById('btnOk').addEventListener('click', submitPassword);
+document.getElementById('btnCancel').addEventListener('click', closeModal);
+pwEl.addEventListener('keydown', e => {
+  if (e.key === 'Enter') { e.preventDefault(); submitPassword(); }
+});
+modalEl.addEventListener('click', e => { if (e.target === modalEl) closeModal(); });
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && modalEl.classList.contains('show')) closeModal();
+});
+
 </script>
 
 </body>
