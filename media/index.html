@@ -7,11 +7,33 @@
 <meta name="description" content="正版影视平台导航：只收录各平台官网，不含任何播放源。">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='12' fill='%23e0332f'/%3E%3Ctext x='50' y='50' font-size='58' fill='%23fff' text-anchor='middle' dominant-baseline='central' font-family='serif'%3E杜%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap">
+<script>
+/* 与主页共用主题键 site.theme */
+(function(){
+  var T = {
+    charcoal:{bg:'#0a0a0c',panel:'#131317',hover:'#1b1b21',line:'#26262d',line2:'#38383f',ink:'#ececef',dim:'#86868f',dim2:'#5c5c66',accent:'#e0332f'},
+    indigo:{bg:'#080b14',panel:'#111827',hover:'#172033',line:'#1e293b',line2:'#334155',ink:'#e8eefc',dim:'#93a3bd',dim2:'#64748b',accent:'#5b8cff'},
+    forest:{bg:'#07110c',panel:'#0f1a14',hover:'#14241b',line:'#1f3328',line2:'#2f4a3b',ink:'#e6f5ec',dim:'#8fb3a0',dim2:'#5f7d6c',accent:'#34b37a'},
+    cocoa:{bg:'#120f0b',panel:'#1c1712',hover:'#241d16',line:'#332820',line2:'#4a3a2c',ink:'#f3e9dd',dim:'#b4a08b',dim2:'#7d6a58',accent:'#d98b4a'},
+    violet:{bg:'#0d0916',panel:'#171022',hover:'#1d1429',line:'#2e2140',line2:'#42345a',ink:'#f0e9fb',dim:'#b3a4cb',dim2:'#7c6a95',accent:'#a06bff'},
+    teal:{bg:'#0a0f12',panel:'#121a1f',hover:'#18232a',line:'#24323b',line2:'#33454f',ink:'#e6f1f5',dim:'#9db0ba',dim2:'#6b7f89',accent:'#38b8ae'},
+    amber:{bg:'#100d06',panel:'#191408',hover:'#1f190c',line:'#332b17',line2:'#4a3f22',ink:'#f8f0da',dim:'#bfae86',dim2:'#8a7a55',accent:'#e0a92b'},
+    paper:{bg:'#f5f4f1',panel:'#ffffff',hover:'#f0efec',line:'#e2e0da',line2:'#cfccc4',ink:'#1b1b1e',dim:'#6b6b73',dim2:'#8f8f98',accent:'#c0392b'}
+  };
+  window.__THEMES = T;
+  var id='charcoal';
+  try{ id = localStorage.getItem('site.theme') || 'charcoal'; }catch(e){}
+  if(!T[id]) id='charcoal';
+  var t=T[id], st=document.documentElement.style;
+  for(var k in t) st.setProperty('--'+k, t[k]);
+  document.documentElement.setAttribute('data-theme', id);
+})();
+</script>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root{
-    --bg:#0a0a0c; --panel:#131317; --panel2:#17171c; --line:#26262d; --line2:#38383f;
-    --ink:#ececef; --dim:#86868f; --dim2:#5c5c66; --red:#e0332f;
+    --bg:#0a0a0c; --panel:#131317; --hover:#1b1b21; --line:#26262d; --line2:#38383f;
+    --ink:#ececef; --dim:#86868f; --dim2:#5c5c66; --accent:#e0332f;
   }
   html,body{background:var(--bg);}
   body{
@@ -19,6 +41,7 @@
     font-family:"Noto Sans SC",-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
     -webkit-font-smoothing:antialiased;
     padding:34px 22px 54px;
+    transition:background .25s ease,color .25s ease;
   }
   .wrap{max-width:980px;margin:0 auto;}
 
@@ -30,7 +53,7 @@
   .back:hover{color:var(--ink);}
   .back svg{width:13px;height:13px;}
 
-  header{margin:18px 0 6px;display:flex;align-items:center;gap:12px;}
+  header{margin:18px 0 0;display:flex;align-items:center;gap:12px;}
   .seal{width:40px;height:40px;flex:none;}
   h1{
     font-family:"Songti SC","STSong","SimSun",serif;
@@ -40,15 +63,31 @@
 
   .notice{
     display:flex;gap:10px;align-items:flex-start;
-    margin:20px 0 6px;padding:12px 14px;
-    border:1px solid rgba(224,51,47,.28);border-radius:9px;
-    background:rgba(224,51,47,.05);
-    font-size:12.5px;line-height:1.75;color:#b9b9c2;
+    margin:20px 0 0;padding:12px 14px;
+    border:1px solid color-mix(in srgb, var(--accent) 26%, transparent);
+    border-radius:9px;
+    background:color-mix(in srgb, var(--accent) 6%, transparent);
+    font-size:12.5px;line-height:1.75;color:var(--dim);
   }
-  .notice b{color:#e8877f;font-weight:600;}
-  .notice svg{width:15px;height:15px;flex:none;color:var(--red);margin-top:2px;}
+  .notice b{color:var(--accent);font-weight:600;}
+  .notice svg{width:15px;height:15px;flex:none;color:var(--accent);margin-top:2px;}
 
-  section{margin-top:34px;}
+  .bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:18px;}
+  .bar .grow{flex:1;}
+  .tb{
+    height:34px;padding:0 12px;border-radius:8px;
+    border:1px solid var(--line);background:var(--panel);color:var(--dim);
+    font-size:12.5px;font-family:inherit;cursor:pointer;
+    display:inline-flex;align-items:center;gap:6px;
+    transition:color .16s,border-color .16s,background .16s;
+  }
+  .tb:hover{color:var(--ink);border-color:var(--line2);}
+  .tb svg{width:13px;height:13px;}
+  .tb.on{border-color:var(--accent);color:var(--accent);}
+  .tb[hidden]{display:none;}
+  .bar .hint{font-size:11.5px;color:var(--dim2);}
+
+  section{margin-top:30px;}
   .shead{display:flex;align-items:baseline;gap:10px;margin-bottom:14px;}
   .shead h2{font-size:14.5px;font-weight:600;letter-spacing:.04em;}
   .shead .cnt{font-size:11.5px;color:var(--dim2);}
@@ -56,37 +95,124 @@
 
   .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
   .site{
+    position:relative;
     display:flex;align-items:flex-start;gap:12px;
     padding:14px 16px;border:1px solid var(--line);border-radius:10px;
     background:var(--panel);color:inherit;text-decoration:none;
     transition:background .18s,border-color .18s;
   }
-  .site:hover{background:#1b1b21;border-color:var(--line2);}
+  .site:hover{background:var(--hover);border-color:var(--line2);}
   .site .dot{width:8px;height:8px;border-radius:50%;flex:none;margin-top:6px;}
   .site .body{flex:1;min-width:0;}
-  .site .name{font-size:15px;font-weight:500;display:flex;align-items:center;gap:8px;}
+  .site .name{font-size:15px;font-weight:500;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
   .site .note{font-size:12.5px;color:var(--dim);line-height:1.65;margin-top:5px;}
-  .site .go{
-    flex:none;color:var(--dim2);font-size:12px;margin-top:1px;
-    transition:color .18s;
-  }
-  .site:hover .go{color:#9d9daa;}
+  .site .go{flex:none;color:var(--dim2);font-size:12px;margin-top:1px;transition:color .18s;}
+  .site:hover .go{color:var(--dim);}
   .site .badge{
     font-size:10.5px;font-weight:400;color:var(--dim);
     border:1px solid var(--line2);border-radius:4px;padding:1px 5px;
-    letter-spacing:.02em;
   }
+  .site .edit-mark{
+    position:absolute;top:8px;right:10px;
+    font-size:10.5px;color:var(--accent);
+    border:1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+    border-radius:4px;padding:1px 5px;
+    opacity:0;transition:opacity .16s;
+  }
+  body.editing .site{cursor:pointer;}
+  body.editing .site .edit-mark{opacity:1;}
+  body.editing .site .go{display:none;}
 
   .how{
     margin-top:34px;padding:16px 18px;border:1px solid var(--line);
-    border-radius:10px;background:var(--panel2);
+    border-radius:10px;background:var(--panel);
   }
-  .how h3{font-size:13px;font-weight:600;margin-bottom:10px;color:#d6d6de;}
+  .how h3{font-size:13px;font-weight:600;margin-bottom:10px;}
   .how ol{margin:0;padding-left:18px;color:var(--dim);font-size:12.5px;line-height:1.9;}
-  .how a{color:#9db6e8;text-decoration:none;}
+  .how a{color:var(--accent);text-decoration:none;}
   .how a:hover{text-decoration:underline;}
 
   footer{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);color:var(--dim2);font-size:11.5px;line-height:1.9;}
+
+  .theme-btn{
+    position:fixed;right:18px;bottom:18px;width:44px;height:44px;border-radius:50%;
+    display:grid;place-items:center;background:var(--panel);border:1px solid var(--line);
+    color:var(--dim);cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,.18);
+    transition:color .18s,border-color .18s;z-index:40;
+  }
+  .theme-btn:hover{color:var(--ink);border-color:var(--line2);}
+  .theme-btn svg{width:19px;height:19px;}
+
+  .sheet{position:fixed;inset:0;z-index:60;display:none;align-items:flex-end;justify-content:center;background:rgba(0,0,0,.5);}
+  .sheet.show{display:flex;}
+  .sheet-box{
+    width:100%;max-width:520px;background:var(--panel);border:1px solid var(--line);
+    border-radius:14px 14px 0 0;padding:18px 18px 26px;max-height:88vh;overflow-y:auto;animation:rise .22s ease-out;
+  }
+  @keyframes rise{from{transform:translateY(14px);opacity:.6}to{transform:none;opacity:1}}
+  .sheet-head{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+  .sheet-head h2{font-size:14px;font-weight:600;flex:1;letter-spacing:.04em;}
+  .close-x{width:32px;height:32px;border-radius:8px;display:grid;place-items:center;background:transparent;border:1px solid var(--line);color:var(--dim);cursor:pointer;}
+  .close-x:hover{color:var(--ink);border-color:var(--line2);}
+  .themes{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;}
+  .theme{
+    display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:9px;
+    border:1px solid var(--line);background:var(--bg);color:var(--ink);
+    font-size:13px;font-family:inherit;cursor:pointer;text-align:left;
+    transition:border-color .16s;
+  }
+  .theme:hover{border-color:var(--line2);}
+  .theme[aria-pressed="true"]{border-color:var(--accent);}
+  .theme .sw{width:22px;height:22px;border-radius:6px;flex:none;border:1px solid rgba(128,128,128,.28);display:grid;place-items:center;}
+  .theme .sw i{width:8px;height:8px;border-radius:50%;display:block;}
+  .theme .nm{flex:1;}
+  .theme .ck{color:var(--accent);font-size:12px;opacity:0;}
+  .theme[aria-pressed="true"] .ck{opacity:1;}
+
+  .mask{position:fixed;inset:0;z-index:70;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(0,0,0,.7);backdrop-filter:blur(3px);}
+  .mask.show{display:flex;}
+  .box{
+    width:100%;max-width:390px;background:var(--panel);border:1px solid var(--line2);
+    border-radius:12px;padding:20px;max-height:calc(100vh - 40px);overflow:auto;
+  }
+  .box h2{font-size:15px;font-weight:600;margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+  .box h2 svg{color:var(--accent);flex:none;}
+  .field{margin-top:11px;}
+  .field label{display:block;font-size:11.5px;color:var(--dim);margin-bottom:6px;}
+  .field input,.field select{
+    width:100%;background:var(--bg);border:1px solid var(--line);border-radius:8px;
+    color:var(--ink);font-size:16px;font-family:inherit;padding:0 11px;height:38px;outline:none;
+  }
+  .field input:focus,.field select:focus{border-color:var(--accent);}
+  .swatches{display:flex;gap:8px;flex-wrap:wrap;}
+  .sw-opt{
+    width:24px;height:24px;border-radius:50%;border:2px solid transparent;cursor:pointer;
+    box-shadow:inset 0 0 0 1px rgba(128,128,128,.3);
+  }
+  .sw-opt[aria-pressed="true"]{border-color:var(--ink);}
+  .err{height:17px;margin-top:6px;font-size:12px;color:#ff6b66;opacity:0;transition:opacity .15s;}
+  .err.show{opacity:1;}
+  .acts{display:flex;gap:8px;margin-top:16px;}
+  .btn{
+    flex:1;padding:10px;font-size:13.5px;font-family:inherit;border-radius:8px;cursor:pointer;
+    border:1px solid var(--line);background:transparent;color:var(--dim);transition:color .18s,border-color .18s;
+  }
+  .btn:hover{color:var(--ink);border-color:var(--line2);}
+  .btn.primary{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600;}
+  .btn.primary:hover{filter:brightness(1.08);}
+  .btn.danger{color:#ff6b66;border-color:color-mix(in srgb, #ff6b66 35%, transparent);}
+  .btn[hidden]{display:none;}
+
+  .toast{
+    position:fixed;left:50%;bottom:80px;transform:translateX(-50%) translateY(8px);
+    background:var(--panel);border:1px solid var(--line2);color:var(--ink);
+    font-size:13px;padding:9px 16px;border-radius:8px;opacity:0;pointer-events:none;
+    transition:opacity .2s,transform .2s;z-index:90;
+  }
+  .toast.on{opacity:1;transform:translateX(-50%) translateY(0);}
+
+  @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+  .shake{animation:shake .3s;}
 
   @media (max-width:700px){
     body{padding:22px 16px 40px;}
@@ -96,12 +222,17 @@
     .site{padding:14px;}
     .site .note{font-size:14px;line-height:1.7;}
     .sub{font-size:14px;}
-    .notice{font-size:13px;}
-    .how ol{font-size:13px;}
+    .notice{font-size:14px;}
+    .how ol{font-size:14px;}
     .shead .cnt{font-size:12px;}
     footer{font-size:12px;}
     .back{min-height:44px;}
+    .tb{height:44px;font-size:13.5px;}
+    .themes{grid-template-columns:1fr;}
+    .sheet-box{padding:16px 16px 24px;}
   }
+
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;}}
 </style>
 </head>
 <body>
@@ -123,152 +254,21 @@
     <div><b>说明：</b>本页只做正版平台导航，链接均指向平台官网；能看到什么片、要不要会员，以各平台为准。不提供任何第三方片源或播放地址。</div>
   </div>
 
-  <!-- ===== 综合长视频 ===== -->
-  <section>
-    <div class="shead"><h2>综合长视频</h2><span class="cnt">4 家</span><span class="rule"></span></div>
-    <div class="grid">
-      <a class="site" href="https://www.iqiyi.com/" target="_blank" rel="noopener">
-        <span class="dot" style="background:#12b84a"></span>
-        <span class="body">
-          <span class="name">爱奇艺</span>
-          <span class="note">院线新片、独播剧集与自制综艺</span>
-        </span>
-        <span class="go">打开 →</span>
-      </a>
-      <a class="site" href="https://v.qq.com/" target="_blank" rel="noopener">
-        <span class="dot" style="background:#ff9f43"></span>
-        <span class="body">
-          <span class="name">腾讯视频</span>
-          <span class="note">美剧、国漫、腾讯自制剧集</span>
-        </span>
-        <span class="go">打开 →</span>
-      </a>
-      <a class="site" href="https://www.youku.com/" target="_blank" rel="noopener">
-        <span class="dot" style="background:#2f9bff"></span>
-        <span class="body">
-          <span class="name">优酷</span>
-          <span class="note">港剧、经典剧集、人文纪录片</span>
-        </span>
-        <span class="go">打开 →</span>
-      </a>
-      <a class="site" href="https://www.mgtv.com/" target="_blank" rel="noopener">
-        <span class="dot" style="background:#ff6c00"></span>
-        <span class="body">
-          <span class="name">芒果TV</span>
-          <span class="note">湖南卫视综艺与剧集</span>
-        </span>
-        <span class="go">打开 →</span>
-      </a>
-    </div>
-  </section>
+  <div class="bar">
+    <button class="tb" id="editBtn" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4l10-10-4-4L4 16z"/><path d="M14 6l4 4"/></svg>
+      <span id="editLabel">编辑导航</span>
+    </button>
+    <button class="tb" id="addBtn" type="button" hidden>+ 添加网站</button>
+    <button class="tb" id="exportBtn" type="button" hidden>导出 JSON</button>
+    <button class="tb" id="importBtn" type="button" hidden>导入 JSON</button>
+    <button class="tb" id="resetBtn" type="button" hidden>恢复默认</button>
+    <input type="file" id="file" accept="application/json,.json" hidden>
+    <span class="grow"></span>
+    <span class="hint" id="hint">改完存在这台浏览器里</span>
+  </div>
 
-  <!-- ===== 电视与纪实 ===== -->
-  <section>
-    <div class="shead"><h2>电视直播与纪实</h2><span class="cnt">4 家</span><span class="rule"></span></div>
-    <div class="grid">
-      <a class="site" href="https://www.yangshipin.cn/" target="_blank" rel="noopener">
-        <span class="dot" style="background:#0b74d3"></span>
-        <span class="body">
-          <span class="name">央视频</span>
-          <span class="note">总台频道直播、新闻与纪录片</span>
-        </span>
-        <span class="go">打开 →</span>
-      </a>
-      <a class="site" href="https://www.miguvideo.com/" target="_blank" rel="noopener">
-        <span class="dot" style="background:#e60027"></span>
-        <span class="body">
-          <span class="name">咪咕视频</span>
-          <span class="note">体育赛事直播，部分影视内容</span>
-        </span>
-        <span class="go">打开 →</span>
-      </a>
-      <a class="site" href="https://www.1905.com/" target="_blank" rel="noopener">
-        <span class="dot" style="background:#c9302c"></span>
-        <span class="body">
-          <span class="name">1905 电影网</span>
-          <span class="note">CCTV-6 电影频道官网，影史资料与部分影片</span>
-        </span>
-        <span class="go">打开 →</span>
-      </a>
-      <a class="site" href="https://tv.cctv.com/" target="_blank" rel="noopener">
-        <span class="dot" style="background:#c8102e"></span>
-        <span class="body">
-          <span class="name">央视网</span>
-          <span class="note">央视各频道节目回看与专题片</span>
-        </span>
-        <span class="go">打开 →</span>
-      </a>
-    </div>
-  </section>
-
-  <!-- ===== 二次元与社区 ===== -->
-  <section>
-    <div class="shead"><h2>二次元与社区</h2><span class="cnt">2 家</span><span class="rule"></span></div>
-    <div class="grid">
-      <a class="site" href="https://www.bilibili.com/" target="_blank" rel="noopener">
-        <span class="dot" style="background:#fb7299"></span>
-        <span class="body">
-          <span class="name">哔哩哔哩</span>
-          <span class="note">正版番剧、纪录片、影视解说与二创</span>
-        </span>
-        <span class="go">打开 →</span>
-      </a>
-      <a class="site" href="https://www.acfun.cn/" target="_blank" rel="noopener">
-        <span class="dot" style="background:#f0603c"></span>
-        <span class="body">
-          <span class="name">AcFun</span>
-          <span class="note">二次元内容、番剧与短片</span>
-        </span>
-        <span class="go">打开 →</span>
-      </a>
-    </div>
-  </section>
-
-  <!-- ===== 老片与经典 ===== -->
-  <section>
-    <div class="shead"><h2>老片与经典</h2><span class="cnt">2 家</span><span class="rule"></span></div>
-    <div class="grid">
-      <a class="site" href="https://www.le.com/" target="_blank" rel="noopener">
-        <span class="dot" style="background:#d93a3a"></span>
-        <span class="body">
-          <span class="name">乐视视频</span>
-          <span class="note">老片、经典剧集</span>
-        </span>
-        <span class="go">打开 →</span>
-      </a>
-      <a class="site" href="https://tv.sohu.com/" target="_blank" rel="noopener">
-        <span class="dot" style="background:#ffcc00"></span>
-        <span class="body">
-          <span class="name">搜狐视频</span>
-          <span class="note">老剧、美剧</span>
-        </span>
-        <span class="go">打开 →</span>
-      </a>
-    </div>
-  </section>
-
-  <!-- ===== 查片 ===== -->
-  <section>
-    <div class="shead"><h2>查片与评分</h2><span class="cnt">1 个工具</span><span class="rule"></span></div>
-    <div class="grid">
-      <a class="site" href="https://movie.douban.com/" target="_blank" rel="noopener">
-        <span class="dot" style="background:#2fa84f"></span>
-        <span class="body">
-          <span class="name">豆瓣电影 <span class="badge">只查不播</span></span>
-          <span class="note">看评分和影评；条目页的「在线观看」会列出有版权的平台</span>
-        </span>
-        <span class="go">打开 →</span>
-      </a>
-      <a class="site" href="https://www.1905.com/mdb/" target="_blank" rel="noopener">
-        <span class="dot" style="background:#8a7bd8"></span>
-        <span class="body">
-          <span class="name">1905 电影资料库 <span class="badge">只查不播</span></span>
-          <span class="note">影片条目、演职员与影史资料</span>
-        </span>
-        <span class="go">打开 →</span>
-      </a>
-    </div>
-  </section>
+  <div id="sections"></div>
 
   <div class="how">
     <h3>不确定哪家有片？按这个顺序查</h3>
@@ -281,8 +281,470 @@
 
   <footer>
     影视导航 · 只收录平台官网，不承载播放。<br>
-    平台名称与商标归各自所有者；页面内容如有失效链接，可反馈修正。
+    编辑需密码解锁；改动保存在本机浏览器，可用「导出 JSON」备份。平台名称与商标归各自所有者。
   </footer>
 </div>
+
+<button class="theme-btn" id="themeBtn" type="button" aria-label="切换主题" aria-haspopup="dialog">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2.4"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/>
+  </svg>
+</button>
+
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
+  <div class="sheet-box">
+    <div class="sheet-head">
+      <h2 id="sheetTitle">页面主题</h2>
+      <button class="close-x" id="sheetClose" type="button" aria-label="关闭">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <div class="themes" id="themes"></div>
+  </div>
+</div>
+
+<div class="mask" id="pwMask" role="dialog" aria-modal="true" aria-labelledby="pwTitle">
+  <div class="box" id="pwBox">
+    <h2 id="pwTitle">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+      编辑需要密码
+    </h2>
+    <div class="field">
+      <input id="pw" type="password" placeholder="输入编辑密码" autocomplete="off" spellcheck="false">
+    </div>
+    <div class="err" id="pwErr">密码不对，再试一次</div>
+    <div class="acts">
+      <button class="btn" id="pwCancel" type="button">取消</button>
+      <button class="btn primary" id="pwOk" type="button">解锁</button>
+    </div>
+  </div>
+</div>
+
+<div class="mask" id="editMask" role="dialog" aria-modal="true" aria-labelledby="eTitle">
+  <div class="box">
+    <h2 id="eTitle">编辑网站</h2>
+    <div class="field">
+      <label for="fGroup">所属分组</label>
+      <select id="fGroup"></select>
+    </div>
+    <div class="field">
+      <label for="fName">名称</label>
+      <input id="fName" type="text" placeholder="例如：爱奇艺">
+    </div>
+    <div class="field">
+      <label for="fUrl">链接</label>
+      <input id="fUrl" type="text" placeholder="https://…" inputmode="url" spellcheck="false">
+    </div>
+    <div class="field">
+      <label for="fNote">一句说明</label>
+      <input id="fNote" type="text" placeholder="例如：院线新片、独播剧集">
+    </div>
+    <div class="field">
+      <label for="fBadge">标签（可空）</label>
+      <input id="fBadge" type="text" placeholder="例如：只查不播">
+    </div>
+    <div class="field">
+      <label>圆点颜色</label>
+      <div class="swatches" id="swatches"></div>
+    </div>
+    <div class="acts">
+      <button class="btn danger" id="eDel" type="button" hidden>删除</button>
+      <button class="btn" id="eCancel" type="button">取消</button>
+      <button class="btn primary" id="eSave" type="button">保存</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function () {
+  "use strict";
+
+  var KEY = 'media.nav.v1';
+  var THEME_KEY = 'site.theme';
+  var PASS = 'djjm2026';            /* 前端软锁：挡住随手改动，挡不住看源码的人 */
+  var UNLOCK_KEY = 'media.edit.unlocked';
+
+  var DEFAULT = {
+    groups: [
+      { id: 'vod', name: '综合长视频', items: [
+        { n: '爱奇艺', u: 'https://www.iqiyi.com/', note: '院线新片、独播剧集与自制综艺', c: '#12b84a' },
+        { n: '腾讯视频', u: 'https://v.qq.com/', note: '美剧、国漫、腾讯自制剧集', c: '#ff9f43' },
+        { n: '优酷', u: 'https://www.youku.com/', note: '港剧、经典剧集、人文纪录片', c: '#2f9bff' },
+        { n: '芒果TV', u: 'https://www.mgtv.com/', note: '湖南卫视综艺与剧集', c: '#ff6c00' }
+      ]},
+      { id: 'live', name: '电视直播与纪实', items: [
+        { n: '央视频', u: 'https://www.yangshipin.cn/', note: '总台频道直播、新闻与纪录片', c: '#0b74d3' },
+        { n: '咪咕视频', u: 'https://www.miguvideo.com/', note: '体育赛事直播，部分影视内容', c: '#e60027' },
+        { n: '1905 电影网', u: 'https://www.1905.com/', note: 'CCTV-6 电影频道官网，影史资料与部分影片', c: '#c9302c' },
+        { n: '央视网', u: 'https://tv.cctv.com/', note: '央视各频道节目回看与专题片', c: '#c8102e' }
+      ]},
+      { id: 'acg', name: '二次元与社区', items: [
+        { n: '哔哩哔哩', u: 'https://www.bilibili.com/', note: '正版番剧、纪录片、影视解说与二创', c: '#fb7299' },
+        { n: 'AcFun', u: 'https://www.acfun.cn/', note: '二次元内容、番剧与短片', c: '#f0603c' }
+      ]},
+      { id: 'classic', name: '老片与经典', items: [
+        { n: '乐视视频', u: 'https://www.le.com/', note: '老片、经典剧集', c: '#d93a3a' },
+        { n: '搜狐视频', u: 'https://tv.sohu.com/', note: '老剧、美剧', c: '#ffcc00' }
+      ]},
+      { id: 'find', name: '查片与评分', items: [
+        { n: '豆瓣电影', u: 'https://movie.douban.com/', note: '看评分和影评；条目页的「在线观看」会列出有版权的平台', c: '#2fa84f', badge: '只查不播' },
+        { n: '1905 电影资料库', u: 'https://www.1905.com/mdb/', note: '影片条目、演职员与影史资料', c: '#8a7bd8', badge: '只查不播' }
+      ]}
+    ]
+  };
+
+  var COLORS = ['#12b84a', '#ff9f43', '#2f9bff', '#ff6c00', '#fb7299', '#e60027', '#0b74d3', '#c9302c', '#f0603c', '#ffcc00', '#8a7bd8', '#e8e8f0'];
+
+  var data = null;
+  var editing = false;
+  var editingRef = null;
+  var pickingColor = COLORS[0];
+
+  var sectionsEl = document.getElementById('sections');
+  var toastEl = document.getElementById('toast');
+  var editBtn = document.getElementById('editBtn');
+  var editLabel = document.getElementById('editLabel');
+  var addBtn = document.getElementById('addBtn');
+  var exportBtn = document.getElementById('exportBtn');
+  var importBtn = document.getElementById('importBtn');
+  var resetBtn = document.getElementById('resetBtn');
+  var hintEl = document.getElementById('hint');
+
+  function toast(msg) {
+    toastEl.textContent = msg;
+    toastEl.classList.add('on');
+    clearTimeout(toast._t);
+    toast._t = setTimeout(function () { toastEl.classList.remove('on'); }, 2200);
+  }
+
+  function clone(o) { return JSON.parse(JSON.stringify(o)); }
+
+  function load() {
+    var raw = null;
+    try { raw = localStorage.getItem(KEY); } catch (e) {}
+    if (raw) {
+      try {
+        var d = JSON.parse(raw);
+        if (d && Array.isArray(d.groups) && d.groups.length) return d;
+      } catch (e) {}
+    }
+    return clone(DEFAULT);
+  }
+
+  function save() {
+    try { localStorage.setItem(KEY, JSON.stringify(data)); }
+    catch (e) { toast('浏览器存储写入失败'); }
+  }
+
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+    });
+  }
+
+  function render() {
+    sectionsEl.innerHTML = '';
+    data.groups.forEach(function (g, gi) {
+      if (!g.items.length && !editing) return;
+      var sec = document.createElement('section');
+
+      var head = document.createElement('div');
+      head.className = 'shead';
+      head.innerHTML = '<h2>' + esc(g.name) + '</h2><span class="cnt">' + g.items.length + ' 个</span><span class="rule"></span>';
+      sec.appendChild(head);
+
+      var grid = document.createElement('div');
+      grid.className = 'grid';
+
+      g.items.forEach(function (it, ii) {
+        var a = document.createElement('a');
+        a.className = 'site';
+        a.href = it.u;
+        a.target = '_blank';
+        a.rel = 'noopener';
+        a.innerHTML =
+          '<span class="dot" style="background:' + esc(it.c || COLORS[0]) + '"></span>' +
+          '<span class="body"><span class="name">' + esc(it.n) +
+            (it.badge ? ' <span class="badge">' + esc(it.badge) + '</span>' : '') +
+          '</span><span class="note">' + esc(it.note || '') + '</span></span>' +
+          '<span class="go">打开 →</span><span class="edit-mark">点击编辑</span>';
+        a.addEventListener('click', function (e) {
+          if (!editing) return;
+          e.preventDefault();
+          openEditor(gi, ii);
+        });
+        grid.appendChild(a);
+      });
+
+      sec.appendChild(grid);
+      sectionsEl.appendChild(sec);
+    });
+  }
+
+  /* ===== 编辑状态 ===== */
+  function setEditing(on) {
+    editing = on;
+    document.body.classList.toggle('editing', on);
+    editBtn.classList.toggle('on', on);
+    editLabel.textContent = on ? '退出编辑' : '编辑导航';
+    addBtn.hidden = !on;
+    exportBtn.hidden = !on;
+    importBtn.hidden = !on;
+    resetBtn.hidden = !on;
+    hintEl.textContent = on ? '编辑模式：点任意一条改内容' : '改完存在这台浏览器里';
+    render();
+  }
+
+  function unlocked() {
+    try { return sessionStorage.getItem(UNLOCK_KEY) === '1'; } catch (e) { return false; }
+  }
+
+  var pwMask = document.getElementById('pwMask');
+  var pwInput = document.getElementById('pw');
+  var pwErr = document.getElementById('pwErr');
+  var pwBox = document.getElementById('pwBox');
+
+  function askPassword() {
+    pwInput.value = '';
+    pwErr.classList.remove('show');
+    pwMask.classList.add('show');
+    setTimeout(function () { pwInput.focus(); }, 30);
+  }
+  function closePw() { pwMask.classList.remove('show'); }
+
+  function tryUnlock() {
+    if (pwInput.value === PASS) {
+      try { sessionStorage.setItem(UNLOCK_KEY, '1'); } catch (e) {}
+      closePw();
+      setEditing(true);
+      toast('已解锁，可以编辑导航');
+    } else {
+      pwErr.classList.add('show');
+      pwBox.classList.add('shake');
+      setTimeout(function () { pwBox.classList.remove('shake'); }, 320);
+      pwInput.select();
+    }
+  }
+
+  editBtn.addEventListener('click', function () {
+    if (editing) { setEditing(false); return; }
+    if (unlocked()) { setEditing(true); return; }
+    askPassword();
+  });
+  document.getElementById('pwOk').addEventListener('click', tryUnlock);
+  document.getElementById('pwCancel').addEventListener('click', closePw);
+  pwInput.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); tryUnlock(); } });
+  pwMask.addEventListener('click', function (e) { if (e.target === pwMask) closePw(); });
+
+  /* ===== 编辑弹层 ===== */
+  var editMask = document.getElementById('editMask');
+  var fGroup = document.getElementById('fGroup');
+  var fName = document.getElementById('fName');
+  var fUrl = document.getElementById('fUrl');
+  var fNote = document.getElementById('fNote');
+  var fBadge = document.getElementById('fBadge');
+  var swWrap = document.getElementById('swatches');
+  var eDel = document.getElementById('eDel');
+  var eTitle = document.getElementById('eTitle');
+
+  function buildSwatches() {
+    swWrap.innerHTML = '';
+    COLORS.forEach(function (c) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'sw-opt';
+      b.style.background = c;
+      b.setAttribute('aria-pressed', String(String(c).toLowerCase() === String(pickingColor).toLowerCase()));
+      b.setAttribute('aria-label', '颜色 ' + c);
+      b.addEventListener('click', function () {
+        pickingColor = c;
+        for (var i = 0; i < swWrap.children.length; i++) swWrap.children[i].setAttribute('aria-pressed', 'false');
+        b.setAttribute('aria-pressed', 'true');
+      });
+      swWrap.appendChild(b);
+    });
+  }
+
+  function buildGroupOptions(selected) {
+    fGroup.innerHTML = '';
+    data.groups.forEach(function (g, i) {
+      var o = document.createElement('option');
+      o.value = String(i);
+      o.textContent = g.name;
+      if (String(i) === String(selected)) o.selected = true;
+      fGroup.appendChild(o);
+    });
+  }
+
+  function openEditor(gi, ii) {
+    editingRef = (typeof gi === 'number') ? { gi: gi, ii: ii } : null;
+    var it = editingRef ? data.groups[gi].items[ii] : { n: '', u: '', note: '', c: COLORS[0], badge: '' };
+    eTitle.textContent = editingRef ? '编辑网站' : '添加网站';
+    buildGroupOptions(editingRef ? gi : 0);
+    fName.value = it.n || '';
+    fUrl.value = it.u || '';
+    fNote.value = it.note || '';
+    fBadge.value = it.badge || '';
+    pickingColor = it.c || COLORS[0];
+    buildSwatches();
+    eDel.hidden = !editingRef;
+    editMask.classList.add('show');
+    setTimeout(function () { fName.focus(); }, 30);
+  }
+
+  function closeEditor() { editMask.classList.remove('show'); }
+
+  document.getElementById('eCancel').addEventListener('click', closeEditor);
+  editMask.addEventListener('click', function (e) { if (e.target === editMask) closeEditor(); });
+
+  document.getElementById('eSave').addEventListener('click', function () {
+    var name = fName.value.trim();
+    var url = fUrl.value.trim();
+    if (!name) { toast('名称不能为空'); fName.focus(); return; }
+    if (!/^https?:\/\//i.test(url)) { toast('链接要以 http:// 或 https:// 开头'); fUrl.focus(); return; }
+
+    var targetGi = parseInt(fGroup.value, 10) || 0;
+    var item = { n: name, u: url, note: fNote.value.trim(), c: pickingColor };
+    var badge = fBadge.value.trim();
+    if (badge) item.badge = badge;
+
+    var wasEdit = !!editingRef;
+    if (wasEdit) {
+      if (editingRef.gi === targetGi) {
+        data.groups[targetGi].items[editingRef.ii] = item;
+      } else {
+        data.groups[editingRef.gi].items.splice(editingRef.ii, 1);
+        data.groups[targetGi].items.push(item);
+      }
+    } else {
+      data.groups[targetGi].items.push(item);
+    }
+    save();
+    closeEditor();
+    render();
+    toast(wasEdit ? '已保存' : '已添加');
+  });
+
+  eDel.addEventListener('click', function () {
+    if (!editingRef) return;
+    var it = data.groups[editingRef.gi].items[editingRef.ii];
+    if (!confirm('删除「' + it.n + '」？')) return;
+    data.groups[editingRef.gi].items.splice(editingRef.ii, 1);
+    save();
+    closeEditor();
+    render();
+    toast('已删除');
+  });
+
+  addBtn.addEventListener('click', function () { openEditor(null, null); });
+
+  exportBtn.addEventListener('click', function () {
+    var blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'media-nav.json';
+    a.click();
+    setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
+    toast('已导出 media-nav.json');
+  });
+
+  var fileEl = document.getElementById('file');
+  importBtn.addEventListener('click', function () { fileEl.click(); });
+  fileEl.addEventListener('change', function () {
+    var f = fileEl.files && fileEl.files[0];
+    if (!f) return;
+    var r = new FileReader();
+    r.onload = function () {
+      try {
+        var d = JSON.parse(r.result);
+        if (!d || !Array.isArray(d.groups)) throw new Error('bad');
+        d.groups = d.groups.filter(function (g) { return g && Array.isArray(g.items) && g.name; });
+        if (!d.groups.length) throw new Error('empty');
+        data = d;
+        save();
+        render();
+        toast('已导入 ' + d.groups.length + ' 个分组');
+      } catch (e) {
+        toast('不是合法的导航 JSON');
+      }
+      fileEl.value = '';
+    };
+    r.readAsText(f);
+  });
+
+  resetBtn.addEventListener('click', function () {
+    if (!confirm('恢复到内置的默认导航？本地改动会被覆盖。')) return;
+    data = clone(DEFAULT);
+    save();
+    render();
+    toast('已恢复默认');
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape') return;
+    if (editMask.classList.contains('show')) closeEditor();
+    else if (pwMask.classList.contains('show')) closePw();
+    else if (document.getElementById('sheet').classList.contains('show')) document.getElementById('sheet').classList.remove('show');
+  });
+
+  /* ===== 主题 ===== */
+  var NAMES = [
+    ['charcoal', '炭黑', '#0a0a0c', '#e0332f'],
+    ['indigo',   '靛蓝', '#080b14', '#5b8cff'],
+    ['forest',   '墨绿', '#07110c', '#34b37a'],
+    ['cocoa',    '暖棕', '#120f0b', '#d98b4a'],
+    ['violet',   '紫罗兰', '#0d0916', '#a06bff'],
+    ['teal',     '青灰', '#0a0f12', '#38b8ae'],
+    ['amber',    '琥珀', '#100d06', '#e0a92b'],
+    ['paper',    '灰白', '#f5f4f1', '#c0392b']
+  ];
+  var sheet = document.getElementById('sheet');
+  var themeList = document.getElementById('themes');
+
+  function currentTheme() {
+    try { return localStorage.getItem(THEME_KEY) || 'charcoal'; } catch (e) { return 'charcoal'; }
+  }
+
+  function applyTheme(id) {
+    var T = window.__THEMES;
+    var t = T[id] || T.charcoal;
+    var st = document.documentElement.style;
+    for (var k in t) st.setProperty('--' + k, t[k]);
+    document.documentElement.setAttribute('data-theme', id);
+    try { localStorage.setItem(THEME_KEY, id); } catch (e) {}
+    for (var i = 0; i < themeList.children.length; i++) {
+      themeList.children[i].setAttribute('aria-pressed', String(themeList.children[i].dataset.id === id));
+    }
+  }
+
+  function buildThemes() {
+    themeList.innerHTML = '';
+    NAMES.forEach(function (row) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'theme';
+      b.dataset.id = row[0];
+      b.setAttribute('aria-pressed', String(currentTheme() === row[0]));
+      b.innerHTML = '<span class="sw" style="background:' + row[2] + '"><i style="background:' + row[3] + '"></i></span>' +
+        '<span class="nm">' + row[1] + '</span><span class="ck">✓</span>';
+      b.addEventListener('click', function () { applyTheme(row[0]); });
+      themeList.appendChild(b);
+    });
+  }
+
+  document.getElementById('themeBtn').addEventListener('click', function () {
+    buildThemes();
+    sheet.classList.add('show');
+  });
+  document.getElementById('sheetClose').addEventListener('click', function () { sheet.classList.remove('show'); });
+  sheet.addEventListener('click', function (e) { if (e.target === sheet) sheet.classList.remove('show'); });
+
+  data = load();
+  applyTheme(currentTheme());
+  render();
+})();
+</script>
 </body>
 </html>
