@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>影视导航 · 杜绝加密</title>
+<meta name="description" content="正版影视平台导航：只收录各平台官网，不含任何播放源。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='12' fill='%23e0332f'/%3E%3Ctext x='50' y='50' font-size='58' fill='%23fff' text-anchor='middle' dominant-baseline='central' font-family='serif'%3E杜%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root{
+    --bg:#0a0a0c; --panel:#131317; --panel2:#17171c; --line:#26262d; --line2:#38383f;
+    --ink:#ececef; --dim:#86868f; --dim2:#5c5c66; --red:#e0332f;
+  }
+  html,body{background:var(--bg);}
+  body{
+    min-height:100vh; color:var(--ink);
+    font-family:"Noto Sans SC",-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
+    -webkit-font-smoothing:antialiased;
+    padding:34px 22px 54px;
+  }
+  .wrap{max-width:980px;margin:0 auto;}
+
+  .back{
+    display:inline-flex;align-items:center;gap:7px;
+    color:var(--dim);text-decoration:none;font-size:13px;
+    padding:8px 0;min-height:36px;
+  }
+  .back:hover{color:var(--ink);}
+  .back svg{width:13px;height:13px;}
+
+  header{margin:18px 0 6px;display:flex;align-items:center;gap:12px;}
+  .seal{width:40px;height:40px;flex:none;}
+  h1{
+    font-family:"Songti SC","STSong","SimSun",serif;
+    font-size:26px;font-weight:700;letter-spacing:3px;
+  }
+  .sub{color:var(--dim);font-size:13px;line-height:1.8;margin:10px 0 0;max-width:62ch;}
+
+  .notice{
+    display:flex;gap:10px;align-items:flex-start;
+    margin:20px 0 6px;padding:12px 14px;
+    border:1px solid rgba(224,51,47,.28);border-radius:9px;
+    background:rgba(224,51,47,.05);
+    font-size:12.5px;line-height:1.75;color:#b9b9c2;
+  }
+  .notice b{color:#e8877f;font-weight:600;}
+  .notice svg{width:15px;height:15px;flex:none;color:var(--red);margin-top:2px;}
+
+  section{margin-top:34px;}
+  .shead{display:flex;align-items:baseline;gap:10px;margin-bottom:14px;}
+  .shead h2{font-size:14.5px;font-weight:600;letter-spacing:.04em;}
+  .shead .cnt{font-size:11.5px;color:var(--dim2);}
+  .shead .rule{flex:1;height:1px;background:var(--line);}
+
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
+  .site{
+    display:flex;align-items:flex-start;gap:12px;
+    padding:14px 16px;border:1px solid var(--line);border-radius:10px;
+    background:var(--panel);color:inherit;text-decoration:none;
+    transition:background .18s,border-color .18s;
+  }
+  .site:hover{background:#1b1b21;border-color:var(--line2);}
+  .site .dot{width:8px;height:8px;border-radius:50%;flex:none;margin-top:6px;}
+  .site .body{flex:1;min-width:0;}
+  .site .name{font-size:15px;font-weight:500;display:flex;align-items:center;gap:8px;}
+  .site .note{font-size:12.5px;color:var(--dim);line-height:1.65;margin-top:5px;}
+  .site .go{
+    flex:none;color:var(--dim2);font-size:12px;margin-top:1px;
+    transition:color .18s;
+  }
+  .site:hover .go{color:#9d9daa;}
+  .site .badge{
+    font-size:10.5px;font-weight:400;color:var(--dim);
+    border:1px solid var(--line2);border-radius:4px;padding:1px 5px;
+    letter-spacing:.02em;
+  }
+
+  .how{
+    margin-top:34px;padding:16px 18px;border:1px solid var(--line);
+    border-radius:10px;background:var(--panel2);
+  }
+  .how h3{font-size:13px;font-weight:600;margin-bottom:10px;color:#d6d6de;}
+  .how ol{margin:0;padding-left:18px;color:var(--dim);font-size:12.5px;line-height:1.9;}
+  .how a{color:#9db6e8;text-decoration:none;}
+  .how a:hover{text-decoration:underline;}
+
+  footer{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);color:var(--dim2);font-size:11.5px;line-height:1.9;}
+
+  @media (max-width:700px){
+    body{padding:22px 16px 40px;}
+    h1{font-size:23px;letter-spacing:2px;}
+    .seal{width:34px;height:34px;}
+    .grid{grid-template-columns:1fr;}
+    .site{padding:14px;}
+    .site .note{font-size:14px;line-height:1.7;}
+    .sub{font-size:14px;}
+    .notice{font-size:13px;}
+    .how ol{font-size:13px;}
+    .shead .cnt{font-size:12px;}
+    footer{font-size:12px;}
+    .back{min-height:44px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back" href="/">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+    返回主页
+  </a>
+
+  <header>
+    <img class="seal" src="../assets/avatar.png" alt="">
+    <h1>影视导航</h1>
+  </header>
+  <p class="sub">把看片的地方整理成一页：都是各平台的官方网站，点进去就是平台自己的页面。这里不放片源、不做播放。</p>
+
+  <div class="notice">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.5v.5"/></svg>
+    <div><b>说明：</b>本页只做正版平台导航，链接均指向平台官网；能看到什么片、要不要会员，以各平台为准。不提供任何第三方片源或播放地址。</div>
+  </div>
+
+  <!-- ===== 综合长视频 ===== -->
+  <section>
+    <div class="shead"><h2>综合长视频</h2><span class="cnt">4 家</span><span class="rule"></span></div>
+    <div class="grid">
+      <a class="site" href="https://www.iqiyi.com/" target="_blank" rel="noopener">
+        <span class="dot" style="background:#12b84a"></span>
+        <span class="body">
+          <span class="name">爱奇艺</span>
+          <span class="note">院线新片、独播剧集与自制综艺</span>
+        </span>
+        <span class="go">打开 →</span>
+      </a>
+      <a class="site" href="https://v.qq.com/" target="_blank" rel="noopener">
+        <span class="dot" style="background:#ff9f43"></span>
+        <span class="body">
+          <span class="name">腾讯视频</span>
+          <span class="note">美剧、国漫、腾讯自制剧集</span>
+        </span>
+        <span class="go">打开 →</span>
+      </a>
+      <a class="site" href="https://www.youku.com/" target="_blank" rel="noopener">
+        <span class="dot" style="background:#2f9bff"></span>
+        <span class="body">
+          <span class="name">优酷</span>
+          <span class="note">港剧、经典剧集、人文纪录片</span>
+        </span>
+        <span class="go">打开 →</span>
+      </a>
+      <a class="site" href="https://www.mgtv.com/" target="_blank" rel="noopener">
+        <span class="dot" style="background:#ff6c00"></span>
+        <span class="body">
+          <span class="name">芒果TV</span>
+          <span class="note">湖南卫视综艺与剧集</span>
+        </span>
+        <span class="go">打开 →</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== 电视与纪实 ===== -->
+  <section>
+    <div class="shead"><h2>电视直播与纪实</h2><span class="cnt">4 家</span><span class="rule"></span></div>
+    <div class="grid">
+      <a class="site" href="https://www.yangshipin.cn/" target="_blank" rel="noopener">
+        <span class="dot" style="background:#0b74d3"></span>
+        <span class="body">
+          <span class="name">央视频</span>
+          <span class="note">总台频道直播、新闻与纪录片</span>
+        </span>
+        <span class="go">打开 →</span>
+      </a>
+      <a class="site" href="https://www.miguvideo.com/" target="_blank" rel="noopener">
+        <span class="dot" style="background:#e60027"></span>
+        <span class="body">
+          <span class="name">咪咕视频</span>
+          <span class="note">体育赛事直播，部分影视内容</span>
+        </span>
+        <span class="go">打开 →</span>
+      </a>
+      <a class="site" href="https://www.1905.com/" target="_blank" rel="noopener">
+        <span class="dot" style="background:#c9302c"></span>
+        <span class="body">
+          <span class="name">1905 电影网</span>
+          <span class="note">CCTV-6 电影频道官网，影史资料与部分影片</span>
+        </span>
+        <span class="go">打开 →</span>
+      </a>
+      <a class="site" href="https://tv.cctv.com/" target="_blank" rel="noopener">
+        <span class="dot" style="background:#c8102e"></span>
+        <span class="body">
+          <span class="name">央视网</span>
+          <span class="note">央视各频道节目回看与专题片</span>
+        </span>
+        <span class="go">打开 →</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== 二次元与社区 ===== -->
+  <section>
+    <div class="shead"><h2>二次元与社区</h2><span class="cnt">2 家</span><span class="rule"></span></div>
+    <div class="grid">
+      <a class="site" href="https://www.bilibili.com/" target="_blank" rel="noopener">
+        <span class="dot" style="background:#fb7299"></span>
+        <span class="body">
+          <span class="name">哔哩哔哩</span>
+          <span class="note">正版番剧、纪录片、影视解说与二创</span>
+        </span>
+        <span class="go">打开 →</span>
+      </a>
+      <a class="site" href="https://www.acfun.cn/" target="_blank" rel="noopener">
+        <span class="dot" style="background:#f0603c"></span>
+        <span class="body">
+          <span class="name">AcFun</span>
+          <span class="note">二次元内容、番剧与短片</span>
+        </span>
+        <span class="go">打开 →</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== 老片与经典 ===== -->
+  <section>
+    <div class="shead"><h2>老片与经典</h2><span class="cnt">2 家</span><span class="rule"></span></div>
+    <div class="grid">
+      <a class="site" href="https://www.le.com/" target="_blank" rel="noopener">
+        <span class="dot" style="background:#d93a3a"></span>
+        <span class="body">
+          <span class="name">乐视视频</span>
+          <span class="note">老片、经典剧集</span>
+        </span>
+        <span class="go">打开 →</span>
+      </a>
+      <a class="site" href="https://tv.sohu.com/" target="_blank" rel="noopener">
+        <span class="dot" style="background:#ffcc00"></span>
+        <span class="body">
+          <span class="name">搜狐视频</span>
+          <span class="note">老剧、美剧</span>
+        </span>
+        <span class="go">打开 →</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== 查片 ===== -->
+  <section>
+    <div class="shead"><h2>查片与评分</h2><span class="cnt">1 个工具</span><span class="rule"></span></div>
+    <div class="grid">
+      <a class="site" href="https://movie.douban.com/" target="_blank" rel="noopener">
+        <span class="dot" style="background:#2fa84f"></span>
+        <span class="body">
+          <span class="name">豆瓣电影 <span class="badge">只查不播</span></span>
+          <span class="note">看评分和影评；条目页的「在线观看」会列出有版权的平台</span>
+        </span>
+        <span class="go">打开 →</span>
+      </a>
+      <a class="site" href="https://www.1905.com/mdb/" target="_blank" rel="noopener">
+        <span class="dot" style="background:#8a7bd8"></span>
+        <span class="body">
+          <span class="name">1905 电影资料库 <span class="badge">只查不播</span></span>
+          <span class="note">影片条目、演职员与影史资料</span>
+        </span>
+        <span class="go">打开 →</span>
+      </a>
+    </div>
+  </section>
+
+  <div class="how">
+    <h3>不确定哪家有片？按这个顺序查</h3>
+    <ol>
+      <li>先到 <a href="https://movie.douban.com/" target="_blank" rel="noopener">豆瓣电影</a> 搜片名，进条目页看「在线观看」里列了哪几家。</li>
+      <li>再到对应平台搜片名，会员与清晰度按平台规则。</li>
+      <li>老片、冷门片找不到时，试试乐视、搜狐视频、1905 的片库。</li>
+    </ol>
+  </div>
+
+  <footer>
+    影视导航 · 只收录平台官网，不承载播放。<br>
+    平台名称与商标归各自所有者；页面内容如有失效链接，可反馈修正。
+  </footer>
+</div>
+</body>
+</html>
