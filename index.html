@@ -226,6 +226,23 @@ html[data-theme="paper"] #about::before{display:none}
 .post .min{font-size:11.5px;letter-spacing:.1em;color:var(--dim2);text-align:right;white-space:nowrap}
 .post .min::after{content:" 分";font-size:10px}
 .post-foot{margin-top:26px;font-size:11.5px;letter-spacing:.18em;color:var(--dim2);text-align:right}
+.sec-head-right{display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+.tool-btn{
+  font-size:11.5px;letter-spacing:.16em;color:var(--dim);
+  border:1px solid var(--line);border-radius:2px;padding:7px 14px;
+  transition:color .2s,border-color .2s,background .2s;
+}
+.tool-btn:hover{color:var(--ink);border-color:var(--line2)}
+.tool-btn[aria-pressed="true"]{color:var(--seal);border-color:var(--seal)}
+.tools-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end}
+.tools-row[hidden]{display:none}
+.post-tools{grid-column:1 / -1;display:none;gap:10px;margin-top:12px}
+body.editing-posts .post{cursor:default}
+body.editing-posts .post:hover{padding-left:4px;background:transparent}
+body.editing-posts .post:hover::before{transform:scaleY(0)}
+body.editing-posts .post-tools{display:flex}
+.tool-btn.danger{color:#e2685a;border-color:rgba(226,104,90,.3)}
+.tool-btn.danger:hover{border-color:#e2685a;color:#fff}
 @media(max-width:760px){
   .post{grid-template-columns:1fr auto;gap:9px 14px}
   .post time{grid-column:1 / -1;grid-row:1}
@@ -424,6 +441,24 @@ footer a:hover{color:var(--ink)}
 @keyframes shake{0%,100%{transform:none}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
 .shake{animation:shake .32s}
 
+/* ===== 手记编辑弹窗表单 ===== */
+.modal-card.wide{max-width:680px;max-height:86vh;overflow-y:auto}
+.form-grid{display:grid;gap:14px;margin:18px 0 4px}
+.form-row{display:grid;gap:7px}
+.form-row label{font-size:12px;letter-spacing:.18em;color:var(--dim2)}
+.form-row input,.form-row textarea{
+  width:100%;padding:11px 13px;background:var(--bg);
+  border:1px solid var(--line);border-radius:2px;color:var(--ink);
+  font-family:var(--sans);font-size:15px;letter-spacing:.02em;outline:none;
+  transition:border-color .2s;
+}
+.form-row textarea{min-height:180px;line-height:1.9;resize:vertical;font-family:var(--serif);font-size:15px}
+.form-row input:focus,.form-row textarea:focus{border-color:var(--seal)}
+.form-row.two{grid-template-columns:1fr 1fr;gap:12px}
+.modal-acts .btn.danger{color:#e2685a;border-color:rgba(226,104,90,.3);margin-right:auto}
+.modal-acts .btn.danger:hover{border-color:#e2685a;color:#fff}
+@media(max-width:520px){.form-row.two{grid-template-columns:1fr}.modal-acts{flex-wrap:wrap}}
+
 /* ===== 主题抽屉 ===== */
 .sheet{
   position:fixed;inset:0;z-index:90;display:none;
@@ -533,47 +568,20 @@ footer a:hover{color:var(--ink)}
       <h2>手记</h2>
       <span>日 志 与 短 文</span>
     </div>
-    <p class="sec-note">共五篇<br>题材示例，待接入真实日志</p>
+    <div class="sec-head-right">
+      <button class="tool-btn" id="btnEditPosts" type="button" aria-pressed="false">编辑手记</button>
+      <p class="sec-note" id="postNote">共三篇 · 本机编辑，改动仅存于本浏览器</p>
+      <div class="tools-row" id="postTools" hidden>
+        <button class="tool-btn" id="btnNewPost" type="button">新增手记</button>
+        <button class="tool-btn" id="btnExportPosts" type="button">导出备份</button>
+        <button class="tool-btn" id="btnImportPosts" type="button">导入备份</button>
+        <button class="tool-btn" id="btnResetPosts" type="button">恢复默认</button>
+      </div>
+    </div>
   </div>
 
-  <div class="post-list" id="postList">
-    <article class="post" tabindex="0" role="button" data-post="cloud">
-      <time datetime="2026-10-25">二〇二六 · 十 · 二五</time>
-      <h3>在云海下面写字</h3>
-      <p>天没亮就上山，等云先于光出现的那一刻。回来后发现，能写下来的只有三句话。</p>
-      <span class="cat">随笔</span>
-      <span class="min">9</span>
-    </article>
-    <article class="post" tabindex="0" role="button" data-post="radio">
-      <time datetime="2026-10-18">二〇二六 · 十 · 一八</time>
-      <h3>一台旧收音机的重新通电</h3>
-      <p>德生 R-909 在柜子里躺了十七年。换了电池，它先响起来的是一段戏曲。</p>
-      <span class="cat">电台</span>
-      <span class="min">12</span>
-    </article>
-    <article class="post" tabindex="0" role="button" data-post="tree">
-      <time datetime="2026-10-09">二〇二六 · 十 · 〇九</time>
-      <h3>家谱里那些没有名字的人</h3>
-      <p>翻到第四卷，只剩「某氏」两个字。我把能问到的称呼一个个补上去。</p>
-      <span class="cat">族谱</span>
-      <span class="min">15</span>
-    </article>
-    <article class="post" tabindex="0" role="button" data-post="film">
-      <time datetime="2026-09-27">二〇二六 · 九 · 二七</time>
-      <h3>看片记：一年里的十二个夜晚</h3>
-      <p>不追新片，只把反复看过的十二部记下来，顺手写清每部的入口。</p>
-      <span class="cat">影视</span>
-      <span class="min">10</span>
-    </article>
-    <article class="post" tabindex="0" role="button" data-post="why">
-      <time datetime="2026-09-12">二〇二六 · 九 · 一二</time>
-      <h3>为什么我把「加密」从站点里撤掉</h3>
-      <p>大部分东西本来就不必上锁；只有家谱留了一把，钥匙交给家里人。</p>
-      <span class="cat">站务</span>
-      <span class="min">6</span>
-    </article>
-  </div>
-  <p class="post-foot">以上为版式示例，正式内容以站点更新为准</p>
+  <div class="post-list" id="postList"></div>
+  <p class="post-foot" id="postFoot">点开任意一篇即可阅读；编辑保存后只在本机浏览器生效，可导出备份贴回源码。</p>
 </section>
 
 <!-- ===== 空间 ===== -->
@@ -647,7 +655,7 @@ footer a:hover{color:var(--ink)}
 
 <footer>
   <span>© 2026 杜绝加密 · 站点整理中</span>
-  <span>手记内容为版式示例 · 山图取自黄山云海 · <a href="#top">回到顶部</a></span>
+  <span>手记可在本机编辑 · 改动仅存于本浏览器 · 山图取自黄山云海 · <a href="#top">回到顶部</a></span>
 </footer>
 
 <!-- ===== 阅读层 ===== -->
@@ -686,6 +694,33 @@ footer a:hover{color:var(--ink)}
     </div>
   </div>
 </div>
+
+<!-- ===== 手记编辑弹窗 ===== -->
+<div class="modal" id="postModal" role="dialog" aria-modal="true" aria-labelledby="postModalTitle">
+  <div class="modal-card wide">
+    <h2 id="postModalTitle">编辑手记</h2>
+    <p class="hint">正文每行一段；段内可用「<em>着重</em>」标记。保存后仅存于本机浏览器，导出备份可作为源码更新依据。</p>
+    <div class="form-grid">
+      <div class="form-row"><label for="fTitle">标题</label><input id="fTitle" type="text" autocomplete="off" spellcheck="false"></div>
+      <div class="form-row two">
+        <div class="form-row"><label for="fDate">卡片日期</label><input id="fDate" type="text" autocomplete="off" spellcheck="false" placeholder="二〇二六 · 十 · 二五"></div>
+        <div class="form-row"><label for="fDateFull">正文日期</label><input id="fDateFull" type="text" autocomplete="off" spellcheck="false" placeholder="二〇二六年十月二十五日"></div>
+      </div>
+      <div class="form-row two">
+        <div class="form-row"><label for="fCat">分类</label><input id="fCat" type="text" autocomplete="off" spellcheck="false"></div>
+        <div class="form-row"><label for="fMin">阅读时长（分钟）</label><input id="fMin" type="number" min="1" max="120" step="1"></div>
+      </div>
+      <div class="form-row"><label for="fExcerpt">列表摘要</label><input id="fExcerpt" type="text" autocomplete="off" spellcheck="false"></div>
+      <div class="form-row"><label for="fBody">正文（每行一段）</label><textarea id="fBody" rows="10" spellcheck="false"></textarea></div>
+    </div>
+    <div class="modal-acts">
+      <button class="btn danger" id="fDel" type="button">删除本篇</button>
+      <button class="btn" id="fCancel" type="button">取消</button>
+      <button class="btn primary" id="fSave" type="button">保存</button>
+    </div>
+  </div>
+</div>
+<input type="file" id="postImport" accept="application/json,.json" hidden>
 
 <!-- ===== 纸色抽屉 ===== -->
 <div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
@@ -748,10 +783,16 @@ footer a:hover{color:var(--ink)}
   window.addEventListener('scroll', onScroll, {passive:true});
   onScroll();
 
-  /* ---------- 手记阅读层 ---------- */
-  var POSTS = {
-    cloud: {
-      title: '在云海下面写字', date: '二〇二六年十月二十五日', cat: '随笔', min: 9,
+  /* ---------- 手记：默认文稿 / 阅读层 / 本机编辑 ---------- */
+  var POST_KEY = 'djjm.posts.v1';
+
+  var DEFAULT_POSTS = [
+    {
+      id: 'cloud',
+      title: '在云海下面写字',
+      date: '二〇二六 · 十 · 二五', dateFull: '二〇二六年十月二十五日',
+      cat: '随笔', min: 9,
+      excerpt: '天没亮就上山，等云先于光出现的那一刻。回来后发现，能写下来的只有三句话。',
       body: [
         '凌晨四点二十出发。石阶上结着薄霜，脚踩上去有细碎的响声。往上走的这四十分钟里，天一直是深蓝色的，只有在拐弯的地方，能看见远处城市的灯还没熄。',
         '到光明顶时，云正好漫上来。它不是从远处升起的，而是从脚下长出来的——先是一层薄薄的白，然后一层压着一层，把山谷填平，只剩下峰顶露在外面，像海里的礁石。',
@@ -759,8 +800,12 @@ footer a:hover{color:var(--ink)}
         '我本来带了本子，想写点什么。坐了一个小时，只写下三句：<em>云是慢的，山是静的，人是小的。</em>剩下的，回来再慢慢补。'
       ]
     },
-    radio: {
-      title: '一台旧收音机的重新通电', date: '二〇二六年十月十八日', cat: '电台', min: 12,
+    {
+      id: 'radio',
+      title: '一台旧收音机的重新通电',
+      date: '二〇二六 · 十 · 一八', dateFull: '二〇二六年十月十八日',
+      cat: '电台', min: 12,
+      excerpt: '德生 R-909 在柜子里躺了十七年。换了电池，它先响起来的是一段戏曲。',
       body: [
         '那只德生 R-909 是上初中时买的，银灰色，天线断了一截，用透明胶缠着。搬了几次家，它一直在柜子最上层，落满灰。',
         '前天换了两节新电池，波段拨到 FM，旋钮慢慢转过去，先出来的是一段戏曲——很可能是隔壁市的电台，信号忽强忽弱，唱腔在杂音里时断时续。',
@@ -768,34 +813,67 @@ footer a:hover{color:var(--ink)}
         '我把它放在书桌上，每天傍晚开半小时。频率固定在 97.4，那里有个讲旧书的节目。哪天节目没了，我大概也不会去换台。'
       ]
     },
-    tree: {
-      title: '家谱里那些没有名字的人', date: '二〇二六年十月九日', cat: '族谱', min: 15,
-      body: [
-        '家谱一共六卷，第四卷最薄。祖父那一辈按字排辈，名字都完整；再往上翻，就有许多格子空着，或者只写「某氏」。',
-        '我拿铅笔把这些空白抄下来，一个个去问。三叔公记得他祖母的小名，二姑说太奶奶娘家姓陈，再往上就没人说得清了。有些名字，要靠三个人拼才拼得出来。',
-        '补名字这件事很慢，也很少有什么「成果」可以拿出来看。但每填上一个，那一页就厚了一点——原本只是一个位置，现在有了一个人。',
-        '所以我把它锁起来了。不是因为见不得人，是因为这些东西经不起随手翻看，也经不起随便转载。钥匙交给家里人，就够了。'
-      ]
-    },
-    film: {
-      title: '看片记：一年里的十二个夜晚', date: '二〇二六年九月二十七日', cat: '影视', min: 10,
+    {
+      id: 'film',
+      title: '看片记：一年里的十二个夜晚',
+      date: '二〇二六 · 九 · 二七', dateFull: '二〇二六年九月二十七日',
+      cat: '影视', min: 10,
+      excerpt: '不追新片，只把反复看过的十二部记下来，顺手写清每部的入口。',
       body: [
         '我不追新片。一年下来，反复看的大概就那么十二部，每部都看过三遍以上，台词能接上。',
         '记它们的理由很简单：有些片子适合深夜，有些只适合雨天，有些必须一个人看。把入口写清楚，比写影评有用。',
         '所以我做了那张导航单。按年份排，再按导演排，不按平台排——平台会关，片子还在。',
         '今年新加的两部，一部黑白，一部几乎不说话。都放在最下面。看到那儿的人不多，但看到了就会懂。'
       ]
-    },
-    why: {
-      title: '为什么我把「加密」从站点里撤掉', date: '二〇二六年九月十二日', cat: '站务', min: 6,
-      body: [
-        '这个站最早叫「杜绝加密」，是因为烦。那时候什么都想上锁：日记加密，相册加密，连一个链接也要设个访问码。',
-        '后来发现，锁越多，看的人越少，自己也越懒得开。写下来的东西如果没人看，慢慢地也就不写了。',
-        '所以我把大部分锁都撤了。手记公开，电台公开，影视导航也公开。唯一留着的是族谱——那一页有别人的名字，不该由我一个人决定谁能看。',
-        '名字还叫「杜绝加密」，算是个提醒：<em>能敞开的部分，就别再上锁了。</em>'
-      ]
     }
-  };
+  ];
+
+  function cloneDefaults(){ return JSON.parse(JSON.stringify(DEFAULT_POSTS)); }
+
+  function normalizePost(raw, i){
+    if (!raw || typeof raw !== 'object') return null;
+    var body = Array.isArray(raw.body)
+      ? raw.body.map(String).filter(function(s){return s.trim();})
+      : String(raw.body || '').split('\n').map(function(s){return s.trim();}).filter(Boolean);
+    if (!String(raw.title || '').trim()) return null;
+    return {
+      id: String(raw.id || ('p' + Date.now().toString(36) + '_' + i)),
+      title: String(raw.title).trim(),
+      date: String(raw.date || '').trim() || '二〇二六年',
+      dateFull: String(raw.dateFull || raw.date || '').trim(),
+      cat: String(raw.cat || '随笔').trim() || '随笔',
+      min: Math.max(1, parseInt(raw.min, 10) || 5),
+      excerpt: String(raw.excerpt || '').trim(),
+      body: body
+    };
+  }
+
+  function loadPosts(){
+    try {
+      var raw = localStorage.getItem(POST_KEY);
+      if (raw) {
+        var arr = JSON.parse(raw);
+        if (Array.isArray(arr) && arr.length) {
+          var out = arr.map(normalizePost).filter(Boolean);
+          if (out.length) return out;
+        }
+      }
+    } catch (e) {}
+    return cloneDefaults();
+  }
+
+  function persistPosts(){
+    try { localStorage.setItem(POST_KEY, JSON.stringify(POSTS)); } catch (e) {}
+  }
+
+  function esc(s){
+    return String(s).replace(/[&<>"']/g, function(m){
+      return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[m];
+    });
+  }
+
+  var POSTS = loadPosts();
+  var editingPosts = false;
 
   var reader = document.getElementById('reader');
   var readerTitle = document.getElementById('readerTitle');
@@ -803,20 +881,25 @@ footer a:hover{color:var(--ink)}
   var readerBody = document.getElementById('readerBody');
   var lastFocus = null;
 
+  function findPost(id){
+    for (var i = 0; i < POSTS.length; i++) if (POSTS[i].id === id) return POSTS[i];
+    return null;
+  }
+
   function openPost(id){
-    var p = POSTS[id];
+    var p = findPost(id);
     if (!p) return;
     lastFocus = document.activeElement;
     readerTitle.textContent = p.title;
-    readerMeta.innerHTML = '<span>' + p.date + '</span><b>' + p.cat + '</b><span>约 ' + p.min + ' 分钟</span>';
+    readerMeta.innerHTML = '<span>' + esc(p.dateFull || p.date) + '</span><b>' + esc(p.cat) + '</b><span>约 ' + p.min + ' 分钟</span>';
     readerBody.innerHTML = p.body.map(function(t){ return '<p>' + t + '</p>'; }).join('');
     reader.classList.add('open');
     reader.scrollTop = 0;
     document.body.classList.add('locked');
     if (history.state && history.state.post) {
-      history.replaceState({post:id}, '', '#post-' + id);
+      history.replaceState({ post: id }, '', '#post-' + id);
     } else {
-      history.pushState({post:id}, '', '#post-' + id);
+      history.pushState({ post: id }, '', '#post-' + id);
     }
     document.getElementById('readerClose').focus();
   }
@@ -832,14 +915,200 @@ footer a:hover{color:var(--ink)}
     if (lastFocus && lastFocus.focus) lastFocus.focus();
   }
 
-  document.querySelectorAll('.post').forEach(function(el){
-    el.addEventListener('click', function(){ openPost(el.getAttribute('data-post')); });
-    el.addEventListener('keydown', function(e){
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openPost(el.getAttribute('data-post')); }
+  /* ---- 列表动态渲染 ---- */
+  var listEl = document.getElementById('postList');
+
+  function renderList(){
+    var customized = false;
+    try { customized = !!localStorage.getItem(POST_KEY); } catch (e) {}
+    listEl.innerHTML = '';
+    POSTS.forEach(function(p){
+      var el = document.createElement('article');
+      el.className = 'post';
+      el.dataset.post = p.id;
+      el.setAttribute('role', 'button');
+      if (!editingPosts) el.tabIndex = 0;
+      el.innerHTML =
+        '<time>' + esc(p.date) + '</time>' +
+        '<h3>' + esc(p.title) + '</h3>' +
+        '<p>' + esc(p.excerpt) + '</p>' +
+        '<span class="cat">' + esc(p.cat) + '</span>' +
+        '<span class="min">' + p.min + '</span>' +
+        (editingPosts
+          ? '<div class="post-tools">' +
+            '<button class="tool-btn" type="button" data-act="edit">编辑</button>' +
+            '<button class="tool-btn danger" type="button" data-act="del">删除</button></div>'
+          : '');
+      listEl.appendChild(el);
     });
+    document.getElementById('postNote').textContent =
+      '共' + POSTS.length + '篇 · ' + (customized ? '本机已自定义' : '站点默认文稿') + '，改动仅存于本浏览器';
+  }
+
+  listEl.addEventListener('click', function(e){
+    var card = e.target.closest ? e.target.closest('.post') : null;
+    if (!card) return;
+    var id = card.dataset.post;
+    if (editingPosts) {
+      var tool = e.target.closest ? e.target.closest('[data-act]') : null;
+      if (!tool) return;
+      e.stopPropagation();
+      if (tool.dataset.act === 'edit') openEditor(id);
+      else deletePost(id);
+      return;
+    }
+    openPost(id);
   });
+  listEl.addEventListener('keydown', function(e){
+    if (editingPosts) return;
+    var card = e.target.closest ? e.target.closest('.post') : null;
+    if (!card) return;
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      openPost(card.dataset.post);
+    }
+  });
+
   document.getElementById('readerClose').addEventListener('click', function(){ closePost(false); });
   window.addEventListener('popstate', function(){ closePost(true); });
+
+  /* ---- 编辑弹窗 ---- */
+  var postModal = document.getElementById('postModal');
+  var fTitle = document.getElementById('fTitle');
+  var fDate = document.getElementById('fDate');
+  var fDateFull = document.getElementById('fDateFull');
+  var fCat = document.getElementById('fCat');
+  var fMin = document.getElementById('fMin');
+  var fExcerpt = document.getElementById('fExcerpt');
+  var fBody = document.getElementById('fBody');
+  var fDel = document.getElementById('fDel');
+  var editingId = null;
+
+  function openEditor(id){
+    var p = id ? findPost(id) : null;
+    editingId = id || null;
+    document.getElementById('postModalTitle').textContent = p ? '编辑手记' : '新增手记';
+    fTitle.value = p ? p.title : '';
+    fDate.value = p ? p.date : '';
+    fDateFull.value = p ? p.dateFull : '';
+    fCat.value = p ? p.cat : '随笔';
+    fMin.value = p ? p.min : 5;
+    fExcerpt.value = p ? p.excerpt : '';
+    fBody.value = p ? p.body.join('\n') : '';
+    fDel.style.display = p ? '' : 'none';
+    postModal.classList.add('open');
+    document.body.classList.add('locked');
+    setTimeout(function(){ fTitle.focus(); }, 60);
+  }
+
+  function closeEditor(){
+    postModal.classList.remove('open');
+    if (!reader.classList.contains('open')) document.body.classList.remove('locked');
+    editingId = null;
+  }
+
+  function savePost(){
+    var title = fTitle.value.trim();
+    if (!title) { fTitle.focus(); return; }
+    var body = fBody.value.split('\n').map(function(s){ return s.trim(); }).filter(Boolean);
+    if (!body.length) { fBody.focus(); return; }
+    var data = {
+      title: title,
+      date: fDate.value.trim(),
+      dateFull: fDateFull.value.trim(),
+      cat: fCat.value.trim() || '随笔',
+      min: Math.max(1, parseInt(fMin.value, 10) || 5),
+      excerpt: fExcerpt.value.trim(),
+      body: body
+    };
+    if (editingId) {
+      var p = findPost(editingId);
+      if (p) {
+        Object.keys(data).forEach(function(k){ p[k] = data[k]; });
+        p.id = editingId;
+      }
+    } else {
+      data.id = 'p' + Date.now().toString(36);
+      POSTS.unshift(data);
+    }
+    persistPosts();
+    renderList();
+    closeEditor();
+  }
+
+  function deletePost(id){
+    if (!confirm('确定删除这篇手记？本机已保存的自定义内容可先导出备份；恢复默认可随时还原站点文稿。')) return;
+    POSTS = POSTS.filter(function(p){ return p.id !== id; });
+    persistPosts();
+    renderList();
+  }
+
+  document.getElementById('fSave').addEventListener('click', savePost);
+  document.getElementById('fCancel').addEventListener('click', closeEditor);
+  fDel.addEventListener('click', function(){
+    if (editingId) deletePost(editingId);
+    closeEditor();
+  });
+  postModal.addEventListener('click', function(e){ if (e.target === postModal) closeEditor(); });
+
+  /* ---- 编辑模式开关 / 导出 / 导入 / 恢复默认 ---- */
+  var btnEdit = document.getElementById('btnEditPosts');
+  btnEdit.addEventListener('click', function(){
+    editingPosts = !editingPosts;
+    document.body.classList.toggle('editing-posts', editingPosts);
+    btnEdit.setAttribute('aria-pressed', String(editingPosts));
+    btnEdit.textContent = editingPosts ? '完成编辑' : '编辑手记';
+    document.getElementById('postTools').hidden = !editingPosts;
+    renderList();
+  });
+
+  document.getElementById('btnNewPost').addEventListener('click', function(){ openEditor(null); });
+
+  document.getElementById('btnExportPosts').addEventListener('click', function(){
+    var blob = new Blob([JSON.stringify(POSTS, null, 2)], { type: 'application/json' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    var d = new Date();
+    var pad = function(n){ return String(n).padStart(2, '0'); };
+    a.href = url;
+    a.download = 'djjm-posts-' + d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()) + '.json';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(function(){ URL.revokeObjectURL(url); }, 400);
+  });
+
+  var importInput = document.getElementById('postImport');
+  document.getElementById('btnImportPosts').addEventListener('click', function(){ importInput.click(); });
+  importInput.addEventListener('change', function(){
+    var file = importInput.files[0];
+    if (!file) return;
+    var fr = new FileReader();
+    fr.onload = function(){
+      try {
+        var arr = JSON.parse(fr.result);
+        if (!Array.isArray(arr) || !arr.length) throw new Error('文件不是手记列表');
+        var out = arr.map(normalizePost).filter(Boolean);
+        if (!out.length) throw new Error('没有可识别的手记');
+        POSTS = out;
+        persistPosts();
+        renderList();
+      } catch (err) {
+        alert('导入失败：' + err.message);
+      }
+      importInput.value = '';
+    };
+    fr.readAsText(file);
+  });
+
+  document.getElementById('btnResetPosts').addEventListener('click', function(){
+    if (!confirm('恢复为站点默认的三篇手记？本机自定义内容将被清除。')) return;
+    POSTS = cloneDefaults();
+    try { localStorage.removeItem(POST_KEY); } catch (e) {}
+    renderList();
+  });
+
+  renderList();
 
   /* ---------- 族谱：密码 ---------- */
   /* 链接以 AES-GCM 加密保存，源码中没有密码与真实地址 */
@@ -916,6 +1185,7 @@ footer a:hover{color:var(--ink)}
   document.addEventListener('keydown', function(e){
     if (e.key !== 'Escape') return;
     if (modal.classList.contains('open')) { closeTree(); return; }
+    if (postModal.classList.contains('open')) { closeEditor(); return; }
     if (sheet.classList.contains('open')) { closeSheet(); return; }
     if (reader.classList.contains('open')) closePost(false);
   });
