@@ -645,7 +645,7 @@ footer a:hover{color:var(--ink)}
   </div>
 
   <div class="post-list" id="postList"></div>
-  <p class="post-foot" id="postFoot">点开任意一篇即可阅读；编辑保存后只在本机浏览器生效，可导出备份贴回源码。</p>
+  <p class="post-foot" id="postFoot">点开任意一篇即可阅读；编辑保存后只在本机浏览器生效，可导出备份留作本机记录。</p>
 </section>
 
 <!-- ===== 空间 ===== -->
@@ -763,7 +763,7 @@ footer a:hover{color:var(--ink)}
 <div class="modal" id="postModal" role="dialog" aria-modal="true" aria-labelledby="postModalTitle">
   <div class="modal-card wide">
     <h2 id="postModalTitle">编辑手记</h2>
-    <p class="hint">正文每行一段；段内可用「<em>着重</em>」标记。保存后仅存于本机浏览器，导出备份可作为源码更新依据。</p>
+    <p class="hint">正文每行一段；段内可用「<em>着重</em>」标记。保存后仅存于本机浏览器，导出备份可作为后续调整依据。</p>
     <div class="form-grid">
       <div class="form-row"><label for="fTitle">标题</label><input id="fTitle" type="text" autocomplete="off" spellcheck="false"></div>
       <div class="form-row two">
@@ -1183,7 +1183,7 @@ footer a:hover{color:var(--ink)}
   renderList();
 
   /* ---------- 族谱：密码 ---------- */
-  /* 链接以 AES-GCM 加密保存，源码中没有密码与真实地址 */
+  /* 链接以 AES-GCM 加密保存，页面中没有密码与真实地址 */
   var ENC = { salt: 'fyfZqoWZ7Tv60rKHi7k1HQ==', iv: 'llH2E/skyASQZf3i', ct: 'nnsy+QejN/a4SQkv5rHFVE8blhxMIM50P01lmlF13tMP7h10s+g=', iter: 210000 };
   var modal = document.getElementById('treeModal');
   var treeCard = document.getElementById('treeCard');
