@@ -3,744 +3,392 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>影视导航 · 杜绝加密</title>
-<meta name="description" content="正版影视平台导航：只收录各平台官网，不含任何播放源。">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='12' fill='%23e0332f'/%3E%3Ctext x='50' y='50' font-size='58' fill='%23fff' text-anchor='middle' dominant-baseline='central' font-family='serif'%3E杜%3C/text%3E%3C/svg%3E">
-<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap">
-<script>
-/* 与主页共用主题键 site.theme */
-(function(){
-  var T = {
-    charcoal:{bg:'#0a0a0c',panel:'#131317',hover:'#1b1b21',line:'#26262d',line2:'#38383f',ink:'#ececef',dim:'#86868f',dim2:'#5c5c66',accent:'#e0332f'},
-    indigo:{bg:'#080b14',panel:'#111827',hover:'#172033',line:'#1e293b',line2:'#334155',ink:'#e8eefc',dim:'#93a3bd',dim2:'#64748b',accent:'#5b8cff'},
-    forest:{bg:'#07110c',panel:'#0f1a14',hover:'#14241b',line:'#1f3328',line2:'#2f4a3b',ink:'#e6f5ec',dim:'#8fb3a0',dim2:'#5f7d6c',accent:'#34b37a'},
-    cocoa:{bg:'#120f0b',panel:'#1c1712',hover:'#241d16',line:'#332820',line2:'#4a3a2c',ink:'#f3e9dd',dim:'#b4a08b',dim2:'#7d6a58',accent:'#d98b4a'},
-    violet:{bg:'#0d0916',panel:'#171022',hover:'#1d1429',line:'#2e2140',line2:'#42345a',ink:'#f0e9fb',dim:'#b3a4cb',dim2:'#7c6a95',accent:'#a06bff'},
-    teal:{bg:'#0a0f12',panel:'#121a1f',hover:'#18232a',line:'#24323b',line2:'#33454f',ink:'#e6f1f5',dim:'#9db0ba',dim2:'#6b7f89',accent:'#38b8ae'},
-    amber:{bg:'#100d06',panel:'#191408',hover:'#1f190c',line:'#332b17',line2:'#4a3f22',ink:'#f8f0da',dim:'#bfae86',dim2:'#8a7a55',accent:'#e0a92b'},
-    paper:{bg:'#f5f4f1',panel:'#ffffff',hover:'#f0efec',line:'#e2e0da',line2:'#cfccc4',ink:'#1b1b1e',dim:'#6b6b73',dim2:'#8f8f98',accent:'#c0392b'}
-  };
-  window.__THEMES = T;
-  var id='charcoal';
-  try{ id = localStorage.getItem('site.theme') || 'charcoal'; }catch(e){}
-  if(!T[id]) id='charcoal';
-  var t=T[id], st=document.documentElement.style;
-  for(var k in t) st.setProperty('--'+k, t[k]);
-  document.documentElement.setAttribute('data-theme', id);
-})();
-</script>
+<title>影视导航 · MovieNav</title>
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  *{box-sizing:border-box;margin:0;padding:0}
   :root{
-    --bg:#0a0a0c; --panel:#131317; --hover:#1b1b21; --line:#26262d; --line2:#38383f;
-    --ink:#ececef; --dim:#86868f; --dim2:#5c5c66; --accent:#e0332f;
+    --bg:#080b12;
+    --card:rgba(255,255,255,.045);
+    --card-hover:rgba(255,255,255,.085);
+    --border:rgba(255,255,255,.08);
+    --text:#e8ecf4;
+    --muted:#8b95a8;
+    --accent:#5b8cff;
   }
-  html,body{background:var(--bg);}
+  html{scroll-behavior:smooth}
   body{
-    min-height:100vh; color:var(--ink);
-    font-family:"Noto Sans SC",-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    min-height:100vh;
+    padding:0 22px 70px;
     -webkit-font-smoothing:antialiased;
-    padding:34px 22px 54px;
-    transition:background .25s ease,color .25s ease;
+    overflow-x:hidden;
   }
-  .wrap{max-width:980px;margin:0 auto;}
+  body::before{
+    content:'';
+    position:fixed;inset:0;z-index:-1;pointer-events:none;
+    background:
+      radial-gradient(900px 520px at 12% -12%, rgba(91,140,255,.20), transparent 62%),
+      radial-gradient(760px 440px at 88% -4%, rgba(178,91,255,.16), transparent 62%),
+      radial-gradient(900px 620px at 50% 112%, rgba(0,200,170,.10), transparent 62%);
+  }
 
-  .back{
+  /* ---------- Header ---------- */
+  header{max-width:1240px;margin:0 auto;padding:70px 0 0;text-align:center}
+  .badge{
     display:inline-flex;align-items:center;gap:7px;
-    color:var(--dim);text-decoration:none;font-size:13px;
-    padding:8px 0;min-height:36px;
+    font-size:12.5px;letter-spacing:.06em;
+    color:#a9b6d0;
+    background:rgba(255,255,255,.05);
+    border:1px solid var(--border);
+    border-radius:999px;padding:6px 14px;
+    backdrop-filter:blur(8px);
   }
-  .back:hover{color:var(--ink);}
-  .back svg{width:13px;height:13px;}
-
-  header{margin:18px 0 0;display:flex;align-items:center;gap:12px;}
-  .seal{width:40px;height:40px;flex:none;}
   h1{
-    font-family:"Songti SC","STSong","SimSun",serif;
-    font-size:26px;font-weight:700;letter-spacing:3px;
+    font-size:clamp(30px,5vw,46px);
+    font-weight:800;letter-spacing:-.02em;
+    margin-top:20px;
+    background:linear-gradient(180deg,#fff 30%,#93a3c4);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
   }
-  .sub{color:var(--dim);font-size:13px;line-height:1.8;margin:10px 0 0;max-width:62ch;}
+  .sub{margin-top:12px;color:var(--muted);font-size:14.5px}
 
-  .notice{
-    display:flex;gap:10px;align-items:flex-start;
-    margin:20px 0 0;padding:12px 14px;
-    border:1px solid color-mix(in srgb, var(--accent) 26%, transparent);
-    border-radius:9px;
-    background:color-mix(in srgb, var(--accent) 6%, transparent);
-    font-size:12.5px;line-height:1.75;color:var(--dim);
+  .search{
+    display:flex;align-items:center;gap:11px;
+    max-width:540px;margin:30px auto 0;
+    background:rgba(255,255,255,.05);
+    border:1px solid var(--border);
+    border-radius:15px;
+    padding:13px 16px;
+    transition:.25s ease;
+    backdrop-filter:blur(10px);
   }
-  .notice b{color:var(--accent);font-weight:600;}
-  .notice svg{width:15px;height:15px;flex:none;color:var(--accent);margin-top:2px;}
-
-  .bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:18px;}
-  .bar .grow{flex:1;}
-  .tb{
-    height:34px;padding:0 12px;border-radius:8px;
-    border:1px solid var(--line);background:var(--panel);color:var(--dim);
-    font-size:12.5px;font-family:inherit;cursor:pointer;
-    display:inline-flex;align-items:center;gap:6px;
-    transition:color .16s,border-color .16s,background .16s;
+  .search:focus-within{
+    border-color:rgba(91,140,255,.65);
+    background:rgba(255,255,255,.075);
+    box-shadow:0 0 0 4px rgba(91,140,255,.13);
   }
-  .tb:hover{color:var(--ink);border-color:var(--line2);}
-  .tb svg{width:13px;height:13px;}
-  .tb.on{border-color:var(--accent);color:var(--accent);}
-  .tb[hidden]{display:none;}
-  .bar .hint{font-size:11.5px;color:var(--dim2);}
-
-  section{margin-top:30px;}
-  .shead{display:flex;align-items:baseline;gap:10px;margin-bottom:14px;}
-  .shead h2{font-size:14.5px;font-weight:600;letter-spacing:.04em;}
-  .shead .cnt{font-size:11.5px;color:var(--dim2);}
-  .shead .rule{flex:1;height:1px;background:var(--line);}
-
-  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
-  .site{
-    position:relative;
-    display:flex;align-items:flex-start;gap:12px;
-    padding:14px 16px;border:1px solid var(--line);border-radius:10px;
-    background:var(--panel);color:inherit;text-decoration:none;
-    transition:background .18s,border-color .18s;
+  .search svg{flex:0 0 18px;stroke:var(--muted);transition:.25s}
+  .search:focus-within svg{stroke:var(--accent)}
+  .search input{
+    flex:1;background:none;border:none;outline:none;
+    color:var(--text);font-size:15px;font-family:inherit;
   }
-  .site:hover{background:var(--hover);border-color:var(--line2);}
-  .site .dot{width:8px;height:8px;border-radius:50%;flex:none;margin-top:6px;}
-  .site .body{flex:1;min-width:0;}
-  .site .name{font-size:15px;font-weight:500;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
-  .site .note{font-size:12.5px;color:var(--dim);line-height:1.65;margin-top:5px;}
-  .site .go{flex:none;color:var(--dim2);font-size:12px;margin-top:1px;transition:color .18s;}
-  .site:hover .go{color:var(--dim);}
-  .site .badge{
-    font-size:10.5px;font-weight:400;color:var(--dim);
-    border:1px solid var(--line2);border-radius:4px;padding:1px 5px;
-  }
-  .site .edit-mark{
-    position:absolute;top:8px;right:10px;
-    font-size:10.5px;color:var(--accent);
-    border:1px solid color-mix(in srgb, var(--accent) 40%, transparent);
-    border-radius:4px;padding:1px 5px;
-    opacity:0;transition:opacity .16s;
-  }
-  body.editing .site{cursor:pointer;}
-  body.editing .site .edit-mark{opacity:1;}
-  body.editing .site .go{display:none;}
-
-  .how{
-    margin-top:34px;padding:16px 18px;border:1px solid var(--line);
-    border-radius:10px;background:var(--panel);
-  }
-  .how h3{font-size:13px;font-weight:600;margin-bottom:10px;}
-  .how ol{margin:0;padding-left:18px;color:var(--dim);font-size:12.5px;line-height:1.9;}
-  .how a{color:var(--accent);text-decoration:none;}
-  .how a:hover{text-decoration:underline;}
-
-  footer{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);color:var(--dim2);font-size:11.5px;line-height:1.9;}
-
-  .theme-btn{
-    position:fixed;right:18px;bottom:18px;width:44px;height:44px;border-radius:50%;
-    display:grid;place-items:center;background:var(--panel);border:1px solid var(--line);
-    color:var(--dim);cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,.18);
-    transition:color .18s,border-color .18s;z-index:40;
-  }
-  .theme-btn:hover{color:var(--ink);border-color:var(--line2);}
-  .theme-btn svg{width:19px;height:19px;}
-
-  .sheet{position:fixed;inset:0;z-index:60;display:none;align-items:flex-end;justify-content:center;background:rgba(0,0,0,.5);}
-  .sheet.show{display:flex;}
-  .sheet-box{
-    width:100%;max-width:520px;background:var(--panel);border:1px solid var(--line);
-    border-radius:14px 14px 0 0;padding:18px 18px 26px;max-height:88vh;overflow-y:auto;animation:rise .22s ease-out;
-  }
-  @keyframes rise{from{transform:translateY(14px);opacity:.6}to{transform:none;opacity:1}}
-  .sheet-head{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
-  .sheet-head h2{font-size:14px;font-weight:600;flex:1;letter-spacing:.04em;}
-  .close-x{width:32px;height:32px;border-radius:8px;display:grid;place-items:center;background:transparent;border:1px solid var(--line);color:var(--dim);cursor:pointer;}
-  .close-x:hover{color:var(--ink);border-color:var(--line2);}
-  .themes{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;}
-  .theme{
-    display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:9px;
-    border:1px solid var(--line);background:var(--bg);color:var(--ink);
-    font-size:13px;font-family:inherit;cursor:pointer;text-align:left;
-    transition:border-color .16s;
-  }
-  .theme:hover{border-color:var(--line2);}
-  .theme[aria-pressed="true"]{border-color:var(--accent);}
-  .theme .sw{width:22px;height:22px;border-radius:6px;flex:none;border:1px solid rgba(128,128,128,.28);display:grid;place-items:center;}
-  .theme .sw i{width:8px;height:8px;border-radius:50%;display:block;}
-  .theme .nm{flex:1;}
-  .theme .ck{color:var(--accent);font-size:12px;opacity:0;}
-  .theme[aria-pressed="true"] .ck{opacity:1;}
-
-  .mask{position:fixed;inset:0;z-index:70;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(0,0,0,.7);backdrop-filter:blur(3px);}
-  .mask.show{display:flex;}
-  .box{
-    width:100%;max-width:390px;background:var(--panel);border:1px solid var(--line2);
-    border-radius:12px;padding:20px;max-height:calc(100vh - 40px);overflow:auto;
-  }
-  .box h2{font-size:15px;font-weight:600;margin-bottom:14px;display:flex;align-items:center;gap:8px;}
-  .box h2 svg{color:var(--accent);flex:none;}
-  .field{margin-top:11px;}
-  .field label{display:block;font-size:11.5px;color:var(--dim);margin-bottom:6px;}
-  .field input,.field select{
-    width:100%;background:var(--bg);border:1px solid var(--line);border-radius:8px;
-    color:var(--ink);font-size:16px;font-family:inherit;padding:0 11px;height:38px;outline:none;
-  }
-  .field input:focus,.field select:focus{border-color:var(--accent);}
-  .swatches{display:flex;gap:8px;flex-wrap:wrap;}
-  .sw-opt{
-    width:24px;height:24px;border-radius:50%;border:2px solid transparent;cursor:pointer;
-    box-shadow:inset 0 0 0 1px rgba(128,128,128,.3);
-  }
-  .sw-opt[aria-pressed="true"]{border-color:var(--ink);}
-  .err{height:17px;margin-top:6px;font-size:12px;color:#ff6b66;opacity:0;transition:opacity .15s;}
-  .err.show{opacity:1;}
-  .acts{display:flex;gap:8px;margin-top:16px;}
-  .btn{
-    flex:1;padding:10px;font-size:13.5px;font-family:inherit;border-radius:8px;cursor:pointer;
-    border:1px solid var(--line);background:transparent;color:var(--dim);transition:color .18s,border-color .18s;
-  }
-  .btn:hover{color:var(--ink);border-color:var(--line2);}
-  .btn.primary{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600;}
-  .btn.primary:hover{filter:brightness(1.08);}
-  .btn.danger{color:#ff6b66;border-color:color-mix(in srgb, #ff6b66 35%, transparent);}
-  .btn[hidden]{display:none;}
-
-  .toast{
-    position:fixed;left:50%;bottom:80px;transform:translateX(-50%) translateY(8px);
-    background:var(--panel);border:1px solid var(--line2);color:var(--ink);
-    font-size:13px;padding:9px 16px;border-radius:8px;opacity:0;pointer-events:none;
-    transition:opacity .2s,transform .2s;z-index:90;
-  }
-  .toast.on{opacity:1;transform:translateX(-50%) translateY(0);}
-
-  @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
-  .shake{animation:shake .3s;}
-
-  @media (max-width:700px){
-    body{padding:22px 16px 40px;}
-    h1{font-size:23px;letter-spacing:2px;}
-    .seal{width:34px;height:34px;}
-    .grid{grid-template-columns:1fr;}
-    .site{padding:14px;}
-    .site .note{font-size:14px;line-height:1.7;}
-    .sub{font-size:14px;}
-    .notice{font-size:14px;}
-    .how ol{font-size:14px;}
-    .shead .cnt{font-size:12px;}
-    footer{font-size:12px;}
-    .back{min-height:44px;}
-    .tb{height:44px;font-size:13.5px;}
-    .themes{grid-template-columns:1fr;}
-    .sheet-box{padding:16px 16px 24px;}
+  .search input::placeholder{color:#5f6a80}
+  kbd{
+    font-family:inherit;font-size:11.5px;color:#7f8aa0;
+    border:1px solid var(--border);border-bottom-width:2px;
+    border-radius:6px;padding:2px 7px;background:rgba(255,255,255,.04);
   }
 
-  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;}}
+  /* ---------- Tabs ---------- */
+  .tabs{
+    display:flex;flex-wrap:wrap;gap:9px;justify-content:center;
+    max-width:900px;margin:30px auto 0;
+  }
+  .tab{
+    font-family:inherit;font-size:13.5px;cursor:pointer;
+    color:#a4b0c6;
+    background:rgba(255,255,255,.04);
+    border:1px solid var(--border);
+    border-radius:999px;
+    padding:8px 16px;
+    transition:.22s ease;
+    display:inline-flex;align-items:center;gap:7px;
+  }
+  .tab:hover{color:#fff;background:rgba(255,255,255,.085);transform:translateY(-1px)}
+  .tab .n{font-size:11px;opacity:.6}
+  .tab.active{
+    color:#fff;
+    background:linear-gradient(135deg,#4a7dff,#8b5cf6);
+    border-color:transparent;
+    box-shadow:0 8px 22px -10px rgba(91,140,255,.9);
+  }
+  .tab.active .n{opacity:.85}
+
+  /* ---------- Grid ---------- */
+  .grid{
+    max-width:1240px;margin:38px auto 0;
+    display:grid;gap:14px;
+    grid-template-columns:repeat(auto-fill,minmax(272px,1fr));
+  }
+  .card{
+    --c:#5b8cff;
+    position:relative;overflow:hidden;
+    display:flex;gap:13px;align-items:flex-start;
+    padding:16px;
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:16px;
+    text-decoration:none;color:inherit;
+    transition:transform .22s ease,background .22s ease,border-color .22s ease,box-shadow .22s ease;
+    animation:rise .5s cubic-bezier(.22,1,.36,1) backwards;
+  }
+  .card::after{
+    content:'';position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(420px 130px at 0% 0%, var(--c), transparent 72%);
+    opacity:0;transition:opacity .3s ease;
+  }
+  .card:hover{
+    transform:translateY(-4px);
+    background:var(--card-hover);
+    border-color:rgba(255,255,255,.17);
+    box-shadow:0 16px 38px -18px rgba(0,0,0,.85);
+  }
+  .card:hover::after{opacity:.09}
+  .logo{
+    flex:0 0 42px;width:42px;height:42px;border-radius:12px;
+    display:grid;place-items:center;
+    font-size:16px;font-weight:700;letter-spacing:-.02em;
+    color:var(--c);
+    background:rgba(255,255,255,.055);
+    background:color-mix(in srgb, var(--c) 17%, rgba(255,255,255,.03));
+    border:1px solid rgba(255,255,255,.08);
+    border-color:color-mix(in srgb, var(--c) 32%, transparent);
+    transition:transform .22s ease;
+  }
+  .card:hover .logo{transform:scale(1.06) rotate(-3deg)}
+  .body{min-width:0;flex:1}
+  .name{
+    font-size:15px;font-weight:650;line-height:1.3;
+    display:flex;align-items:center;gap:6px;
+  }
+  .name .cn{color:#7f8aa0;font-weight:400;font-size:12.5px}
+  .arrow{
+    font-size:11px;color:var(--muted);
+    opacity:0;transform:translateX(-5px);
+    transition:.22s ease;
+  }
+  .card:hover .arrow{opacity:1;transform:none}
+  .desc{
+    margin-top:5px;font-size:12.5px;line-height:1.55;color:var(--muted);
+    overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;
+  }
+
+  @keyframes rise{
+    from{opacity:0;transform:translateY(14px)}
+    to{opacity:1;transform:none}
+  }
+
+  /* ---------- Empty ---------- */
+  .empty{
+    grid-column:1/-1;text-align:center;padding:70px 0;color:var(--muted);
+  }
+  .empty .big{font-size:38px;margin-bottom:14px;opacity:.5}
+  .empty p{font-size:14px}
+  .empty button{
+    margin-top:18px;font-family:inherit;font-size:13.5px;cursor:pointer;
+    color:#fff;background:linear-gradient(135deg,#4a7dff,#8b5cf6);
+    border:none;border-radius:10px;padding:9px 20px;
+    box-shadow:0 8px 22px -10px rgba(91,140,255,.9);
+  }
+
+  /* ---------- Footer ---------- */
+  footer{
+    max-width:1240px;margin:64px auto 0;
+    padding-top:26px;border-top:1px solid rgba(255,255,255,.07);
+    text-align:center;font-size:12.5px;color:#5f6a80;line-height:1.9;
+  }
+  footer a{color:#7d8aa3;text-decoration:none;border-bottom:1px dashed rgba(125,138,163,.4)}
+  footer a:hover{color:var(--accent);border-color:var(--accent)}
+
+  @media (max-width:520px){
+    body{padding:0 16px 50px}
+    header{padding-top:48px}
+    .grid{grid-template-columns:1fr;margin-top:28px}
+    kbd{display:none}
+  }
 </style>
 </head>
 <body>
-<div class="wrap">
 
-  <a class="back" href="/">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-    返回主页
-  </a>
+<header>
+  <div class="badge">🎬 MovieNav</div>
+  <h1>影视导航</h1>
+  <p class="sub">精选全球流媒体平台、评分与资讯站点 · 一站直达</p>
 
-  <header>
-    <img class="seal" src="../assets/avatar.png" alt="">
-    <h1>影视导航</h1>
-  </header>
-  <p class="sub">把看片的地方整理成一页：都是各平台的官方网站，点进去就是平台自己的页面。这里不放片源、不做播放。</p>
-
-  <div class="notice">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.5v.5"/></svg>
-    <div><b>说明：</b>本页只做正版平台导航，链接均指向平台官网；能看到什么片、要不要会员，以各平台为准。不提供任何第三方片源或播放地址。</div>
+  <div class="search">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round">
+      <circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/>
+    </svg>
+    <input id="search" type="text" placeholder="搜索平台、类型或关键词…" autocomplete="off" spellcheck="false">
+    <kbd>/</kbd>
   </div>
+</header>
 
-  <div class="bar">
-    <button class="tb" id="editBtn" type="button">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4l10-10-4-4L4 16z"/><path d="M14 6l4 4"/></svg>
-      <span id="editLabel">编辑导航</span>
-    </button>
-    <button class="tb" id="addBtn" type="button" hidden>+ 添加网站</button>
-    <button class="tb" id="exportBtn" type="button" hidden>导出 JSON</button>
-    <button class="tb" id="importBtn" type="button" hidden>导入 JSON</button>
-    <button class="tb" id="resetBtn" type="button" hidden>恢复默认</button>
-    <input type="file" id="file" accept="application/json,.json" hidden>
-    <span class="grow"></span>
-    <span class="hint" id="hint">改完存在这台浏览器里</span>
-  </div>
+<nav class="tabs" id="tabs"></nav>
 
-  <div id="sections"></div>
+<main class="grid" id="grid"></main>
 
-  <div class="how">
-    <h3>不确定哪家有片？按这个顺序查</h3>
-    <ol>
-      <li>先到 <a href="https://movie.douban.com/" target="_blank" rel="noopener">豆瓣电影</a> 搜片名，进条目页看「在线观看」里列了哪几家。</li>
-      <li>再到对应平台搜片名，会员与清晰度按平台规则。</li>
-      <li>老片、冷门片找不到时，试试乐视、搜狐视频、1905 的片库。</li>
-    </ol>
-  </div>
-
-  <footer>
-    影视导航 · 只收录平台官网，不承载播放。<br>
-    编辑需密码解锁；改动保存在本机浏览器，可用「导出 JSON」备份。平台名称与商标归各自所有者。
-  </footer>
-</div>
-
-<button class="theme-btn" id="themeBtn" type="button" aria-label="切换主题" aria-haspopup="dialog">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-    <circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2.4"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/>
-  </svg>
-</button>
-
-<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
-  <div class="sheet-box">
-    <div class="sheet-head">
-      <h2 id="sheetTitle">页面主题</h2>
-      <button class="close-x" id="sheetClose" type="button" aria-label="关闭">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
-      </button>
-    </div>
-    <div class="themes" id="themes"></div>
-  </div>
-</div>
-
-<div class="mask" id="pwMask" role="dialog" aria-modal="true" aria-labelledby="pwTitle">
-  <div class="box" id="pwBox">
-    <h2 id="pwTitle">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
-      编辑需要密码
-    </h2>
-    <div class="field">
-      <input id="pw" type="password" placeholder="输入编辑密码" autocomplete="off" spellcheck="false">
-    </div>
-    <div class="err" id="pwErr">密码不对，再试一次</div>
-    <div class="acts">
-      <button class="btn" id="pwCancel" type="button">取消</button>
-      <button class="btn primary" id="pwOk" type="button">解锁</button>
-    </div>
-  </div>
-</div>
-
-<div class="mask" id="editMask" role="dialog" aria-modal="true" aria-labelledby="eTitle">
-  <div class="box">
-    <h2 id="eTitle">编辑网站</h2>
-    <div class="field">
-      <label for="fGroup">所属分组</label>
-      <select id="fGroup"></select>
-    </div>
-    <div class="field">
-      <label for="fName">名称</label>
-      <input id="fName" type="text" placeholder="例如：爱奇艺">
-    </div>
-    <div class="field">
-      <label for="fUrl">链接</label>
-      <input id="fUrl" type="text" placeholder="https://…" inputmode="url" spellcheck="false">
-    </div>
-    <div class="field">
-      <label for="fNote">一句说明</label>
-      <input id="fNote" type="text" placeholder="例如：院线新片、独播剧集">
-    </div>
-    <div class="field">
-      <label for="fBadge">标签（可空）</label>
-      <input id="fBadge" type="text" placeholder="例如：只查不播">
-    </div>
-    <div class="field">
-      <label>圆点颜色</label>
-      <div class="swatches" id="swatches"></div>
-    </div>
-    <div class="acts">
-      <button class="btn danger" id="eDel" type="button" hidden>删除</button>
-      <button class="btn" id="eCancel" type="button">取消</button>
-      <button class="btn primary" id="eSave" type="button">保存</button>
-    </div>
-  </div>
-</div>
-
-<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<footer>
+  <div>仅收录正规授权的影视平台与公开资讯 / 评分网站，不提供任何资源下载或播放服务。</div>
+  <div>© <span id="year"></span> MovieNav · 按 <kbd>/</kbd> 搜索 · 按 <kbd>Esc</kbd> 清空</div>
+</footer>
 
 <script>
-(function () {
-  "use strict";
+/* ================= 数据 ================= */
+const SITES = [
+  /* --- 综合平台 --- */
+  { name:'Netflix', cn:'奈飞',   cat:'综合', color:'#e50914', icon:'N',  url:'https://www.netflix.com',        desc:'全球最大流媒体，原创剧集与电影产量惊人', kw:'美剧 电影 原创' },
+  { name:'Disney+', cn:'迪士尼+', cat:'综合', color:'#1a4fd6', icon:'D',  url:'https://www.disneyplus.com',     desc:'迪士尼、皮克斯、漫威、星战全内容库', kw:'动画 漫威 星战' },
+  { name:'Max',     cn:'HBO',    cat:'综合', color:'#8b5cf6', icon:'M',  url:'https://www.max.com',            desc:'HBO 原创剧集与华纳兄弟电影片库', kw:'HBO 美剧 华纳' },
+  { name:'Prime Video', cn:'',   cat:'综合', color:'#00a8e1', icon:'P',  url:'https://www.primevideo.com',     desc:'亚马逊影视，自制剧集与影片租赁', kw:'亚马逊 自制剧' },
+  { name:'Apple TV+', cn:'',     cat:'综合', color:'#c7cede', icon:'A',  url:'https://tv.apple.com',           desc:'苹果原创剧集，画质与音效规格出众', kw:'苹果 原创 4K' },
+  { name:'爱奇艺',   cn:'iQIYI', cat:'综合', color:'#00be06', icon:'爱', url:'https://www.iqiyi.com',          desc:'国产剧集、综艺与电影，会员制点播', kw:'国产剧 综艺 迷雾剧场' },
+  { name:'腾讯视频', cn:'',      cat:'综合', color:'#ff7a00', icon:'腾', url:'https://v.qq.com',               desc:'剧集、国漫、综艺与体育赛事直播', kw:'国漫 剧集 综艺' },
+  { name:'优酷',     cn:'YOUKU', cat:'综合', color:'#00a0ff', icon:'优', url:'https://www.youku.com',          desc:'阿里旗下综合视频平台，港剧片库丰富', kw:'港剧 综艺 剧集' },
+  { name:'芒果TV',   cn:'',      cat:'综合', color:'#ff5f00', icon:'芒', url:'https://www.mgtv.com',           desc:'湖南卫视综艺与青春剧集主阵地', kw:'综艺 湖南卫视' },
+  { name:'哔哩哔哩', cn:'B站',   cat:'综合', color:'#fb7299', icon:'B',  url:'https://www.bilibili.com',       desc:'正版番剧、纪录片与影视二创社区', kw:'番剧 弹幕 纪录片' },
+  { name:'西瓜视频', cn:'',      cat:'综合', color:'#ff4d4d', icon:'西', url:'https://www.ixigua.com',         desc:'中短视频与影视片段，含免费电影区', kw:'短视频 免费' },
+  { name:'YouTube',  cn:'',      cat:'综合', color:'#ff0000', icon:'Y',  url:'https://www.youtube.com',        desc:'全球视频平台，含免费电影与预告片', kw:'免费 预告片 视频' },
 
-  var KEY = 'media.nav.v1';
-  var THEME_KEY = 'site.theme';
-  var PASS = 'djjm2026';            /* 前端软锁：挡住随手改动，挡不住看源码的人 */
-  var UNLOCK_KEY = 'media.edit.unlocked';
+  /* --- 评分口碑 --- */
+  { name:'豆瓣电影', cn:'',      cat:'评分', color:'#00b51d', icon:'豆', url:'https://movie.douban.com',       desc:'中文影视评分与影评社区，选片第一参考', kw:'影评 榜单 top250' },
+  { name:'IMDb',     cn:'',      cat:'评分', color:'#f5c518', icon:'i',  url:'https://www.imdb.com',           desc:'全球最大影视数据库与评分体系', kw:'数据库 评分 资料' },
+  { name:'Rotten Tomatoes', cn:'烂番茄', cat:'评分', color:'#fa320a', icon:'R', url:'https://www.rottentomatoes.com', desc:'专业影评人新鲜度与观众爆米花指数', kw:'新鲜度 影评人' },
+  { name:'Metacritic', cn:'',    cat:'评分', color:'#ffcc33', icon:'MC', url:'https://www.metacritic.com',     desc:'加权平均专业评分，游戏影视皆覆盖', kw:'均分 专业评分' },
+  { name:'Letterboxd', cn:'',    cat:'评分', color:'#00e054', icon:'L',  url:'https://letterboxd.com',         desc:'影迷日记与片单社区，界面优雅', kw:'影迷 片单 日记' },
+  { name:'时光网',   cn:'Mtime', cat:'评分', color:'#e60012', icon:'时', url:'https://www.mtime.com',          desc:'中文影视资讯、排片与评分', kw:'排片 资讯 影讯' },
 
-  var DEFAULT = {
-    groups: [
-      { id: 'vod', name: '综合长视频', items: [
-        { n: '爱奇艺', u: 'https://www.iqiyi.com/', note: '院线新片、独播剧集与自制综艺', c: '#12b84a' },
-        { n: '腾讯视频', u: 'https://v.qq.com/', note: '美剧、国漫、腾讯自制剧集', c: '#ff9f43' },
-        { n: '优酷', u: 'https://www.youku.com/', note: '港剧、经典剧集、人文纪录片', c: '#2f9bff' },
-        { n: '芒果TV', u: 'https://www.mgtv.com/', note: '湖南卫视综艺与剧集', c: '#ff6c00' }
-      ]},
-      { id: 'live', name: '电视直播', items: [
-        { n: '央视频', u: 'https://www.yangshipin.cn/', note: '总台频道直播、新闻与纪录片', c: '#0b74d3' },
-        { n: '咪咕视频', u: 'https://www.miguvideo.com/', note: '体育赛事直播，部分影视内容', c: '#e60027' },
-        { n: '1905 电影网', u: 'https://www.1905.com/', note: 'CCTV-6 电影频道官网，影史资料与部分影片', c: '#c9302c' },
-        { n: '央视网', u: 'https://tv.cctv.com/', note: '央视各频道节目回看与专题片', c: '#c8102e' }
-      ]},
-      { id: 'acg', name: '影视资源', items: [
-        { n: '快车资源网', u: 'https://kuaichezy.com//', note: '正版番剧、纪录片、影视解说与二创', c: '#fb7299' },
-        { n: '闪电资源', u: 'https://shandianzy.com/', note: '二次元内容、番剧与短片', c: '#f0603c' }
-        { n: '非凡资源网', u: 'https://ffzy.tv/', note: '老片、经典剧集', c: '#d93a3a' },
-        { n: '光速资源网', u: 'https://guangsuzy.com/', note: '老剧、美剧', c: '#ffcc00' }
-        { n: '量子资源网', u: 'http://23.224.101.30/', note: '看评分和影评；条目页的「在线观看」会列出有版权的平台', c: '#2fa84f', badge: '只查不播' },
-        { n: '红牛资源站', u: 'https://hongniuzy.net/', note: '影片条目、演职员与影史资料', c: '#8a7bd8', badge: '只查不播' }
-      ]}
-    ]
-  };
+  /* --- 行业资讯 --- */
+  { name:'Variety',  cn:'',      cat:'资讯', color:'#c8102e', icon:'V',  url:'https://variety.com',            desc:'好莱坞权威娱乐商业媒体', kw:'好莱坞 产业 票房' },
+  { name:'Deadline', cn:'',      cat:'资讯', color:'#e2231a', icon:'D',  url:'https://deadline.com',           desc:'影视产业快讯与奖项动态', kw:'奖项 产业 快讯' },
+  { name:'The Hollywood Reporter', cn:'', cat:'资讯', color:'#e6002d', icon:'T', url:'https://www.hollywoodreporter.com', desc:'深度报道与颁奖季风向标', kw:'颁奖季 深度' },
+  { name:'IndieWire', cn:'',     cat:'资讯', color:'#ff3b30', icon:'IW', url:'https://www.indiewire.com',      desc:'独立电影与艺术片资讯评论', kw:'独立电影 艺术片' },
+  { name:'Filmmaker Magazine', cn:'', cat:'资讯', color:'#f5a623', icon:'F', url:'https://filmmakermagazine.com', desc:'独立影像创作者访谈与技术文章', kw:'创作 访谈 技术' },
 
-  var COLORS = ['#12b84a', '#ff9f43', '#2f9bff', '#ff6c00', '#fb7299', '#e60027', '#0b74d3', '#c9302c', '#f0603c', '#ffcc00', '#8a7bd8', '#e8e8f0'];
+  /* --- 动漫番剧 --- */
+  { name:'Crunchyroll', cn:'',   cat:'动漫', color:'#f47521', icon:'C',  url:'https://www.crunchyroll.com',    desc:'海外最大正版日本动画流媒体', kw:'日番 动画 正版' },
+  { name:'AniList',  cn:'',      cat:'动漫', color:'#02a9ff', icon:'A',  url:'https://anilist.co',             desc:'动漫追踪与评分社区，API 开放', kw:'追番 评分 番表' },
+  { name:'MyAnimeList', cn:'',   cat:'动漫', color:'#2e51a2', icon:'M',  url:'https://myanimelist.net',        desc:'老牌动漫数据库与个人追番管理', kw:'数据库 追番' },
+  { name:'Bangumi 番组计划', cn:'', cat:'动漫', color:'#f09199', icon:'番', url:'https://bgm.tv',             desc:'中文 ACG 收藏与评分社区', kw:'番组 收藏 评分' },
 
-  var data = null;
-  var editing = false;
-  var editingRef = null;
-  var pickingColor = COLORS[0];
+  /* --- 纪录片 --- */
+  { name:'National Geographic', cn:'国家地理', cat:'纪录片', color:'#ffcc00', icon:'NG', url:'https://www.nationalgeographic.com', desc:'自然、人文与科学纪录片权威', kw:'自然 科学 人文' },
+  { name:'BBC Earth', cn:'',     cat:'纪录片', color:'#00b4d8', icon:'B', url:'https://www.bbcearth.com',       desc:'BBC 自然历史部，顶级生态影像', kw:'自然 生态 BBC' },
+  { name:'CuriosityStream', cn:'', cat:'纪录片', color:'#00c2a8', icon:'C', url:'https://curiositystream.com',  desc:'专注纪录片与科普的订阅平台', kw:'科普 订阅' },
+  { name:'ARTE',     cn:'',      cat:'纪录片', color:'#ff5a00', icon:'A', url:'https://www.arte.tv',            desc:'欧洲公共文化频道，纪录片质量极高', kw:'欧洲 文化 公共' },
 
-  var sectionsEl = document.getElementById('sections');
-  var toastEl = document.getElementById('toast');
-  var editBtn = document.getElementById('editBtn');
-  var editLabel = document.getElementById('editLabel');
-  var addBtn = document.getElementById('addBtn');
-  var exportBtn = document.getElementById('exportBtn');
-  var importBtn = document.getElementById('importBtn');
-  var resetBtn = document.getElementById('resetBtn');
-  var hintEl = document.getElementById('hint');
+  /* --- 数据工具 --- */
+  { name:'TMDB',     cn:'',      cat:'工具', color:'#01b4e4', icon:'T',  url:'https://www.themoviedb.org',     desc:'开放影视元数据库，海报与剧照齐全', kw:'数据库 API 海报' },
+  { name:'JustWatch', cn:'',     cat:'工具', color:'#ffcd00', icon:'J',  url:'https://www.justwatch.com',      desc:'查询某部影片在哪个平台可看', kw:'在哪看 比价 平台' },
+  { name:'猫眼专业版', cn:'',    cat:'工具', color:'#ef2d3f', icon:'猫', url:'https://piaofang.maoyan.com',    desc:'实时票房、排片与市场数据', kw:'票房 排片 数据' },
+  { name:'灯塔专业版', cn:'',    cat:'工具', color:'#ff6a00', icon:'灯', url:'https://ys.endata.cn',           desc:'阿里系影视市场数据与舆情分析', kw:'票房 舆情 数据' },
+  { name:'Box Office Mojo', cn:'', cat:'工具', color:'#f7c948', icon:'BO', url:'https://www.boxofficemojo.com', desc:'全球票房历史数据查询', kw:'票房 历史 全球' },
+  { name:'OpenSubtitles', cn:'', cat:'工具', color:'#00b8ff', icon:'S',  url:'https://www.opensubtitles.com',  desc:'多语言字幕检索与下载', kw:'字幕 多语言' },
 
-  function toast(msg) {
-    toastEl.textContent = msg;
-    toastEl.classList.add('on');
-    clearTimeout(toast._t);
-    toast._t = setTimeout(function () { toastEl.classList.remove('on'); }, 2200);
-  }
+  /* --- 免费正版 --- */
+  { name:'Tubi',     cn:'',      cat:'免费', color:'#ff5c00', icon:'T',  url:'https://tubitv.com',             desc:'广告支持的免费影视，片库庞大', kw:'免费 广告 正版' },
+  { name:'Pluto TV', cn:'',      cat:'免费', color:'#ffe600', icon:'P',  url:'https://pluto.tv',               desc:'免费直播电视频道与点播内容', kw:'免费 直播 频道' },
+  { name:'Internet Archive', cn:'', cat:'免费', color:'#4a90d9', icon:'IA', url:'https://archive.org/details/movies', desc:'公共领域老电影与影像资料库', kw:'老电影 公共领域 资料' },
+  { name:'1905 电影网', cn:'',   cat:'免费', color:'#e60012', icon:'19', url:'https://www.1905.com',           desc:'央视电影频道旗下，免费正版观影', kw:'免费 正版 央视' },
+  { name:'Kanopy',   cn:'',      cat:'免费', color:'#ff7a00', icon:'K',  url:'https://www.kanopy.com',         desc:'凭图书馆卡免费观看艺术电影', kw:'图书馆 艺术片 免费' }
+];
 
-  function clone(o) { return JSON.parse(JSON.stringify(o)); }
+/* ================= 渲染逻辑 ================= */
+const gridEl   = document.getElementById('grid');
+const tabsEl   = document.getElementById('tabs');
+const searchEl = document.getElementById('search');
 
-  function load() {
-    var raw = null;
-    try { raw = localStorage.getItem(KEY); } catch (e) {}
-    if (raw) {
-      try {
-        var d = JSON.parse(raw);
-        if (d && Array.isArray(d.groups) && d.groups.length) return d;
-      } catch (e) {}
-    }
-    return clone(DEFAULT);
-  }
+const CATS = ['全部', ...new Set(SITES.map(s => s.cat))];
+let currentCat = '全部';
 
-  function save() {
-    try { localStorage.setItem(KEY, JSON.stringify(data)); }
-    catch (e) { toast('浏览器存储写入失败'); }
-  }
-
-  function esc(s) {
-    return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) {
-      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
-    });
-  }
-
-  function render() {
-    sectionsEl.innerHTML = '';
-    data.groups.forEach(function (g, gi) {
-      if (!g.items.length && !editing) return;
-      var sec = document.createElement('section');
-
-      var head = document.createElement('div');
-      head.className = 'shead';
-      head.innerHTML = '<h2>' + esc(g.name) + '</h2><span class="cnt">' + g.items.length + ' 个</span><span class="rule"></span>';
-      sec.appendChild(head);
-
-      var grid = document.createElement('div');
-      grid.className = 'grid';
-
-      g.items.forEach(function (it, ii) {
-        var a = document.createElement('a');
-        a.className = 'site';
-        a.href = it.u;
-        a.target = '_blank';
-        a.rel = 'noopener';
-        a.innerHTML =
-          '<span class="dot" style="background:' + esc(it.c || COLORS[0]) + '"></span>' +
-          '<span class="body"><span class="name">' + esc(it.n) +
-            (it.badge ? ' <span class="badge">' + esc(it.badge) + '</span>' : '') +
-          '</span><span class="note">' + esc(it.note || '') + '</span></span>' +
-          '<span class="go">打开 →</span><span class="edit-mark">点击编辑</span>';
-        a.addEventListener('click', function (e) {
-          if (!editing) return;
-          e.preventDefault();
-          openEditor(gi, ii);
-        });
-        grid.appendChild(a);
-      });
-
-      sec.appendChild(grid);
-      sectionsEl.appendChild(sec);
-    });
-  }
-
-  /* ===== 编辑状态 ===== */
-  function setEditing(on) {
-    editing = on;
-    document.body.classList.toggle('editing', on);
-    editBtn.classList.toggle('on', on);
-    editLabel.textContent = on ? '退出编辑' : '编辑导航';
-    addBtn.hidden = !on;
-    exportBtn.hidden = !on;
-    importBtn.hidden = !on;
-    resetBtn.hidden = !on;
-    hintEl.textContent = on ? '编辑模式：点任意一条改内容' : '改完存在这台浏览器里';
+/* 分类标签 */
+CATS.forEach(cat => {
+  const count = cat === '全部' ? SITES.length : SITES.filter(s => s.cat === cat).length;
+  const btn = document.createElement('button');
+  btn.className = 'tab' + (cat === '全部' ? ' active' : '');
+  btn.dataset.cat = cat;
+  btn.innerHTML = `${cat}<span class="n">${count}</span>`;
+  btn.addEventListener('click', () => {
+    currentCat = cat;
+    document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.cat === cat));
     render();
-  }
-
-  function unlocked() {
-    try { return sessionStorage.getItem(UNLOCK_KEY) === '1'; } catch (e) { return false; }
-  }
-
-  var pwMask = document.getElementById('pwMask');
-  var pwInput = document.getElementById('pw');
-  var pwErr = document.getElementById('pwErr');
-  var pwBox = document.getElementById('pwBox');
-
-  function askPassword() {
-    pwInput.value = '';
-    pwErr.classList.remove('show');
-    pwMask.classList.add('show');
-    setTimeout(function () { pwInput.focus(); }, 30);
-  }
-  function closePw() { pwMask.classList.remove('show'); }
-
-  function tryUnlock() {
-    if (pwInput.value === PASS) {
-      try { sessionStorage.setItem(UNLOCK_KEY, '1'); } catch (e) {}
-      closePw();
-      setEditing(true);
-      toast('已解锁，可以编辑导航');
-    } else {
-      pwErr.classList.add('show');
-      pwBox.classList.add('shake');
-      setTimeout(function () { pwBox.classList.remove('shake'); }, 320);
-      pwInput.select();
-    }
-  }
-
-  editBtn.addEventListener('click', function () {
-    if (editing) { setEditing(false); return; }
-    if (unlocked()) { setEditing(true); return; }
-    askPassword();
   });
-  document.getElementById('pwOk').addEventListener('click', tryUnlock);
-  document.getElementById('pwCancel').addEventListener('click', closePw);
-  pwInput.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); tryUnlock(); } });
-  pwMask.addEventListener('click', function (e) { if (e.target === pwMask) closePw(); });
+  tabsEl.appendChild(btn);
+});
 
-  /* ===== 编辑弹层 ===== */
-  var editMask = document.getElementById('editMask');
-  var fGroup = document.getElementById('fGroup');
-  var fName = document.getElementById('fName');
-  var fUrl = document.getElementById('fUrl');
-  var fNote = document.getElementById('fNote');
-  var fBadge = document.getElementById('fBadge');
-  var swWrap = document.getElementById('swatches');
-  var eDel = document.getElementById('eDel');
-  var eTitle = document.getElementById('eTitle');
+/* 卡片渲染 */
+function render() {
+  const q = searchEl.value.trim().toLowerCase();
 
-  function buildSwatches() {
-    swWrap.innerHTML = '';
-    COLORS.forEach(function (c) {
-      var b = document.createElement('button');
-      b.type = 'button';
-      b.className = 'sw-opt';
-      b.style.background = c;
-      b.setAttribute('aria-pressed', String(String(c).toLowerCase() === String(pickingColor).toLowerCase()));
-      b.setAttribute('aria-label', '颜色 ' + c);
-      b.addEventListener('click', function () {
-        pickingColor = c;
-        for (var i = 0; i < swWrap.children.length; i++) swWrap.children[i].setAttribute('aria-pressed', 'false');
-        b.setAttribute('aria-pressed', 'true');
-      });
-      swWrap.appendChild(b);
-    });
-  }
-
-  function buildGroupOptions(selected) {
-    fGroup.innerHTML = '';
-    data.groups.forEach(function (g, i) {
-      var o = document.createElement('option');
-      o.value = String(i);
-      o.textContent = g.name;
-      if (String(i) === String(selected)) o.selected = true;
-      fGroup.appendChild(o);
-    });
-  }
-
-  function openEditor(gi, ii) {
-    editingRef = (typeof gi === 'number') ? { gi: gi, ii: ii } : null;
-    var it = editingRef ? data.groups[gi].items[ii] : { n: '', u: '', note: '', c: COLORS[0], badge: '' };
-    eTitle.textContent = editingRef ? '编辑网站' : '添加网站';
-    buildGroupOptions(editingRef ? gi : 0);
-    fName.value = it.n || '';
-    fUrl.value = it.u || '';
-    fNote.value = it.note || '';
-    fBadge.value = it.badge || '';
-    pickingColor = it.c || COLORS[0];
-    buildSwatches();
-    eDel.hidden = !editingRef;
-    editMask.classList.add('show');
-    setTimeout(function () { fName.focus(); }, 30);
-  }
-
-  function closeEditor() { editMask.classList.remove('show'); }
-
-  document.getElementById('eCancel').addEventListener('click', closeEditor);
-  editMask.addEventListener('click', function (e) { if (e.target === editMask) closeEditor(); });
-
-  document.getElementById('eSave').addEventListener('click', function () {
-    var name = fName.value.trim();
-    var url = fUrl.value.trim();
-    if (!name) { toast('名称不能为空'); fName.focus(); return; }
-    if (!/^https?:\/\//i.test(url)) { toast('链接要以 http:// 或 https:// 开头'); fUrl.focus(); return; }
-
-    var targetGi = parseInt(fGroup.value, 10) || 0;
-    var item = { n: name, u: url, note: fNote.value.trim(), c: pickingColor };
-    var badge = fBadge.value.trim();
-    if (badge) item.badge = badge;
-
-    var wasEdit = !!editingRef;
-    if (wasEdit) {
-      if (editingRef.gi === targetGi) {
-        data.groups[targetGi].items[editingRef.ii] = item;
-      } else {
-        data.groups[editingRef.gi].items.splice(editingRef.ii, 1);
-        data.groups[targetGi].items.push(item);
-      }
-    } else {
-      data.groups[targetGi].items.push(item);
-    }
-    save();
-    closeEditor();
-    render();
-    toast(wasEdit ? '已保存' : '已添加');
+  const list = SITES.filter(s => {
+    const okCat = currentCat === '全部' || s.cat === currentCat;
+    if (!okCat) return false;
+    if (!q) return true;
+    return (s.name + ' ' + s.cn + ' ' + s.desc + ' ' + s.cat + ' ' + s.kw)
+      .toLowerCase().includes(q);
   });
 
-  eDel.addEventListener('click', function () {
-    if (!editingRef) return;
-    var it = data.groups[editingRef.gi].items[editingRef.ii];
-    if (!confirm('删除「' + it.n + '」？')) return;
-    data.groups[editingRef.gi].items.splice(editingRef.ii, 1);
-    save();
-    closeEditor();
-    render();
-    toast('已删除');
-  });
+  gridEl.innerHTML = '';
 
-  addBtn.addEventListener('click', function () { openEditor(null, null); });
-
-  exportBtn.addEventListener('click', function () {
-    var blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-    var a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
-    a.download = 'media-nav.json';
-    a.click();
-    setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
-    toast('已导出 media-nav.json');
-  });
-
-  var fileEl = document.getElementById('file');
-  importBtn.addEventListener('click', function () { fileEl.click(); });
-  fileEl.addEventListener('change', function () {
-    var f = fileEl.files && fileEl.files[0];
-    if (!f) return;
-    var r = new FileReader();
-    r.onload = function () {
-      try {
-        var d = JSON.parse(r.result);
-        if (!d || !Array.isArray(d.groups)) throw new Error('bad');
-        d.groups = d.groups.filter(function (g) { return g && Array.isArray(g.items) && g.name; });
-        if (!d.groups.length) throw new Error('empty');
-        data = d;
-        save();
-        render();
-        toast('已导入 ' + d.groups.length + ' 个分组');
-      } catch (e) {
-        toast('不是合法的导航 JSON');
-      }
-      fileEl.value = '';
-    };
-    r.readAsText(f);
-  });
-
-  resetBtn.addEventListener('click', function () {
-    if (!confirm('恢复到内置的默认导航？本地改动会被覆盖。')) return;
-    data = clone(DEFAULT);
-    save();
-    render();
-    toast('已恢复默认');
-  });
-
-  document.addEventListener('keydown', function (e) {
-    if (e.key !== 'Escape') return;
-    if (editMask.classList.contains('show')) closeEditor();
-    else if (pwMask.classList.contains('show')) closePw();
-    else if (document.getElementById('sheet').classList.contains('show')) document.getElementById('sheet').classList.remove('show');
-  });
-
-  /* ===== 主题 ===== */
-  var NAMES = [
-    ['charcoal', '炭黑', '#0a0a0c', '#e0332f'],
-    ['indigo',   '靛蓝', '#080b14', '#5b8cff'],
-    ['forest',   '墨绿', '#07110c', '#34b37a'],
-    ['cocoa',    '暖棕', '#120f0b', '#d98b4a'],
-    ['violet',   '紫罗兰', '#0d0916', '#a06bff'],
-    ['teal',     '青灰', '#0a0f12', '#38b8ae'],
-    ['amber',    '琥珀', '#100d06', '#e0a92b'],
-    ['paper',    '灰白', '#f5f4f1', '#c0392b']
-  ];
-  var sheet = document.getElementById('sheet');
-  var themeList = document.getElementById('themes');
-
-  function currentTheme() {
-    try { return localStorage.getItem(THEME_KEY) || 'charcoal'; } catch (e) { return 'charcoal'; }
+  if (!list.length) {
+    gridEl.innerHTML = `
+      <div class="empty">
+        <div class="big">🔍</div>
+        <p>没有找到「${escapeHtml(searchEl.value)}」相关的结果</p>
+        <button onclick="resetAll()">重置筛选</button>
+      </div>`;
+    return;
   }
 
-  function applyTheme(id) {
-    var T = window.__THEMES;
-    var t = T[id] || T.charcoal;
-    var st = document.documentElement.style;
-    for (var k in t) st.setProperty('--' + k, t[k]);
-    document.documentElement.setAttribute('data-theme', id);
-    try { localStorage.setItem(THEME_KEY, id); } catch (e) {}
-    for (var i = 0; i < themeList.children.length; i++) {
-      themeList.children[i].setAttribute('aria-pressed', String(themeList.children[i].dataset.id === id));
-    }
-  }
-
-  function buildThemes() {
-    themeList.innerHTML = '';
-    NAMES.forEach(function (row) {
-      var b = document.createElement('button');
-      b.type = 'button';
-      b.className = 'theme';
-      b.dataset.id = row[0];
-      b.setAttribute('aria-pressed', String(currentTheme() === row[0]));
-      b.innerHTML = '<span class="sw" style="background:' + row[2] + '"><i style="background:' + row[3] + '"></i></span>' +
-        '<span class="nm">' + row[1] + '</span><span class="ck">✓</span>';
-      b.addEventListener('click', function () { applyTheme(row[0]); });
-      themeList.appendChild(b);
-    });
-  }
-
-  document.getElementById('themeBtn').addEventListener('click', function () {
-    buildThemes();
-    sheet.classList.add('show');
+  const frag = document.createDocumentFragment();
+  list.forEach((s, i) => {
+    const a = document.createElement('a');
+    a.className = 'card';
+    a.href = s.url;
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+    a.style.setProperty('--c', s.color);
+    a.style.animationDelay = Math.min(i, 22) * 18 + 'ms';
+    a.innerHTML = `
+      <div class="logo">${s.icon}</div>
+      <div class="body">
+        <div class="name">${s.name}${s.cn ? `<span class="cn">${s.cn}</span>` : ''}<span class="arrow">↗</span></div>
+        <div class="desc">${s.desc}</div>
+      </div>`;
+    frag.appendChild(a);
   });
-  document.getElementById('sheetClose').addEventListener('click', function () { sheet.classList.remove('show'); });
-  sheet.addEventListener('click', function (e) { if (e.target === sheet) sheet.classList.remove('show'); });
+  gridEl.appendChild(frag);
+}
 
-  data = load();
-  applyTheme(currentTheme());
+function resetAll() {
+  searchEl.value = '';
+  currentCat = '全部';
+  document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.cat === '全部'));
   render();
-})();
+  searchEl.focus();
+}
+
+function escapeHtml(str) {
+  return str.replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+}
+
+/* 搜索事件 */
+let timer;
+searchEl.addEventListener('input', () => {
+  clearTimeout(timer);
+  timer = setTimeout(render, 90);
+});
+
+/* 快捷键 */
+document.addEventListener('keydown', e => {
+  if (e.key === '/' && document.activeElement !== searchEl) {
+    e.preventDefault();
+    searchEl.focus();
+    searchEl.select();
+  }
+  if (e.key === 'Escape' && document.activeElement === searchEl) {
+    searchEl.value = '';
+    render();
+    searchEl.blur();
+  }
+});
+
+document.getElementById('year').textContent = new Date().getFullYear();
+
+render();
 </script>
 </body>
 </html>
