@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<!-- saved from url=(0065)file:///D:/Users/Admin/Desktop/deepseek_html_20261028_99a34d.html -->
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="杜绝加密空间 · 新闻导航：五十九家中外新闻站点与资讯工具，分类归置，一站直达。">
+<title>新闻导航 · NewsNav｜杜绝加密</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230a0b10'/%3E%3Ctext x='32' y='43' font-size='30' font-family='serif' font-weight='700' fill='%23ff4d5e' text-anchor='middle'%3E新%3C/text%3E%3C/svg%3E">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --bg:#0a0b10;
+    --card:rgba(255,255,255,.045);
+    --card-hover:rgba(255,255,255,.085);
+    --border:rgba(255,255,255,.08);
+    --text:#e9ecf3;
+    --muted:#8b95a8;
+    --accent:#ff4d5e;
+  }
+  html{scroll-behavior:smooth}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    min-height:100vh;
+    padding:0 22px 70px;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  body::before{
+    content:'';
+    position:fixed;inset:0;z-index:-1;pointer-events:none;
+    background:
+      radial-gradient(900px 520px at 10% -10%, rgba(255,77,94,.20), transparent 62%),
+      radial-gradient(780px 460px at 90% -6%, rgba(255,166,64,.15), transparent 62%),
+      radial-gradient(900px 620px at 50% 112%, rgba(120,90,255,.10), transparent 62%);
+  }
+
+  /* ---------- Header ---------- */
+  .back-home{
+    position:fixed;top:16px;left:20px;z-index:30;
+    display:inline-flex;align-items:center;gap:6px;
+    font-size:12.5px;letter-spacing:.06em;color:#a4b0c6;
+    background:rgba(255,255,255,.05);border:1px solid var(--border);
+    border-radius:999px;padding:7px 14px;text-decoration:none;
+    backdrop-filter:blur(8px);transition:.22s ease;
+  }
+  .back-home:hover{color:#fff;border-color:rgba(255,77,94,.5)}
+  header{max-width:1240px;margin:0 auto;padding:70px 0 0;text-align:center}
+  .badge{
+    display:inline-flex;align-items:center;gap:7px;
+    font-size:12.5px;letter-spacing:.06em;
+    color:#b6a9b2;
+    background:rgba(255,255,255,.05);
+    border:1px solid var(--border);
+    border-radius:999px;padding:6px 14px;
+    backdrop-filter:blur(8px);
+  }
+  h1{
+    font-size:clamp(30px,5vw,46px);
+    font-weight:800;letter-spacing:-.02em;
+    margin-top:20px;
+    background:linear-gradient(180deg,#fff 30%,#a99aa4);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .sub{margin-top:12px;color:var(--muted);font-size:14.5px}
+  .sub b{color:#ffb3bb;font-weight:600}
+
+  /* ---------- Tabs ---------- */
+  .tabs{
+    display:flex;flex-wrap:wrap;gap:9px;justify-content:center;
+    max-width:900px;margin:36px auto 0;
+  }
+  .tab{
+    font-family:inherit;font-size:13.5px;cursor:pointer;
+    color:#a4b0c6;
+    background:rgba(255,255,255,.04);
+    border:1px solid var(--border);
+    border-radius:999px;
+    padding:8px 16px;
+    transition:.22s ease;
+    display:inline-flex;align-items:center;gap:7px;
+  }
+  .tab:hover{color:#fff;background:rgba(255,255,255,.085);transform:translateY(-1px)}
+  .tab .n{font-size:11px;opacity:.6}
+  .tab.active{
+    color:#fff;
+    background:linear-gradient(135deg,#ff4d5e,#ff9147);
+    border-color:transparent;
+    box-shadow:0 8px 22px -10px rgba(255,77,94,.9);
+  }
+  .tab.active .n{opacity:.85}
+
+  /* ---------- Grid ---------- */
+  .grid{
+    max-width:1240px;margin:38px auto 0;
+    display:grid;gap:14px;
+    grid-template-columns:repeat(auto-fill,minmax(272px,1fr));
+  }
+  .card{
+    --c:#ff4d5e;
+    position:relative;overflow:hidden;
+    display:flex;gap:13px;align-items:flex-start;
+    padding:16px;
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:16px;
+    text-decoration:none;color:inherit;
+    transition:transform .22s ease,background .22s ease,border-color .22s ease,box-shadow .22s ease;
+    animation:rise .5s cubic-bezier(.22,1,.36,1) backwards;
+  }
+  .card::after{
+    content:'';position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(420px 130px at 0% 0%, var(--c), transparent 72%);
+    opacity:0;transition:opacity .3s ease;
+  }
+  .card:hover{
+    transform:translateY(-4px);
+    background:var(--card-hover);
+    border-color:rgba(255,255,255,.17);
+    box-shadow:0 16px 38px -18px rgba(0,0,0,.85);
+  }
+  .card:hover::after{opacity:.09}
+  .logo{
+    flex:0 0 42px;width:42px;height:42px;border-radius:12px;
+    display:grid;place-items:center;
+    font-size:16px;font-weight:700;letter-spacing:-.02em;
+    color:var(--c);
+    background:rgba(255,255,255,.055);
+    background:color-mix(in srgb, var(--c) 17%, rgba(255,255,255,.03));
+    border:1px solid rgba(255,255,255,.08);
+    border-color:color-mix(in srgb, var(--c) 32%, transparent);
+    transition:transform .22s ease;
+  }
+  .logo.two{font-size:14px;letter-spacing:-.05em}
+  .card:hover .logo{transform:scale(1.06) rotate(-3deg)}
+  .body{min-width:0;flex:1}
+  .name{
+    font-size:15px;font-weight:650;line-height:1.35;
+    display:flex;align-items:center;gap:6px;flex-wrap:wrap;
+  }
+  .name .cn{color:#7f8aa0;font-weight:400;font-size:12.5px}
+  .name .en{
+    font-size:9.5px;font-weight:700;letter-spacing:.08em;
+    color:#9aa5b8;background:rgba(255,255,255,.07);
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:4px;padding:1px 4px;line-height:1.4;
+  }
+  .arrow{
+    font-size:11px;color:var(--muted);
+    opacity:0;transform:translateX(-5px);
+    transition:.22s ease;
+  }
+  .card:hover .arrow{opacity:1;transform:none}
+  .desc{
+    margin-top:5px;font-size:12.5px;line-height:1.55;color:var(--muted);
+    overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;
+  }
+
+  @keyframes rise{
+    from{opacity:0;transform:translateY(14px)}
+    to{opacity:1;transform:none}
+  }
+
+  /* ---------- Empty ---------- */
+  .empty{
+    grid-column:1/-1;text-align:center;padding:70px 0;color:var(--muted);
+  }
+  .empty .big{font-size:38px;margin-bottom:14px;opacity:.5}
+  .empty p{font-size:14px}
+
+  /* ---------- Footer ---------- */
+  footer{
+    max-width:1240px;margin:64px auto 0;
+    padding-top:26px;border-top:1px solid rgba(255,255,255,.07);
+    text-align:center;font-size:12.5px;color:#5f6a80;line-height:1.9;
+  }
+  footer a{color:#8b7f88;text-decoration:none;border-bottom:1px dashed rgba(139,127,136,.4)}
+  footer a:hover{color:var(--accent);border-color:var(--accent)}
+
+  @media (max-width:520px){
+    body{padding:0 16px 50px}
+    header{padding-top:48px}
+    .grid{grid-template-columns:1fr;margin-top:28px}
+  }
+</style>
+</head>
+<body>
+
+<a class="back-home" href="/" aria-label="返回杜绝加密主页">← 返回主页</a>
+
+<header>
+  <div class="badge">NewsNav · 站点索引</div>
+  <h1>新闻导航</h1>
+  <p class="sub">全球中文新闻站点精选 · <b>近九成中文来源</b> · 一站直达</p>
+</header>
+
+<nav class="tabs" id="tabs"><button class="tab active" data-cat="全部">全部<span class="n">59</span></button><button class="tab" data-cat="综合">综合<span class="n">12</span></button><button class="tab" data-cat="财经">财经<span class="n">9</span></button><button class="tab" data-cat="科技">科技<span class="n">10</span></button><button class="tab" data-cat="国际">国际<span class="n">11</span></button><button class="tab" data-cat="深度">深度<span class="n">8</span></button><button class="tab" data-cat="热榜">热榜<span class="n">9</span></button></nav>
+
+<main class="grid" id="grid"><a class="card" href="https://www.thepaper.cn/" target="_blank" rel="noopener noreferrer" style="--c: #e8443f; animation-delay: 0ms;">
+      <div class="logo">澎</div>
+      <div class="body">
+        <div class="name">
+          澎湃新闻
+          <span class="arrow">↗</span>
+        </div>
+        <div class="desc">上海报业旗下，时政与社会议题深度追踪</div>
+      </div></a><a class="card" href="https://www.jiemian.com/" target="_blank" rel="noopener noreferrer" style="--c: #1e7bd6; animation-delay: 18ms;">
+      <div class="logo">界</div>
+      <div class="body">
+        <div class="name">
+          界面新闻
+          <span class="arrow">↗</span>
+        </div>
+        <div class="desc">财经与商业视角的综合新闻平台</div>
+      </div></a><a class="card" href="https://www.bjnews.com.cn/" target="_blank" rel="noopener noreferrer" style="--c: #d7262e; animation-delay: 36ms;">
+      <div class="logo">新</div>
+      <div class="body">
+        <div class="name">
+          新京报
+          <span class="arrow">↗</span>
+        </div>
+        <div class="desc">北京都市报，突发事件与舆论监督见长</div>
+      </div></a><a class="card" href="https://www.chinanews.com.cn/" target="_blank" rel="noopener noreferrer" style="--c: #c8102e; animation-delay: 54ms;">
+      <div class="logo">中</div>
+      <div class="body">
+        <div class="name">
+          中国新闻网<span class="cn">中新网</span>
+          <span class="arrow">↗</span>
+        </div>
+        <div class="desc">中新社旗下，国内外新闻权威发布</div>
+      </div></a><a class="card" href="http://www.news.cn/" target="_blank" rel="noopener noreferrer" style="--c: #b8232f; animation-delay: 72ms;">
+      <div class="logo">新</div>
+      <div class="body">
+        <div class="name">
+          新华网
+          <span class="arrow">↗</span>
+        </div>
+        <div class="desc">国家通讯社主办，权威时政与政策报道</div>
+      </div></a><a class="card" href="http://www.people.com.cn/" target="_blank" rel="noopener noreferrer" style="--c: #c9242b; animation-delay: 90ms;">
+      <div class="logo">人</div>
+      <div class="body">
+        <div class="name">
+          人民网
+          <span class="arrow">↗</span>
+        </div>
+        <div class="desc">人民日报社主办，评论与观点资源丰富</div>
+      </div></a><a class="card" href="https://www.cctv.com/" target="_blank" rel="noopener noreferrer" style="--c: #0a66c2; animation-delay: 108ms;">
+      <div class="logo">央</div>
+      <div class="body">
+        <div class="name">
+          央视网<span class="cn">CCTV</span>
+          <span class="arrow">↗</span>
+        </div>
+        <div class="desc">中央电视台官网，视频新闻与《新闻联播》</div>
+      </div></a><a class="card" href="https://www.guancha.cn/" target="_blank" rel="noopener noreferrer" style="--c: #f05a28; animation-delay: 126ms;">
+      <div class="logo">观</div>
+      <div class="body">
+        <div class="name">
+          观察者网
+          <span class="arrow">↗</span>
+        </div>
+        <div class="desc">国际时政评论与思想类内容聚合</div>
+      </div></a><a class="card" href="https://www.huanqiu.com/" target="_blank" rel="noopener noreferrer" style="--c: #d2001f; animation-delay: 144ms;">
+      <div class="logo">环</div>
+      <div class="body">
+        <div class="name">
+          环球网
+          <span class="arrow">↗</span>
+        </div>
+        <div class="desc">环球时报旗下，国际新闻与军事观察</div>
+      </div></a><a class="card" href="https://www.ifeng.com/" target="_blank" rel="noopener noreferrer" style="--c: #d4312c; animation-delay: 162ms;">
+      <div class="logo">凤</div>
+      <div class="body">
+        <div class="name">
+          凤凰网
+          <span class="arrow">↗</span>
+        </div>
+        <div class="desc">华人视野的综合资讯与评论平台</div>
+      </div></a><a class="card" href="https://news.qq.com/" target="_blank" rel="noopener noreferrer" style="--c: #2b7fff; animation-delay: 180ms;">
+      <div class="logo">腾</div>
+      <div class="body">
+        <div class="name">
+          腾讯新闻
+          <span class="arrow">↗</span>
+        </div>
+        <div class="desc">门户新闻，热点专题与实时推送</div>
+      </div></a><a class="card" href="https://www.oeeee.com/" target="_blank" rel="noopener noreferrer" style="--c: #e2231a; animation-delay: 198ms;">
+      <div class="logo">南</div>
+      <div class="body">
+        <div class="name">
+          南方都市报<span class="cn">南都</span>
+          <span class="arrow">↗</span>
+        </div>
+        <div class="desc">广东都市报，深度调查与社会新闻</div>
+      </div></a><a class="card" href="https://www.caixin.com/" target="_blank" rel="noopener noreferrer" style="--c: #b03a2e; animation-delay: 216ms;">
+      <div class="logo">财</div>
+      <div class="body">
+        <div class="name">
+          财新网
+          <span class="arrow">↗</span>
+        </div>
+        <div class="desc">以深度调查报道著称的专业财经媒体</div>
+      </div></a><a class="card" href="https://www.yicai.com/" target="_blank" rel="noopener noreferrer" style="--c: #d94f2b; animation-delay: 234ms;">
+      <div class="logo">第</div>
+      <div class="body">
+        <div class="name">
+          第一财经
+          <span class="arrow">↗</span>
+        </div>
+        <div class="desc">上海第一财经，宏观、公司与市场资讯</div>
+      </div></a><a class="card" href="https://wallstreetcn.com/" target="_blank" rel="noopener noreferrer" style="--c: #c0392b; animation-delay: 252ms;">
+      <div class="logo">华</div>
+      <div class="body">
+        <div class="name">
+          华尔街见闻
+          <span class="arrow">↗</span>
+        </div>
+        <div class="desc">全球市场快讯与宏观事件实时解读</div>
+      </div></a><a class="card" href="https://www.21jingji.com/" target="_blank" rel="noopener noreferrer" style="--c: #e07b39; animation-delay: 270ms;">
+      <div class="logo two">21</div>
+      <div class="body">
+        <div class="name">
+          21财经<span class="cn">21经济</span>
+          <span class="arrow">↗</span>
+        </div>
+        <div class="desc">21世纪经济报道，产业与区域经济分析</div>
+      </div></a><a class="card" href="https://www.cls.cn/" target="_blank" rel="noopener noreferrer" style="--c: #e63329; animation-delay: 288ms;">
+      <div class="logo">联</div>
+      <div class="body">
+        <div class="name">
+          财联社
+          <span class="arrow">↗</span>
+        </div>
+        <div class="desc">7×24 小时电报式财经快讯</div>
+      </div></a><a class="card" href="https://www.stcn.com/" target="_blank" rel="noopener noreferrer" style="--c: #1d6fb8; animation-delay: 306ms;">
+      <div class="logo">证</div>
+      <div class="body">
+        <div class="name">
+          证券时报
+          <span class="arrow">↗</span>
+        </div>
+        <div class="desc">资本市场与上市公司权威信息披露</div>
+      </div></a><a class="card" href="https://www.eastmoney.com/" target="_blank" rel="noopener noreferrer" style="--c: #e8531f; animation-delay: 324ms;">
+      <div class="logo">东</div>
+      <div class="body">
+        <div class="name">
+          东方财富
+          <span class="arrow">↗</span>
+        </div>
+        <div class="desc">行情、数据与财经资讯一站式门户</div>
+      </div></a><a class="card" href="https://xueqiu.com/" target="_blank" rel="noopener noreferrer" style="--c: #2196f3; animation-delay: 342ms;">
+      <div class="logo">雪</div>
+      <div class="body">
+        <div class="name">
+          雪球
+          <span class="arrow">↗</span>
+        </div>
+        <div class="desc">投资者社区，财报讨论与观点碰撞</div>
+      </div></a><a class="card" href="https://www.bloomberg.com/zh-hans" target="_blank" rel="noopener noreferrer" style="--c: #f0a400; animation-delay: 360ms;">
+      <div class="logo">彭</div>
+      <div class="body">
+        <div class="name">
+          彭博中文<span class="cn">Bloomberg</span>
+          <span class="arrow">↗</span>
+        </div>
+        <div class="desc">彭博社中文版，全球金融与商业视角</div>
+      </div></a><a class="card" href="https://36kr.com/" target="_blank" rel="noopener noreferrer" style="--c: #4b5cff; animation-delay: 378ms;">
+      <div class="logo two">36</div>
+      <div class="body">
+        <div class="name">
+          36氪
+          <span class="arrow">↗</span>
+        </div>
+        <div class="desc">创投与科技商业媒体，新经济风向标</div>
+      </div></a><a class="card" href="https://sspai.com/" target="_blank" rel="noopener noreferrer" style="--c: #e8463a; animation-delay: 396ms;">
+      <div class="logo">少</div>
+      <div class="body">
+        <div class="name">
+          少数派
+          <span class="arrow">↗</span>
+        </div>
+        <div class="desc">数字生活与效率工具的实用内容</div>
+      </div></a><a class="card" href="https://www.ifanr.com/" target="_blank" rel="noopener noreferrer" style="--c: #ff6a00; animation-delay: 396ms;">
+      <div class="logo">爱</div>
+      <div class="body">
+        <div class="name">
+          爱范儿
+          <span class="arrow">↗</span>
+        </div>
+        <div class="desc">消费电子与科技产品体验报道</div>
+      </div></a><a class="card" href="https://www.tmtpost.com/" target="_blank" rel="noopener noreferrer" style="--c: #1a9be0; animation-delay: 396ms;">
+      <div class="logo">钛</div>
+      <div class="body">
+        <div class="name">
+          钛媒体
+          <span class="arrow">↗</span>
+        </div>
+        <div class="desc">科技产业观察与商业趋势分析</div>
+      </div></a><a class="card" href="https://www.jiqizhixin.com/" target="_blank" rel="noopener noreferrer" style="--c: #6c4cff; animation-delay: 396ms;">
+      <div class="logo">机</div>
+      <div class="body">
+        <div class="name">
+          机器之心
+          <span class="arrow">↗</span>
+        </div>
+        <div class="desc">人工智能与机器学习领域专业媒体</div>
+      </div></a><a class="card" href="https://www.qbitai.com/" target="_blank" rel="noopener noreferrer" style="--c: #2d6bff; animation-delay: 396ms;">
+      <div class="logo">量</div>
+      <div class="body">
+        <div class="name">
+          量子位
+          <span class="arrow">↗</span>
+        </div>
+        <div class="desc">AI 前沿动态、大模型与产业落地</div>
+      </div></a><a class="card" href="https://www.ithome.com/" target="_blank" rel="noopener noreferrer" style="--c: #e6222e; animation-delay: 396ms;">
+      <div class="logo two">IT</div>
+      <div class="body">
+        <div class="name">
+          IT之家
+          <span class="arrow">↗</span>
+        </div>
+        <div class="desc">数码资讯与硬件新品快报</div>
+      </div></a><a class="card" href="https://www.huxiu.com/" target="_blank" rel="noopener noreferrer" style="--c: #ff8800; animation-delay: 396ms;">
+      <div class="logo">虎</div>
+      <div class="body">
+        <div class="name">
+          虎嗅
+          <span class="arrow">↗</span>
+        </div>
+        <div class="desc">商业科技资讯与深度评论社区</div>
+      </div></a><a class="card" href="https://techcrunch.com/" target="_blank" rel="noopener noreferrer" style="--c: #00b96b; animation-delay: 396ms;">
+      <div class="logo two">TC</div>
+      <div class="body">
+        <div class="name">
+          TechCrunch<span class="en">EN</span>
+          <span class="arrow">↗</span>
+        </div>
+        <div class="desc">全球创业公司与风险投资报道</div>
+      </div></a><a class="card" href="https://www.theverge.com/" target="_blank" rel="noopener noreferrer" style="--c: #ff4d4d; animation-delay: 396ms;">
+      <div class="logo">V</div>
+      <div class="body">
+        <div class="name">
+          The Verge<span class="en">EN</span>
+          <span class="arrow">↗</span>
+        </div>
+        <div class="desc">消费科技与数字文化深度报道</div>
+      </div></a><a class="card" href="https://www.cankaoxiaoxi.com/" target="_blank" rel="noopener noreferrer" style="--c: #c8102e; animation-delay: 396ms;">
+      <div class="logo">参</div>
+      <div class="body">
+        <div class="name">
+          参考消息
+          <span class="arrow">↗</span>
+        </div>
+        <div class="desc">外媒报道中文译介，国际视野窗口</div>
+      </div></a><a class="card" href="http://cn.chinadaily.com.cn/" target="_blank" rel="noopener noreferrer" style="--c: #1f6feb; animation-delay: 396ms;">
+      <div class="logo">C</div>
+      <div class="body">
+        <div class="name">
+          中国日报中文网
+          <span class="arrow">↗</span>
+        </div>
+        <div class="desc">对外传播视角的中国与国际报道</div>
+      </div></a><a class="card" href="https://www.bbc.com/zhongwen" target="_blank" rel="noopener noreferrer" style="--c: #bb1919; animation-delay: 396ms;">
+      <div class="logo">B</div>
+      <div class="body">
+        <div class="name">
+          BBC 中文
+          <span class="arrow">↗</span>
+        </div>
+        <div class="desc">英国广播公司中文频道，国际新闻</div>
+      </div></a><a class="card" href="https://cn.nytimes.com/" target="_blank" rel="noopener noreferrer" style="--c: #5b5b5b; animation-delay: 396ms;">
+      <div class="logo">纽</div>
+      <div class="body">
+        <div class="name">
+          纽约时报中文网
+          <span class="arrow">↗</span>
+        </div>
+        <div class="desc">纽时中文版，国际时政与文化评论</div>
+      </div></a><a class="card" href="https://www.zaobao.com.sg/" target="_blank" rel="noopener noreferrer" style="--c: #e03e2d; animation-delay: 396ms;">
+      <div class="logo">联</div>
+      <div class="body">
+        <div class="name">
+          联合早报
+          <span class="arrow">↗</span>
+        </div>
+        <div class="desc">新加坡中文媒体，东南亚与两岸观察</div>
+      </div></a><a class="card" href="https://theinitium.com/" target="_blank" rel="noopener noreferrer" style="--c: #f2b01e; animation-delay: 396ms;">
+      <div class="logo">端</div>
+      <div class="body">
+        <div class="name">
+          端传媒
+          <span class="arrow">↗</span>
+        </div>
+        <div class="desc">独立深度报道，聚焦两岸三地与亚洲</div>
+      </div></a><a class="card" href="https://www.dw.com/zh" target="_blank" rel="noopener noreferrer" style="--c: #0f5fb5; animation-delay: 396ms;">
+      <div class="logo two">DW</div>
+      <div class="body">
+        <div class="name">
+          德国之声中文<span class="cn">DW</span>
+          <span class="arrow">↗</span>
+        </div>
+        <div class="desc">德国公共广播机构中文频道</div>
+      </div></a><a class="card" href="https://www.rfi.fr/cn" target="_blank" rel="noopener noreferrer" style="--c: #1a3d7c; animation-delay: 396ms;">
+      <div class="logo two">RF</div>
+      <div class="body">
+        <div class="name">
+          法广中文<span class="cn">RFI</span>
+          <span class="arrow">↗</span>
+        </div>
+        <div class="desc">法国国际广播电台中文新闻与专题</div>
+      </div></a><a class="card" href="https://www3.nhk.or.jp/nhkworld/zh/" target="_blank" rel="noopener noreferrer" style="--c: #3a7bd5; animation-delay: 396ms;">
+      <div class="logo">N</div>
+      <div class="body">
+        <div class="name">
+          NHK 中文
+          <span class="arrow">↗</span>
+        </div>
+        <div class="desc">日本放送协会中文国际频道</div>
+      </div></a><a class="card" href="https://www.theguardian.com/" target="_blank" rel="noopener noreferrer" style="--c: #0b5aa5; animation-delay: 396ms;">
+      <div class="logo">G</div>
+      <div class="body">
+        <div class="name">
+          The Guardian<span class="cn">卫报</span><span class="en">EN</span>
+          <span class="arrow">↗</span>
+        </div>
+        <div class="desc">英国卫报，国际调查与深度评论</div>
+      </div></a><a class="card" href="https://apnews.com/" target="_blank" rel="noopener noreferrer" style="--c: #d0021b; animation-delay: 396ms;">
+      <div class="logo two">AP</div>
+      <div class="body">
+        <div class="name">
+          AP News<span class="en">EN</span>
+          <span class="arrow">↗</span>
+        </div>
+        <div class="desc">美联社新闻，全球事件即时报道</div>
+      </div></a><a class="card" href="https://www.infzm.com/" target="_blank" rel="noopener noreferrer" style="--c: #c9222b; animation-delay: 396ms;">
+      <div class="logo">南</div>
+      <div class="body">
+        <div class="name">
+          南方周末
+          <span class="arrow">↗</span>
+        </div>
+        <div class="desc">老牌深度报道媒体，调查与特稿见长</div>
+      </div></a><a class="card" href="https://www.lifeweek.com.cn/" target="_blank" rel="noopener noreferrer" style="--c: #e84c3d; animation-delay: 396ms;">
+      <div class="logo">三</div>
+      <div class="body">
+        <div class="name">
+          三联生活周刊
+          <span class="arrow">↗</span>
+        </div>
+        <div class="desc">文化、社会与生活方式的长文报道</div>
+      </div></a><a class="card" href="https://www.renwumag.com/" target="_blank" rel="noopener noreferrer" style="--c: #8e6cd8; animation-delay: 396ms;">
+      <div class="logo">人</div>
+      <div class="body">
+        <div class="name">
+          人物
+          <span class="arrow">↗</span>
+        </div>
+        <div class="desc">人物特稿与非虚构写作标杆</div>
+      </div></a><a class="card" href="https://www.inewsweek.cn/" target="_blank" rel="noopener noreferrer" style="--c: #d13b3b; animation-delay: 396ms;">
+      <div class="logo">周</div>
+      <div class="body">
+        <div class="name">
+          中国新闻周刊
+          <span class="arrow">↗</span>
+        </div>
+        <div class="desc">时政社会深度报道与专题策划</div>
+      </div></a><a class="card" href="https://www.nfcmag.com/" target="_blank" rel="noopener noreferrer" style="--c: #1f7a5c; animation-delay: 396ms;">
+      <div class="logo">风</div>
+      <div class="body">
+        <div class="name">
+          南风窗
+          <span class="arrow">↗</span>
+        </div>
+        <div class="desc">政经深度报道与思想评论</div>
+      </div></a><a class="card" href="https://www.vistastory.com/" target="_blank" rel="noopener noreferrer" style="--c: #e2651f; animation-delay: 396ms;">
+      <div class="logo">V</div>
+      <div class="body">
+        <div class="name">
+          Vista看天下
+          <span class="arrow">↗</span>
+        </div>
+        <div class="desc">青年视角的社会观察与特稿</div>
+      </div></a><a class="card" href="https://renjian.163.com/" target="_blank" rel="noopener noreferrer" style="--c: #e33b3b; animation-delay: 396ms;">
+      <div class="logo">间</div>
+      <div class="body">
+        <div class="name">
+          网易人间
+          <span class="arrow">↗</span>
+        </div>
+        <div class="desc">非虚构写作平台，普通人真实故事</div>
+      </div></a><a class="card" href="http://zqb.cyol.com/" target="_blank" rel="noopener noreferrer" style="--c: #2f6fb5; animation-delay: 396ms;">
+      <div class="logo">冰</div>
+      <div class="body">
+        <div class="name">
+          冰点周刊
+          <span class="arrow">↗</span>
+        </div>
+        <div class="desc">中国青年报特稿栏目，长期主义报道</div>
+      </div></a><a class="card" href="https://tophub.today/" target="_blank" rel="noopener noreferrer" style="--c: #ff5c35; animation-delay: 396ms;">
+      <div class="logo">热</div>
+      <div class="body">
+        <div class="name">
+          今日热榜
+          <span class="arrow">↗</span>
+        </div>
+        <div class="desc">全网各平台热榜聚合，一屏看尽热点</div>
+      </div></a><a class="card" href="https://www.anyknew.com/" target="_blank" rel="noopener noreferrer" style="--c: #00b3a4; animation-delay: 396ms;">
+      <div class="logo">A</div>
+      <div class="body">
+        <div class="name">
+          AnyKnew
+          <span class="arrow">↗</span>
+        </div>
+        <div class="desc">极简热点聚合，按平台分类浏览</div>
+      </div></a><a class="card" href="https://top.baidu.com/board?tab=realtime" target="_blank" rel="noopener noreferrer" style="--c: #2932e1; animation-delay: 396ms;">
+      <div class="logo">百</div>
+      <div class="body">
+        <div class="name">
+          百度热搜
+          <span class="arrow">↗</span>
+        </div>
+        <div class="desc">中文互联网最大搜索热榜</div>
+      </div></a><a class="card" href="https://s.weibo.com/top/summary" target="_blank" rel="noopener noreferrer" style="--c: #e6162d; animation-delay: 396ms;">
+      <div class="logo">微</div>
+      <div class="body">
+        <div class="name">
+          微博热搜
+          <span class="arrow">↗</span>
+        </div>
+        <div class="desc">社交舆论场风向标，实时热点榜</div>
+      </div></a><a class="card" href="https://www.zhihu.com/hot" target="_blank" rel="noopener noreferrer" style="--c: #0084ff; animation-delay: 396ms;">
+      <div class="logo">知</div>
+      <div class="body">
+        <div class="name">
+          知乎热榜
+          <span class="arrow">↗</span>
+        </div>
+        <div class="desc">话题讨论与专业问答热点</div>
+      </div></a><a class="card" href="https://rsshub.app/" target="_blank" rel="noopener noreferrer" style="--c: #f2703c; animation-delay: 396ms;">
+      <div class="logo">R</div>
+      <div class="body">
+        <div class="name">
+          RSSHub
+          <span class="arrow">↗</span>
+        </div>
+        <div class="desc">万能 RSS 源生成，把任意站点变成订阅</div>
+      </div></a><a class="card" href="https://news.google.com/" target="_blank" rel="noopener noreferrer" style="--c: #4285f4; animation-delay: 396ms;">
+      <div class="logo">G</div>
+      <div class="body">
+        <div class="name">
+          Google 新闻<span class="en">EN</span>
+          <span class="arrow">↗</span>
+        </div>
+        <div class="desc">谷歌新闻聚合，多语言个性化推荐</div>
+      </div></a><a class="card" href="https://feedly.com/" target="_blank" rel="noopener noreferrer" style="--c: #2bb24c; animation-delay: 396ms;">
+      <div class="logo">F</div>
+      <div class="body">
+        <div class="name">
+          Feedly<span class="en">EN</span>
+          <span class="arrow">↗</span>
+        </div>
+        <div class="desc">主流 RSS 阅读器，订阅管理利器</div>
+      </div></a><a class="card" href="https://www.inoreader.com/" target="_blank" rel="noopener noreferrer" style="--c: #1d6ff2; animation-delay: 396ms;">
+      <div class="logo two">IO</div>
+      <div class="body">
+        <div class="name">
+          Inoreader<span class="en">EN</span>
+          <span class="arrow">↗</span>
+        </div>
+        <div class="desc">功能强大的 RSS 聚合与自动化阅读</div>
+      </div></a></main>
+
+<footer>
+  <div>所有链接均指向各媒体的官方网站，本站不转载、不存储任何新闻内容。</div>
+  <div><a href="/">← 返回杜绝加密主页</a></div>
+  <div>© <span id="year">2026</span> NewsNav</div>
+</footer>
+
+<script>
+/* ================= 数据 ================= */
+/* en: true 表示英文站点，用于标识 */
+const SITES = [
+  /* ---------------- 综合 ---------------- */
+  { name:'澎湃新闻', cn:'',   cat:'综合', color:'#e8443f', icon:'澎', url:'https://www.thepaper.cn',            desc:'上海报业旗下，时政与社会议题深度追踪', kw:'时政 社会 调查' },
+  { name:'界面新闻', cn:'',   cat:'综合', color:'#1e7bd6', icon:'界', url:'https://www.jiemian.com',             desc:'财经与商业视角的综合新闻平台', kw:'商业 财经 公司' },
+  { name:'新京报',   cn:'',   cat:'综合', color:'#d7262e', icon:'新', url:'https://www.bjnews.com.cn',           desc:'北京都市报，突发事件与舆论监督见长', kw:'北京 社会 突发' },
+  { name:'中国新闻网', cn:'中新网', cat:'综合', color:'#c8102e', icon:'中', url:'https://www.chinanews.com.cn',   desc:'中新社旗下，国内外新闻权威发布', kw:'权威 国内外 官方' },
+  { name:'新华网',   cn:'',   cat:'综合', color:'#b8232f', icon:'新', url:'http://www.news.cn',                  desc:'国家通讯社主办，权威时政与政策报道', kw:'官方 时政 政策' },
+  { name:'人民网',   cn:'',   cat:'综合', color:'#c9242b', icon:'人', url:'http://www.people.com.cn',            desc:'人民日报社主办，评论与观点资源丰富', kw:'官方 评论 观点' },
+  { name:'央视网',   cn:'CCTV', cat:'综合', color:'#0a66c2', icon:'央', url:'https://www.cctv.com',              desc:'中央电视台官网，视频新闻与《新闻联播》', kw:'视频 新闻联播 电视' },
+  { name:'观察者网', cn:'',   cat:'综合', color:'#f05a28', icon:'观', url:'https://www.guancha.cn',              desc:'国际时政评论与思想类内容聚合', kw:'国际 评论 时政' },
+  { name:'环球网',   cn:'',   cat:'综合', color:'#d2001f', icon:'环', url:'https://www.huanqiu.com',             desc:'环球时报旗下，国际新闻与军事观察', kw:'国际 军事 环球时报' },
+  { name:'凤凰网',   cn:'',   cat:'综合', color:'#d4312c', icon:'凤', url:'https://www.ifeng.com',               desc:'华人视野的综合资讯与评论平台', kw:'资讯 评论 华人' },
+  { name:'腾讯新闻', cn:'',   cat:'综合', color:'#2b7fff', icon:'腾', url:'https://news.qq.com',                 desc:'门户新闻，热点专题与实时推送', kw:'门户 热点 专题' },
+  { name:'南方都市报', cn:'南都', cat:'综合', color:'#e2231a', icon:'南', url:'https://www.oeeee.com',           desc:'广东都市报，深度调查与社会新闻', kw:'广州 调查 社会' },
+
+  /* ---------------- 财经 ---------------- */
+  { name:'财新网',   cn:'',   cat:'财经', color:'#b03a2e', icon:'财', url:'https://www.caixin.com',              desc:'以深度调查报道著称的专业财经媒体', kw:'调查 财经 专业' },
+  { name:'第一财经', cn:'',   cat:'财经', color:'#d94f2b', icon:'第', url:'https://www.yicai.com',               desc:'上海第一财经，宏观、公司与市场资讯', kw:'宏观 市场 公司' },
+  { name:'华尔街见闻', cn:'', cat:'财经', color:'#c0392b', icon:'华', url:'https://wallstreetcn.com',            desc:'全球市场快讯与宏观事件实时解读', kw:'市场 快讯 宏观' },
+  { name:'21财经',   cn:'21经济', cat:'财经', color:'#e07b39', icon:'21', url:'https://www.21jingji.com',        desc:'21世纪经济报道，产业与区域经济分析', kw:'产业 经济 分析' },
+  { name:'财联社',   cn:'',   cat:'财经', color:'#e63329', icon:'联', url:'https://www.cls.cn',                  desc:'7×24 小时电报式财经快讯', kw:'快讯 电报 实时' },
+  { name:'证券时报', cn:'',   cat:'财经', color:'#1d6fb8', icon:'证', url:'https://www.stcn.com',                desc:'资本市场与上市公司权威信息披露', kw:'证券 股票 上市' },
+  { name:'东方财富', cn:'',   cat:'财经', color:'#e8531f', icon:'东', url:'https://www.eastmoney.com',           desc:'行情、数据与财经资讯一站式门户', kw:'行情 数据 股票' },
+  { name:'雪球',     cn:'',   cat:'财经', color:'#2196f3', icon:'雪', url:'https://xueqiu.com',                  desc:'投资者社区，财报讨论与观点碰撞', kw:'投资 社区 观点' },
+  { name:'彭博中文', cn:'Bloomberg', cat:'财经', color:'#f0a400', icon:'彭', url:'https://www.bloomberg.com/zh-hans', desc:'彭博社中文版，全球金融与商业视角', kw:'全球 金融 商业' },
+
+  /* ---------------- 科技 ---------------- */
+  { name:'36氪',     cn:'',   cat:'科技', color:'#4b5cff', icon:'36', url:'https://36kr.com',                    desc:'创投与科技商业媒体，新经济风向标', kw:'创投 新经济 创业' },
+  { name:'少数派',   cn:'',   cat:'科技', color:'#e8463a', icon:'少', url:'https://sspai.com',                   desc:'数字生活与效率工具的实用内容', kw:'效率 工具 数字生活' },
+  { name:'爱范儿',   cn:'',   cat:'科技', color:'#ff6a00', icon:'爱', url:'https://www.ifanr.com',               desc:'消费电子与科技产品体验报道', kw:'数码 产品 评测' },
+  { name:'钛媒体',   cn:'',   cat:'科技', color:'#1a9be0', icon:'钛', url:'https://www.tmtpost.com',             desc:'科技产业观察与商业趋势分析', kw:'产业 趋势 观察' },
+  { name:'机器之心', cn:'',   cat:'科技', color:'#6c4cff', icon:'机', url:'https://www.jiqizhixin.com',          desc:'人工智能与机器学习领域专业媒体', kw:'AI 机器学习 论文' },
+  { name:'量子位',   cn:'',   cat:'科技', color:'#2d6bff', icon:'量', url:'https://www.qbitai.com',              desc:'AI 前沿动态、大模型与产业落地', kw:'AI 大模型 前沿' },
+  { name:'IT之家',   cn:'',   cat:'科技', color:'#e6222e', icon:'IT', url:'https://www.ithome.com',              desc:'数码资讯与硬件新品快报', kw:'数码 硬件 快报' },
+  { name:'虎嗅',     cn:'',   cat:'科技', color:'#ff8800', icon:'虎', url:'https://www.huxiu.com',               desc:'商业科技资讯与深度评论社区', kw:'商业 评论 科技' },
+  { name:'TechCrunch', cn:'', cat:'科技', color:'#00b96b', icon:'TC', url:'https://techcrunch.com', en:true,      desc:'全球创业公司与风险投资报道', kw:'创业 融资 硅谷' },
+  { name:'The Verge',  cn:'', cat:'科技', color:'#ff4d4d', icon:'V',  url:'https://www.theverge.com', en:true,    desc:'消费科技与数字文化深度报道', kw:'消费科技 数码 文化' },
+
+  /* ---------------- 国际 ---------------- */
+  { name:'参考消息', cn:'',   cat:'国际', color:'#c8102e', icon:'参', url:'https://www.cankaoxiaoxi.com',        desc:'外媒报道中文译介，国际视野窗口', kw:'外媒 译介 国际' },
+  { name:'中国日报中文网', cn:'', cat:'国际', color:'#1f6feb', icon:'C', url:'http://cn.chinadaily.com.cn',     desc:'对外传播视角的中国与国际报道', kw:'对外 中国 国际' },
+  { name:'BBC 中文', cn:'',   cat:'国际', color:'#bb1919', icon:'B',  url:'https://www.bbc.com/zhongwen',        desc:'英国广播公司中文频道，国际新闻', kw:'英国 国际 中文' },
+  { name:'纽约时报中文网', cn:'', cat:'国际', color:'#5b5b5b', icon:'纽', url:'https://cn.nytimes.com',          desc:'纽时中文版，国际时政与文化评论', kw:'美国 时政 文化' },
+  { name:'联合早报', cn:'',   cat:'国际', color:'#e03e2d', icon:'联', url:'https://www.zaobao.com.sg',           desc:'新加坡中文媒体，东南亚与两岸观察', kw:'新加坡 东南亚 两岸' },
+  { name:'端传媒',   cn:'',   cat:'国际', color:'#f2b01e', icon:'端', url:'https://theinitium.com',              desc:'独立深度报道，聚焦两岸三地与亚洲', kw:'深度 亚洲 独立' },
+  { name:'德国之声中文', cn:'DW', cat:'国际', color:'#0f5fb5', icon:'DW', url:'https://www.dw.com/zh',          desc:'德国公共广播机构中文频道', kw:'德国 欧洲 公共' },
+  { name:'法广中文', cn:'RFI', cat:'国际', color:'#1a3d7c', icon:'RF', url:'https://www.rfi.fr/cn',            desc:'法国国际广播电台中文新闻与专题', kw:'法国 欧洲 广播' },
+  { name:'NHK 中文', cn:'',   cat:'国际', color:'#3a7bd5', icon:'N',  url:'https://www3.nhk.or.jp/nhkworld/zh/', desc:'日本放送协会中文国际频道', kw:'日本 亚洲 国际' },
+  { name:'The Guardian', cn:'卫报', cat:'国际', color:'#0b5aa5', icon:'G', url:'https://www.theguardian.com', en:true, desc:'英国卫报，国际调查与深度评论', kw:'英国 调查 评论' },
+  { name:'AP News',  cn:'',   cat:'国际', color:'#d0021b', icon:'AP', url:'https://apnews.com', en:true,           desc:'美联社新闻，全球事件即时报道', kw:'美联社 通讯社 即时' },
+
+  /* ---------------- 深度 ---------------- */
+  { name:'南方周末', cn:'',   cat:'深度', color:'#c9222b', icon:'南', url:'https://www.infzm.com',               desc:'老牌深度报道媒体，调查与特稿见长', kw:'特稿 调查 深度' },
+  { name:'三联生活周刊', cn:'', cat:'深度', color:'#e84c3d', icon:'三', url:'https://www.lifeweek.com.cn',       desc:'文化、社会与生活方式的长文报道', kw:'文化 生活 长文' },
+  { name:'人物',     cn:'',   cat:'深度', color:'#8e6cd8', icon:'人', url:'https://www.renwumag.com',            desc:'人物特稿与非虚构写作标杆', kw:'特稿 非虚构 人物' },
+  { name:'中国新闻周刊', cn:'', cat:'深度', color:'#d13b3b', icon:'周', url:'https://www.inewsweek.cn',          desc:'时政社会深度报道与专题策划', kw:'时政 专题 社会' },
+  { name:'南风窗',   cn:'',   cat:'深度', color:'#1f7a5c', icon:'风', url:'https://www.nfcmag.com',              desc:'政经深度报道与思想评论', kw:'政经 评论 思想' },
+  { name:'Vista看天下', cn:'', cat:'深度', color:'#e2651f', icon:'V',  url:'https://www.vistastory.com',         desc:'青年视角的社会观察与特稿', kw:'观察 青年 特稿' },
+  { name:'网易人间', cn:'',   cat:'深度', color:'#e33b3b', icon:'间', url:'https://renjian.163.com',             desc:'非虚构写作平台，普通人真实故事', kw:'非虚构 故事 真实' },
+  { name:'冰点周刊', cn:'',   cat:'深度', color:'#2f6fb5', icon:'冰', url:'http://zqb.cyol.com',                 desc:'中国青年报特稿栏目，长期主义报道', kw:'特稿 中青报 深度' },
+
+  /* ---------------- 热榜 / 工具 ---------------- */
+  { name:'今日热榜', cn:'',   cat:'热榜', color:'#ff5c35', icon:'热', url:'https://tophub.today',                desc:'全网各平台热榜聚合，一屏看尽热点', kw:'热榜 聚合 热点' },
+  { name:'AnyKnew',  cn:'',   cat:'热榜', color:'#00b3a4', icon:'A',  url:'https://www.anyknew.com',             desc:'极简热点聚合，按平台分类浏览', kw:'热点 极简 聚合' },
+  { name:'百度热搜', cn:'',   cat:'热榜', color:'#2932e1', icon:'百', url:'https://top.baidu.com/board?tab=realtime', desc:'中文互联网最大搜索热榜', kw:'热搜 百度 实时' },
+  { name:'微博热搜', cn:'',   cat:'热榜', color:'#e6162d', icon:'微', url:'https://s.weibo.com/top/summary',     desc:'社交舆论场风向标，实时热点榜', kw:'热搜 社交 舆论' },
+  { name:'知乎热榜', cn:'',   cat:'热榜', color:'#0084ff', icon:'知', url:'https://www.zhihu.com/hot',           desc:'话题讨论与专业问答热点', kw:'讨论 问答 热点' },
+  { name:'RSSHub',   cn:'',   cat:'热榜', color:'#f2703c', icon:'R',  url:'https://rsshub.app',                  desc:'万能 RSS 源生成，把任意站点变成订阅', kw:'RSS 订阅 开源' },
+  { name:'Google 新闻', cn:'', cat:'热榜', color:'#4285f4', icon:'G', url:'https://news.google.com', en:true,     desc:'谷歌新闻聚合，多语言个性化推荐', kw:'聚合 推荐 多语言' },
+  { name:'Feedly',   cn:'',   cat:'热榜', color:'#2bb24c', icon:'F',  url:'https://feedly.com', en:true,           desc:'主流 RSS 阅读器，订阅管理利器', kw:'RSS 阅读器 订阅' },
+  { name:'Inoreader', cn:'',  cat:'热榜', color:'#1d6ff2', icon:'IO', url:'https://www.inoreader.com', en:true,    desc:'功能强大的 RSS 聚合与自动化阅读', kw:'RSS 聚合 自动化' }
+];
+
+/* ================= 渲染逻辑 ================= */
+const gridEl   = document.getElementById('grid');
+const tabsEl   = document.getElementById('tabs');
+tabsEl.innerHTML = '';
+
+const CATS = ['全部', ...new Set(SITES.map(s => s.cat))];
+let currentCat = '全部';
+
+/* 分类标签 */
+CATS.forEach(cat => {
+  const count = cat === '全部' ? SITES.length : SITES.filter(s => s.cat === cat).length;
+  const btn = document.createElement('button');
+  btn.className = 'tab' + (cat === '全部' ? ' active' : '');
+  btn.dataset.cat = cat;
+  btn.innerHTML = `${cat}<span class="n">${count}</span>`;
+  btn.addEventListener('click', () => {
+    currentCat = cat;
+    document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.cat === cat));
+    render();
+  });
+  tabsEl.appendChild(btn);
+});
+
+/* 卡片渲染 */
+function render() {
+  const list = SITES.filter(s => currentCat === '全部' || s.cat === currentCat);
+
+  gridEl.innerHTML = '';
+
+  const frag = document.createDocumentFragment();
+  list.forEach((s, i) => {
+    const a = document.createElement('a');
+    a.className = 'card';
+    a.href = s.url;
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+    a.style.setProperty('--c', s.color);
+    a.style.animationDelay = Math.min(i, 22) * 18 + 'ms';
+    a.innerHTML = `
+      <div class="logo${s.icon.length > 1 ? ' two' : ''}">${s.icon}</div>
+      <div class="body">
+        <div class="name">
+          ${s.name}${s.cn ? `<span class="cn">${s.cn}</span>` : ''}${s.en ? '<span class="en">EN</span>' : ''}
+          <span class="arrow">↗</span>
+        </div>
+        <div class="desc">${s.desc}</div>
+      </div>`;
+    frag.appendChild(a);
+  });
+  gridEl.appendChild(frag);
+}
+
+document.getElementById('year').textContent = new Date().getFullYear();
+
+render();
+</script>
+
+</body></html>
