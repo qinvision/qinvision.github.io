@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>杜绝加密 · 个人空间</title>
-<meta name="description" content="杜绝加密的个人空间：手记、电台、族谱与影视导航。山河为卷，笔墨为家。">
+<meta name="description" content="杜绝加密的个人空间：手记、电台、族谱、影视导航与新闻导航。山河为卷，笔墨为家。">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='10' fill='%23c33a2b'/%3E%3Ctext x='50' y='53' font-size='62' fill='%23f3ead9' text-anchor='middle' dominant-baseline='middle' font-family='serif'%3E杜%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://miaoda.feishu.cn">
 <link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500&display=swap">
@@ -245,21 +245,23 @@ html[data-theme="paper"] #about::before{display:none}
 #rooms{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);
   max-width:none;padding-left:0;padding-right:0}
 .rooms-wrap{max-width:var(--wrap);margin:0 auto;padding:0 clamp(22px,4vw,40px)}
-.rooms{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line2)}
+.rooms{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--line2)}
 .room{
   position:relative;display:flex;flex-direction:column;gap:16px;
   padding:clamp(26px,3vw,40px) clamp(18px,2.4vw,32px) clamp(28px,3.4vw,44px);
-  border-right:1px solid var(--line);text-align:left;cursor:pointer;
+  border-right:1px solid var(--line);border-bottom:1px solid var(--line);
+  text-align:left;cursor:pointer;
   transition:background .35s var(--ease), color .35s;
 }
-.room:last-child{border-right:none}
+.room:nth-child(4n){border-right:none}
+.room:last-child{border-bottom:none}
 .room .no{
   font-family:var(--serif);font-size:12px;letter-spacing:.2em;color:var(--dim2);
   display:flex;align-items:center;gap:10px;
 }
 .room .no i{display:block;width:22px;height:1px;background:var(--line2)}
 .room h3{
-  font-family:var(--serif);font-weight:700;font-size:clamp(26px,2.6vw,34px);
+  font-family:var(--serif);font-weight:700;font-size:clamp(23px,1.9vw,29px);
   letter-spacing:.12em;line-height:1.2;
 }
 .room .desc{font-size:13px;line-height:2;color:var(--dim);letter-spacing:.02em;max-width:22em}
@@ -272,9 +274,16 @@ html[data-theme="paper"] #about::before{display:none}
 .room:hover{background:color-mix(in srgb, var(--ink) 5%, transparent)}
 .room:hover h3{color:var(--seal)}
 .room:focus-visible{outline-offset:-4px}
-@media(max-width:860px){
+@media(max-width:999px){
+  .rooms{grid-template-columns:repeat(2,1fr)}
+  .room:nth-child(4n){border-right:1px solid var(--line)}
+  .room:nth-child(2n){border-right:none}
+  .room:nth-child(n+3){border-bottom:none}
+}
+@media(max-width:600px){
   .rooms{grid-template-columns:1fr}
-  .room{border-right:none;border-bottom:1px solid var(--line)}
+  .room{border-right:none}
+  .room:nth-child(n+3){border-bottom:1px solid var(--line)}
   .room:last-child{border-bottom:none}
 }
 
@@ -508,6 +517,7 @@ footer a:hover{color:var(--ink)}
         族谱
       </button>
       <a href="https://mydjjm.cn/media/" target="_blank" rel="noopener">影视导航</a>
+      <a href="/news/" target="_blank" rel="noopener">新闻导航</a>
     </div>
   </div>
 
@@ -572,9 +582,9 @@ footer a:hover{color:var(--ink)}
     <div class="sec-head">
       <div class="sec-title">
         <h2>空间</h2>
-        <span>三 个 房 间</span>
+        <span>四 个 房 间</span>
       </div>
-      <p class="sec-note">声音 · 世系 · 影像</p>
+      <p class="sec-note">声音 · 世系 · 影像 · 资讯</p>
     </div>
 
     <div class="rooms">
@@ -607,6 +617,16 @@ footer a:hover{color:var(--ink)}
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
         </span>
       </a>
+
+      <a class="room" href="/news/" target="_blank" rel="noopener">
+        <span class="no"><i></i>04</span>
+        <h3>新闻导航</h3>
+        <p class="desc">五十九家中、外新闻站点，按综合、财经、科技、国际、深度与热榜归置，一站直达。</p>
+        <span class="state">
+          打开资讯导航
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
+        </span>
+      </a>
     </div>
   </div>
 </section>
@@ -617,7 +637,7 @@ footer a:hover{color:var(--ink)}
     <div class="about-poem" aria-hidden="true">山水有相逢<br>笔墨不加密</div>
     <div class="about-text">
       <p class="lead">这里原来只是一个放链接的页面。</p>
-      <p>后来链接越攒越多，就想给它一点地方：能写字，能放声音，也能把家里那些名字存下来。于是有了这三个房间，和上面这些手记。</p>
+      <p>后来链接越攒越多，就想给它一点地方：能写字，能放声音，存下家里的名字，也留一处看新闻的索引。于是有了这四个房间，和上面这些手记。</p>
       <p>站点还在整理。旧的东西一样一样搬过来，新的东西慢慢写。不追更新频率，也不做订阅推送——想起来了，就上来看一眼。</p>
       <div class="about-sign"><span class="stamp" aria-hidden="true">杜</span>二〇二六年秋 · 记于山中</div>
     </div>
