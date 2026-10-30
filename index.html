@@ -1,186 +1,218 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="paper"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>杜绝加密 · 个人空间</title><meta name="description" content="杜绝加密的个人空间：手记、电台、族谱、影视导航与新闻导航。山河为卷，笔墨为家。"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='10' fill='%23c33a2b'/%3E%3Ctext x='50' y='53' font-size='62' fill='%23f3ead9' text-anchor='middle' dominant-baseline='middle' font-family='serif'%3E%E6%9D%9C%3C/text%3E%3C/svg%3E"><link rel="preconnect" href="https://miaoda.feishu.cn/"><link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500&display=swap"><style>/* ===== 变量：十套纸色（默认亮色 · 宣纸） ===== */:root{ --serif:"Noto Serif SC","Songti SC","STSong","SimSun",serif; --sans:"Noto Sans SC","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif; --hero-ink:#f1e8d8; --wrap:1180px; --ease:cubic-bezier(.22,1,.36,1);}/* ---------- 亮色五套 ---------- */html[data-theme="paper"]{ --bg:#eee9df; --bg2:#f5f1e8; --bg3:#e7e1d5; --ink:#1c1b18; --dim:#5f5a50; --dim2:#8b8578; --line:rgba(28,27,24,.15); --line2:rgba(28,27,24,.34); --seal:#b03527; --seal-soft:rgba(176,53,39,.12);}html[data-theme="rice"]{ --bg:#e9eeea; --bg2:#f3f6f3; --bg3:#dfe7e0; --ink:#1d2420; --dim:#5a655e; --dim2:#86918a; --line:rgba(29,36,32,.14); --line2:rgba(29,36,32,.32); --seal:#3f7d5a; --seal-soft:rgba(63,125,90,.12);}html[data-theme="cream"]{ --bg:#f4ecd9; --bg2:#faf3e2; --bg3:#ece1c8; --ink:#262015; --dim:#6b5f47; --dim2:#94876a; --line:rgba(38,32,21,.14); --line2:rgba(38,32,21,.32); --seal:#b5622a; --seal-soft:rgba(181,98,42,.12);}html[data-theme="mist"]{ --bg:#e8edf2; --bg2:#f2f5f9; --bg3:#dde5ec; --ink:#1a222c; --dim:#586573; --dim2:#83909d; --line:rgba(26,34,44,.14); --line2:rgba(26,34,44,.32); --seal:#3a6fb0; --seal-soft:rgba(58,111,176,.12);}html[data-theme="sand"]{ --bg:#eee5da; --bg2:#f5ede3; --bg3:#e6d9c9; --ink:#241c15; --dim:#67594a; --dim2:#918271; --line:rgba(36,28,21,.14); --line2:rgba(36,28,21,.32); --seal:#a85734; --seal-soft:rgba(168,87,52,.12);}/* ---------- 暗色五套 ---------- */html[data-theme="ink"]{ --bg:#07080b; --bg2:#0c0e13; --bg3:#11141a; --ink:#ece3d3; --dim:#9b9486; --dim2:#6b6659; --line:rgba(236,227,211,.14); --line2:rgba(236,227,211,.28); --seal:#c33a2b; --seal-soft:rgba(195,58,43,.16);}html[data-theme="pine"]{ --bg:#08100c; --bg2:#0d1712; --bg3:#122019; --ink:#e3ece2; --dim:#93a394; --dim2:#637466; --line:rgba(227,236,226,.14); --line2:rgba(227,236,226,.28); --seal:#c05a3a; --seal-soft:rgba(192,90,58,.16);}html[data-theme="ebony"]{ --bg:#120d0a; --bg2:#1a130e; --bg3:#221811; --ink:#eee2d3; --dim:#a29180; --dim2:#726456; --line:rgba(238,226,211,.14); --line2:rgba(238,226,211,.28); --seal:#c8633c; --seal-soft:rgba(200,99,60,.16);}html[data-theme="indigo"]{ --bg:#060a13; --bg2:#0a1120; --bg3:#0f1729; --ink:#e5ecf6; --dim:#94a3ba; --dim2:#65748b; --line:rgba(229,236,246,.14); --line2:rgba(229,236,246,.3); --seal:#d1573f; --seal-soft:rgba(209,87,63,.16);}html[data-theme="plum"]{ --bg:#0e0a14; --bg2:#150f1f; --bg3:#1c1429; --ink:#ece5f0; --dim:#a294ad; --dim2:#72657e; --line:rgba(236,229,240,.14); --line2:rgba(236,229,240,.28); --seal:#c75b7a; --seal-soft:rgba(199,91,122,.16);}
-
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{ background:var(--bg); color:var(--ink); font-family:var(--sans); font-weight:300; -webkit-font-smoothing:antialiased; transition:background .4s var(--ease), color .4s var(--ease); overflow-x:hidden;}body.locked{overflow:hidden}/* 纸纹颗粒 */body::after{ content:""; position:fixed; inset:0; z-index:60; pointer-events:none; opacity:.05; mix-blend-mode:overlay; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");}img{display:block;max-width:100%}a{color:inherit;text-decoration:none}button{font-family:inherit;color:inherit;background:none;border:none;cursor:pointer}::selection{background:var(--seal);color:#f6ecdc}:focus-visible{outline:2px solid var(--seal);outline-offset:3px}
-
-/* ===== 顶部导航 ===== */.nav{ position:fixed; inset:0 0 auto 0; z-index:50; display:flex; align-items:center; gap:28px; padding:20px clamp(20px,4vw,52px); color:var(--hero-ink); transition:background .35s var(--ease), color .35s var(--ease), padding .35s var(--ease), border-color .35s; border-bottom:1px solid transparent;}.nav.solid{ background:color-mix(in srgb, var(--bg) 92%, transparent); color:var(--ink); padding-top:14px; padding-bottom:14px; border-bottom-color:var(--line); backdrop-filter:saturate(120%) blur(2px);}.brand{display:flex;align-items:center;gap:12px;font-family:var(--serif);font-weight:700;font-size:17px;letter-spacing:.14em}.brand .stamp{ width:28px;height:28px;flex:none;display:grid;place-items:center; background:var(--seal);color:#f7eddd;font-size:16px;border-radius:3px; font-family:var(--serif);font-weight:700;line-height:1; box-shadow:inset 0 0 0 1px rgba(255,255,255,.14);}.nav-links{display:flex;gap:26px;margin-left:auto;font-size:13.5px;letter-spacing:.16em}.nav-links a{position:relative;padding:4px 0;opacity:.86}.nav-links a::after{ content:"";position:absolute;left:0;right:0;bottom:0;height:1px; background:currentColor;transform:scaleX(0);transform-origin:left; transition:transform .3s var(--ease);}.nav-links a:hover::after,.nav-links a:focus-visible::after{transform:scaleX(1)}.nav-tools{display:flex;align-items:center;gap:10px;margin-left:18px}.icon-btn{ width:36px;height:36px;display:grid;place-items:center; border:1px solid currentColor;border-radius:50%;opacity:.7; transition:opacity .2s, transform .2s;}.icon-btn:hover{opacity:1;transform:rotate(18deg)}.icon-btn svg{width:17px;height:17px}@media(max-width:820px){ .nav-links{display:none} .nav-tools{margin-left:auto}}
-
-/* ===== 首屏 ===== */.hero{position:relative;min-height:100svh;display:grid;overflow:hidden;isolation:isolate}.hero-media{position:absolute;inset:0;z-index:-2}.hero-media img{width:100%;height:100%;object-fit:cover;object-position:50% 58%}.hero-media .veil{ position:absolute;inset:0; background: linear-gradient(180deg, rgba(6,7,10,.86) 0%, rgba(6,7,10,.18) 26%, rgba(6,7,10,0) 52%, rgba(6,7,10,.55) 82%, var(--bg) 100%), radial-gradient(120% 80% at 50% 42%, rgba(6,7,10,0) 42%, rgba(6,7,10,.5) 100%);}/* 主题切换后首屏仍为夜色山脊，只换底部过渡色；亮色五套用同一套浅罩 */html[data-theme="paper"] .hero-media .veil,html[data-theme="rice"] .hero-media .veil,html[data-theme="cream"] .hero-media .veil,html[data-theme="mist"] .hero-media .veil,html[data-theme="sand"] .hero-media .veil{ background: linear-gradient(180deg, rgba(6,7,10,.86) 0%, rgba(6,7,10,.2) 26%, rgba(6,7,10,0) 54%, rgba(255,252,246,.12) 80%, var(--bg) 100%), radial-gradient(120% 80% at 50% 42%, rgba(6,7,10,0) 45%, rgba(6,7,10,.45) 100%);}html[data-theme="paper"] #about::before,html[data-theme="rice"] #about::before,html[data-theme="cream"] #about::before,html[data-theme="mist"] #about::before,html[data-theme="sand"] #about::before{display:none}.hero-inner{ position:relative;z-index:2; display:flex;flex-direction:column;align-items:center;justify-content:center; text-align:center;padding:120px 24px 96px;color:var(--hero-ink);}.hero-kicker{ font-size:12px;letter-spacing:.62em;text-indent:.62em; color:rgba(241,232,216,.72);margin-bottom:clamp(26px,4vh,44px); text-shadow:0 1px 22px rgba(0,0,0,.75),0 0 48px rgba(0,0,0,.5);}.hero h1{ font-family:var(--serif);font-weight:900; font-size:clamp(58px,12.5vw,182px); line-height:.96;letter-spacing:.04em;text-indent:.04em; text-wrap:balance; text-shadow:0 2px 60px rgba(0,0,0,.55);}.hero-rule{ width:1px;height:clamp(34px,6vh,66px); background:linear-gradient(180deg,rgba(241,232,216,.05),rgba(241,232,216,.75)); margin:clamp(24px,4vh,40px) 0 clamp(18px,2.6vh,26px);}.hero-lede{ font-family:var(--serif);font-weight:400; font-size:clamp(15px,1.5vw,19px);letter-spacing:.22em; color:rgba(241,232,216,.93);max-width:36em;line-height:2.1; text-shadow:0 1px 24px rgba(0,0,0,.6);}.hero-entries{ display:flex;gap:clamp(18px,3vw,42px);margin-top:clamp(34px,5vh,56px); font-size:13px;letter-spacing:.24em;}.hero-entries a,.hero-entries button{ padding-bottom:7px;border-bottom:1px solid rgba(241,232,216,.28); color:rgba(241,232,216,.82);transition:color .25s, border-color .25s;}.hero-entries a:hover,.hero-entries button:hover{color:#fff;border-color:#fff}.hero-entries .lock{ display:inline-flex;align-items:center;gap:6px;}.hero-entries .lock svg{width:11px;height:11px}/* 竖排题句 */.hero-poem{ position:absolute;z-index:2;right:clamp(18px,4.4vw,64px);top:50%;transform:translateY(-52%); writing-mode:vertical-rl;text-orientation:upright; font-family:var(--serif);font-size:clamp(13px,1.15vw,16px); letter-spacing:.42em;line-height:2.4; color:rgba(241,232,216,.55); border-right:1px solid rgba(241,232,216,.18); padding-right:14px;height:min(46vh,340px); display:flex;align-items:flex-start;}.hero-scroll{ position:absolute;z-index:2;left:50%;bottom:26px;transform:translateX(-50%); display:flex;flex-direction:column;align-items:center;gap:10px; font-size:10.5px;letter-spacing:.4em;color:rgba(241,232,216,.45);}.hero-scroll i{ display:block;width:1px;height:34px; background:linear-gradient(180deg,rgba(241,232,216,.6),rgba(241,232,216,0));}@media(max-width:820px){ .hero-poem{display:none} .hero-inner{padding:110px 22px 104px} .hero-entries{gap:16px;font-size:12px;letter-spacing:.14em}}
-
-/* ===== 通用段落 ===== */.sec{max-width:var(--wrap);margin:0 auto;padding:clamp(76px,10vw,132px) clamp(22px,4vw,40px)}.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:clamp(34px,4vw,52px)}.sec-title{display:flex;align-items:baseline;gap:18px}.sec-title h2{ font-family:var(--serif);font-weight:700; font-size:clamp(30px,3.6vw,46px);letter-spacing:.1em;line-height:1;}.sec-title span{font-size:11.5px;letter-spacing:.34em;color:var(--dim2)}.sec-note{font-size:12px;letter-spacing:.18em;color:var(--dim2);text-align:right;line-height:1.9}
-
-/* ===== 手记列表 ===== */#posts{padding-top:clamp(44px,5vw,72px)}.post-list{border-top:1px solid var(--line2)}.post{ display:grid;grid-template-columns:168px minmax(0,1fr) 100px 74px; gap:clamp(14px,2.4vw,30px);align-items:baseline; padding:clamp(20px,2.4vw,30px) 4px; border-bottom:1px solid var(--line); cursor:pointer;position:relative; transition:background .3s var(--ease), padding-left .3s var(--ease);}.post::before{ content:"";position:absolute;left:0;top:0;bottom:0;width:2px; background:var(--seal);transform:scaleY(0);transform-origin:top; transition:transform .3s var(--ease);}.post:hover,.post:focus-visible{background:color-mix(in srgb, var(--ink) 4%, transparent);padding-left:20px}.post:hover::before,.post:focus-visible::before{transform:scaleY(1)}.post time{font-size:12.5px;letter-spacing:.08em;color:var(--dim2);font-variant-numeric:tabular-nums;white-space:nowrap}.post h3{ font-family:var(--serif);font-weight:600; font-size:clamp(18px,2.1vw,24px);letter-spacing:.04em;line-height:1.5; transition:color .25s;}.post:hover h3{color:var(--seal)}.post p{grid-column:2;font-size:13.5px;line-height:1.9;color:var(--dim);margin-top:6px;letter-spacing:.02em}.post .cat{font-size:11.5px;letter-spacing:.2em;color:var(--dim);justify-self:start;white-space:nowrap}.post .cat::before{content:"/";margin-right:8px;color:var(--dim2)}.post .min{font-size:11.5px;letter-spacing:.1em;color:var(--dim2);text-align:right;white-space:nowrap}.post .min::after{content:" 分";font-size:10px}.post-foot{margin-top:26px;font-size:11.5px;letter-spacing:.18em;color:var(--dim2);text-align:right}.sec-head-right{display:flex;flex-direction:column;align-items:flex-end;gap:10px}.tool-btn{ font-size:11.5px;letter-spacing:.16em;color:var(--dim); border:1px solid var(--line);border-radius:2px;padding:7px 14px; transition:color .2s,border-color .2s,background .2s;}.tool-btn:hover{color:var(--ink);border-color:var(--line2)}.tool-btn[aria-pressed="true"]{color:var(--seal);border-color:var(--seal)}.tools-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end}.tools-row[hidden]{display:none}.post-tools{grid-column:1 / -1;display:none;gap:10px;margin-top:12px}body.editing-posts .post{cursor:default}body.editing-posts .post:hover{padding-left:4px;background:transparent}body.editing-posts .post:hover::before{transform:scaleY(0)}body.editing-posts .post-tools{display:flex}.tool-btn.danger{color:#e2685a;border-color:rgba(226,104,90,.3)}.tool-btn.danger:hover{border-color:#e2685a;color:#fff}@media(max-width:760px){ .post{grid-template-columns:1fr auto;gap:9px 14px} .post time{grid-column:1 / -1;grid-row:1} .post h3{grid-column:1 / -1;grid-row:2} .post p{grid-column:1 / -1;grid-row:3;margin-top:2px;font-size:14.5px;line-height:1.85} .post .cat{grid-column:1;grid-row:4;margin-top:4px} .post .min{grid-column:2;grid-row:4;margin-top:4px} .sec-head{flex-direction:column;align-items:flex-start;gap:14px} .sec-title h2{white-space:nowrap} .sec-title span{font-size:11px} .sec-note{text-align:left} .room .desc{font-size:14px} .about-text{font-size:15px}}
-
-/* ===== 空间入口 ===== */#rooms{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line); max-width:none;padding-left:0;padding-right:0}.rooms-wrap{max-width:var(--wrap);margin:0 auto;padding:0 clamp(22px,4vw,40px)}.rooms{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--line2)}.room{ position:relative;display:flex;flex-direction:column;gap:16px; padding:clamp(26px,3vw,40px) clamp(18px,2.4vw,32px) clamp(28px,3.4vw,44px); border-right:1px solid var(--line);border-bottom:1px solid var(--line); text-align:left;cursor:pointer; transition:background .35s var(--ease), color .35s;}.room:nth-child(4n){border-right:none}.room:last-child{border-bottom:none}.room .no{ font-family:var(--serif);font-size:12px;letter-spacing:.2em;color:var(--dim2); display:flex;align-items:center;gap:10px;}.room .no i{display:block;width:22px;height:1px;background:var(--line2)}.room h3{ font-family:var(--serif);font-weight:700;font-size:clamp(23px,1.9vw,29px); letter-spacing:.12em;line-height:1.2;}.room .desc{font-size:13px;line-height:2;color:var(--dim);letter-spacing:.02em;max-width:22em}.room .state{ margin-top:auto;padding-top:clamp(18px,2.6vw,30px); font-size:11.5px;letter-spacing:.2em;color:var(--dim2); display:flex;align-items:center;gap:8px;}.room .state svg{width:12px;height:12px}.room:hover{background:color-mix(in srgb, var(--ink) 5%, transparent)}.room:hover h3{color:var(--seal)}.room:focus-visible{outline-offset:-4px}@media(max-width:999px){ .rooms{grid-template-columns:repeat(2,1fr)} .room:nth-child(4n){border-right:1px solid var(--line)} .room:nth-child(2n){border-right:none} .room:nth-child(n+3){border-bottom:none}}@media(max-width:600px){ .rooms{grid-template-columns:1fr} .room{border-right:none} .room:nth-child(n+3){border-bottom:1px solid var(--line)} .room:last-child{border-bottom:none}}
-
-/* ===== 自述 ===== */#about{position:relative;overflow:hidden}#about::before{ content:"";position:absolute;inset:0;z-index:0; background-image:url("assets/hero-wide.jpg"); background-size:cover;background-position:50% 40%; opacity:.16;filter:saturate(.4); mask-image:radial-gradient(88% 92% at 58% 46%,#000 26%,transparent 76%); -webkit-mask-image:radial-gradient(88% 92% at 58% 46%,#000 26%,transparent 76%);}.about-grid{position:relative;z-index:1;display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(30px,6vw,96px);align-items:start}.about-poem{ writing-mode:vertical-rl;text-orientation:upright; font-family:var(--serif);font-weight:600; font-size:clamp(20px,2.4vw,30px);letter-spacing:.4em;line-height:2.1; color:var(--ink);height:clamp(220px,30vh,320px); border-left:1px solid var(--line2);padding-left:clamp(14px,1.6vw,22px);}.about-text{max-width:34em;font-size:15.5px;line-height:2.15;color:var(--dim);letter-spacing:.02em}.about-text .lead{ font-family:var(--serif);font-size:clamp(19px,1.9vw,23px);line-height:1.95; color:var(--ink);letter-spacing:.04em;margin-bottom:26px;}.about-text p+p{margin-top:18px}.about-sign{ margin-top:34px;padding-top:22px;border-top:1px solid var(--line); display:flex;align-items:center;gap:14px; font-family:var(--serif);font-size:13px;letter-spacing:.2em;color:var(--dim2);}.about-sign .stamp{width:34px;height:34px;display:grid;place-items:center;background:var(--seal);color:#f7eddd;border-radius:3px;font-size:18px}@media(max-width:760px){ .about-grid{grid-template-columns:1fr;gap:30px} .about-poem{height:auto;writing-mode:horizontal-tb;letter-spacing:.24em;border-left:none;border-bottom:1px solid var(--line);padding:0 0 18px;font-size:22px}}
-
-/* ===== 页脚 ===== */footer{ border-top:1px solid var(--line); padding:34px clamp(22px,4vw,40px) 44px; display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap; font-size:11.5px;letter-spacing:.18em;color:var(--dim2); max-width:var(--wrap);margin:0 auto;}footer a{border-bottom:1px solid var(--line2);padding-bottom:2px;transition:color .2s}footer a:hover{color:var(--ink)}</style><style>/* ===== 阅读层 ===== */.reader{ position:fixed;inset:0;z-index:70;display:none; background:var(--bg);overflow-y:auto;overscroll-behavior:contain;}.reader.open{display:block;animation:readerIn .38s var(--ease)}@keyframes readerIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}.reader-bar{ position:sticky;top:0;z-index:2; display:flex;align-items:center;justify-content:space-between;gap:16px; padding:16px clamp(20px,4vw,40px); background:color-mix(in srgb, var(--bg) 94%, transparent); border-bottom:1px solid var(--line);}.reader-bar .who{font-family:var(--serif);font-size:12.5px;letter-spacing:.22em;color:var(--dim2)}.reader-close,.reader-back{ display:inline-flex;align-items:center;gap:8px; font-size:12.5px;letter-spacing:.16em;color:var(--dim); padding:8px 12px;border:1px solid var(--line);border-radius:2px; transition:color .2s, border-color .2s;}.reader-close:hover,.reader-back:hover{color:var(--ink);border-color:var(--line2)}.reader-close svg,.reader-back svg{width:13px;height:13px}.reader-article{ max-width:720px;margin:0 auto;padding:clamp(48px,7vw,88px) clamp(22px,4vw,32px) 110px;}.reader-article .meta{ display:flex;flex-wrap:wrap;gap:10px 20px;font-size:12px;letter-spacing:.18em;color:var(--dim2); margin-bottom:22px;}.reader-article .meta b{font-weight:400;color:var(--seal)}.reader-article h1{ font-family:var(--serif);font-weight:700; font-size:clamp(27px,4vw,40px);line-height:1.45;letter-spacing:.03em; text-wrap:balance;margin-bottom:clamp(28px,4vw,40px);}.reader-body{font-family:var(--serif);font-weight:400;font-size:clamp(16px,1.6vw,17.5px);line-height:2.15;color:color-mix(in srgb, var(--ink) 84%, var(--bg))}.reader-body p+p{margin-top:1.5em}.reader-body p:first-of-type::first-letter{ float:left;font-size:3.1em;line-height:.92;font-weight:700; margin:.06em .12em 0 0;color:var(--seal);}.reader-body em{font-style:normal;border-bottom:1px solid var(--line2);padding-bottom:1px}.reader-end{ margin-top:clamp(44px,6vw,64px);padding-top:26px;border-top:1px solid var(--line); display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap; font-family:var(--sans);font-size:12px;letter-spacing:.16em;color:var(--dim2);}.reader-end .stamp{width:30px;height:30px;display:grid;place-items:center;background:var(--seal);color:#f7eddd;border-radius:2px;font-family:var(--serif);font-size:16px}
-
-/* ===== 密码弹窗 ===== */.modal{ position:fixed;inset:0;z-index:80;display:none; align-items:center;justify-content:center;padding:20px; background:rgba(4,5,8,.82);}.modal.open{display:flex}.modal-card{ width:100%;max-width:360px;background:var(--bg2); border:1px solid var(--line2);border-radius:3px; padding:clamp(24px,4vw,34px); animation:readerIn .3s var(--ease);}.modal-card h2{ font-family:var(--serif);font-size:18px;font-weight:700;letter-spacing:.08em; display:flex;align-items:center;gap:10px;margin-bottom:8px;}.modal-card h2 svg{width:15px;height:15px;color:var(--seal);flex:none}.modal-card .hint{font-size:12.5px;line-height:1.9;color:var(--dim);margin-bottom:20px}.modal-card input{ width:100%;padding:12px 14px;background:var(--bg); border:1px solid var(--line);border-radius:2px;color:var(--ink); font-family:var(--sans);font-size:16px;letter-spacing:.2em;outline:none; transition:border-color .2s;}.modal-card input:focus{border-color:var(--seal)}.modal-err{height:18px;font-size:12px;color:#e2685a;opacity:0;transition:opacity .2s;margin-top:8px}.modal-err.show{opacity:1}.modal-acts{display:flex;gap:10px;margin-top:6px}.btn{ flex:1;padding:11px;border:1px solid var(--line);border-radius:2px; font-size:13px;letter-spacing:.14em;color:var(--dim); transition:color .2s,border-color .2s,background .2s;}.btn:hover{color:var(--ink);border-color:var(--line2)}.btn.primary{background:var(--seal);border-color:var(--seal);color:#f8efe0}.btn.primary:hover{filter:brightness(1.08)}@keyframes shake{0%,100%{transform:none}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}.shake{animation:shake .32s}
-
-/* ===== 手记编辑弹窗表单 ===== */.modal-card.wide{max-width:680px;max-height:86vh;overflow-y:auto}.form-grid{display:grid;gap:14px;margin:18px 0 4px}.form-row{display:grid;gap:7px}.form-row label{font-size:12px;letter-spacing:.18em;color:var(--dim2)}.form-row input,.form-row textarea{ width:100%;padding:11px 13px;background:var(--bg); border:1px solid var(--line);border-radius:2px;color:var(--ink); font-family:var(--sans);font-size:15px;letter-spacing:.02em;outline:none; transition:border-color .2s;}.form-row textarea{min-height:180px;line-height:1.9;resize:vertical;font-family:var(--serif);font-size:15px}.form-row input:focus,.form-row textarea:focus{border-color:var(--seal)}.form-row.two{grid-template-columns:1fr 1fr;gap:12px}.modal-acts .btn.danger{color:#e2685a;border-color:rgba(226,104,90,.3);margin-right:auto}.modal-acts .btn.danger:hover{border-color:#e2685a;color:#fff}@media(max-width:520px){.form-row.two{grid-template-columns:1fr}.modal-acts{flex-wrap:wrap}}
-
-/* ===== 主题抽屉 ===== */.sheet{ position:fixed;inset:0;z-index:90;display:none; align-items:flex-end;justify-content:center; background:rgba(4,5,8,.6);}.sheet.open{display:flex}.sheet-box{ width:100%;max-width:460px;background:var(--bg2); border:1px solid var(--line2);border-top-left-radius:4px;border-top-right-radius:4px; padding:22px 22px 30px;animation:rise .26s var(--ease); max-height:86vh;overflow-y:auto;align-self:flex-end;}@keyframes rise{from{transform:translateY(16px);opacity:.5}to{transform:none;opacity:1}}.sheet-head{display:flex;align-items:center;gap:12px;margin-bottom:16px}.sheet-head h3{font-family:var(--serif);font-size:14px;font-weight:600;letter-spacing:.14em;flex:1}.sheet-head button{width:32px;height:32px;display:grid;place-items:center;border:1px solid var(--line);border-radius:2px;color:var(--dim)}.sheet-head button:hover{color:var(--ink)}.themes{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.theme{ display:flex;flex-direction:column;gap:10px;align-items:flex-start; padding:12px;border:1px solid var(--line);border-radius:2px; font-size:12.5px;letter-spacing:.14em;color:var(--dim); transition:border-color .2s,color .2s;}.theme:hover{color:var(--ink);border-color:var(--line2)}.theme[aria-pressed="true"]{border-color:var(--seal);color:var(--ink)}.theme .sw{width:100%;height:38px;border-radius:1px;border:1px solid rgba(255,255,255,.1)}/* 亮色 */.theme .sw.paper{background:linear-gradient(135deg,#eee9df 0 55%,#1c1b18 55% 72%,#b03527 72%)}.theme .sw.rice{background:linear-gradient(135deg,#e9eeea 0 55%,#1d2420 55% 72%,#3f7d5a 72%)}.theme .sw.cream{background:linear-gradient(135deg,#f4ecd9 0 55%,#262015 55% 72%,#b5622a 72%)}.theme .sw.mist{background:linear-gradient(135deg,#e8edf2 0 55%,#1a222c 55% 72%,#3a6fb0 72%)}.theme .sw.sand{background:linear-gradient(135deg,#eee5da 0 55%,#241c15 55% 72%,#a85734 72%)}/* 暗色 */.theme .sw.ink{background:linear-gradient(135deg,#07080b 0 55%,#ece3d3 55% 72%,#c33a2b 72%)}.theme .sw.pine{background:linear-gradient(135deg,#08100c 0 55%,#e3ece2 55% 72%,#c05a3a 72%)}.theme .sw.ebony{background:linear-gradient(135deg,#120d0a 0 55%,#eee2d3 55% 72%,#c8633c 72%)}.theme .sw.indigo{background:linear-gradient(135deg,#060a13 0 55%,#e5ecf6 55% 72%,#d1573f 72%)}.theme .sw.plum{background:linear-gradient(135deg,#0e0a14 0 55%,#ece5f0 55% 72%,#c75b7a 72%)}
-
-/* ===== 入场 ===== */.hero-inner > *{animation:heroIn .72s var(--ease) both}.hero-inner > *:nth-child(1){animation-delay:.05s}.hero-inner > *:nth-child(2){animation-delay:.14s}.hero-inner > *:nth-child(3){animation-delay:.26s}.hero-inner > *:nth-child(4){animation-delay:.34s}.hero-inner > *:nth-child(5){animation-delay:.44s}@keyframes heroIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
-
-@media (prefers-reduced-motion:reduce){ *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}</style><script>(function(){try{var ok=['paper','rice','cream','mist','sand','ink','pine','ebony','indigo','plum'];var t=localStorage.getItem('djjm.theme');if(t&&ok.indexOf(t)>-1){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script></head><body>
-
-<!-- ===== 顶部导航 ===== --><header class="nav" id="nav"> <a class="brand" href="https://mydjjm.cn/#top" aria-label="回到顶部"> <span class="stamp" aria-hidden="true">杜</span> <span>杜绝加密</span> </a> <nav class="nav-links" aria-label="页面导航"> <a href="https://mydjjm.cn/#posts">手记</a> <a href="https://mydjjm.cn/#rooms">空间</a> <a href="https://mydjjm.cn/#about">自述</a> </nav> <div class="nav-tools"> <button class="icon-btn" id="themeBtn" type="button" aria-label="切换纸色" aria-haspopup="dialog"> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"> <circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2.6"/> <path d="M12 3v2.6M12 18.4V21M3 12h2.6M18.4 12H21"/> </svg> </button> </div></header>
-
-<!-- ===== 首屏：山脊 ===== --><section class="hero" id="top"> <div class="hero-media"> <picture> <source media="(max-width:820px)" srcset="https://mydjjm.cn/assets/hero-portrait.jpg"> <img src="https://mydjjm.cn/assets/hero-wide.jpg" alt="云海之上，山脊与初升的日光"> </picture> <div class="veil"></div> </div>
-
-<div class="hero-inner"> <p class="hero-kicker">个 人 空 间 · 存 档</p> <h1>杜绝加密</h1> <div class="hero-rule" aria-hidden="true"></div> <p class="hero-lede">山河为卷，笔墨为家。<br>这里不做加密，只做长久存放。</p> <div class="hero-entries"> <a href="https://radio.mydjjm.cn/" target="_blank" rel="noopener">电台</a> <button type="button" class="lock" data-open-tree> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg> 族谱 </button> <a href="https://media.mydjjm.cn/" target="_blank" rel="noopener">影视导航</a> <a href="https://news.mydjjm.cn/" target="_blank" rel="noopener">新闻导航</a> </div> </div>
-
-<div class="hero-poem" aria-hidden="true">会当凌绝顶　一览众山小</div> <div class="hero-scroll" aria-hidden="true"><i></i>向下</div></section>
-
-<main><!-- ===== 手记 ===== --><section class="sec" id="posts"> <div class="sec-head"> <div class="sec-title"> <h2>手记</h2> <span>日 志 与 短 文</span> </div> <div class="sec-head-right"> <button class="tool-btn" id="btnEditPosts" type="button" aria-pressed="false">编辑手记</button> <p class="sec-note" id="postNote">共三篇 · 本机编辑，改动仅存于本浏览器</p> <div class="tools-row" id="postTools" hidden> <button class="tool-btn" id="btnNewPost" type="button">新增手记</button> <button class="tool-btn" id="btnExportPosts" type="button">导出备份</button> <button class="tool-btn" id="btnExportHtml" type="button">生成更新文件（复制）</button> <button class="tool-btn" id="btnImportPosts" type="button">导入备份</button> <button class="tool-btn" id="btnResetPosts" type="button">恢复默认</button> </div> </div> </div>
-
-<div class="post-list" id="postList"></div> <p class="post-foot" id="postFoot">点开任意一篇即可阅读；编辑保存后只在本机浏览器生效，可导出备份留作本机记录。</p></section>
-
-<!-- ===== 空间 ===== --><section class="sec" id="rooms"> <div class="rooms-wrap"> <div class="sec-head"> <div class="sec-title"> <h2>空间</h2> <span>四 个 房 间</span> </div> <p class="sec-note">声音 · 世系 · 影像 · 资讯</p> </div>
-
-<div class="rooms"> <a class="room" href="https://radio.mydjjm.cn/" target="_blank" rel="noopener"> <span class="no"><i></i>01</span> <h3>电台</h3> <p class="desc">一间只放声音的屋子。凌晨的节目单循环播放，不设门槛，也不必登录。</p> <span class="state"> 前往 radio.mydjjm.cn <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg> </span> </a>
-
-<button class="room" type="button" data-open-tree> <span class="no"><i></i>02</span> <h3>族谱</h3> <p class="desc">名字、世系与几张旧照片。门上有锁，钥匙在家人手里。</p> <span class="state"> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg> 已加密 · 凭密码进入 </span> </button>
-
-<a class="room" href="https://media.mydjjm.cn/" target="_blank" rel="noopener"> <span class="no"><i></i>03</span> <h3>影视导航</h3> <p class="desc">一张手写的放映单，指向别处的片源。按年份和导演排，不按平台排。</p> <span class="state"> 前往 media.mydjjm.cn <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg> </span> </a>
-
-<a class="room" href="https://news.mydjjm.cn/" target="_blank" rel="noopener"> <span class="no"><i></i>04</span> <h3>新闻导航</h3> <p class="desc">五十九家中、外新闻站点，按综合、财经、科技、国际、深度与热榜归置，一站直达。</p> <span class="state"> 前往 news.mydjjm.cn <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg> </span> </a> </div> </div></section>
-
-<!-- ===== 自述 ===== --><section class="sec" id="about"> <div class="about-grid"> <div class="about-poem" aria-hidden="true">山水有相逢<br>笔墨不加密</div> <div class="about-text"> <p class="lead">这里原来只是一个放链接的页面。</p> <p>后来链接越攒越多，就想给它一点地方：能写字，能放声音，存下家里的名字，也留一处看新闻的索引。于是有了这四个房间，和上面这些手记。</p> <p>站点还在整理。旧的东西一样一样搬过来，新的东西慢慢写。不追更新频率，也不做订阅推送——想起来了，就上来看一眼。</p> <div class="about-sign"><span class="stamp" aria-hidden="true">杜</span>二〇二六年秋 · 记于山中</div> </div> </div></section></main>
-
-<footer> <span>© 2026 杜绝加密 · 站点整理中</span> <span>手记可在本机编辑 · 改动仅存于本浏览器 · 山图取自黄山云海 · <a href="https://mydjjm.cn/#top">回到顶部</a></span></footer>
-
-<!-- ===== 阅读层 ===== --><div class="reader" id="reader" role="dialog" aria-modal="true" aria-labelledby="readerTitle"> <div class="reader-bar"> <span class="who">杜绝加密 · 手记</span> <button class="reader-close" type="button" id="readerClose"> 合上 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg> </button> </div> <div class="reader-article"> <div class="meta" id="readerMeta"></div> <h1 id="readerTitle"></h1> <div class="reader-body" id="readerBody"></div> <div class="reader-end"> <span>写于山中 · 未经允许请勿转载</span> <span class="stamp" aria-hidden="true">杜</span> </div> </div></div>
-
-<!-- ===== 族谱密码 ===== --><div class="modal" id="treeModal" role="dialog" aria-modal="true" aria-labelledby="treeTitle"> <div class="modal-card" id="treeCard"> <h2 id="treeTitle"> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg> 族谱需要密码 </h2> <p class="hint">这一间的门是锁着的。密码由家里人保管，输入后即可进入。</p> <input id="pw" type="password" placeholder="密码" autocomplete="off" spellcheck="false" aria-label="族谱密码"> <div class="modal-err" id="treeErr">密码不对，再试一次</div> <div class="modal-acts"> <button class="btn" type="button" id="treeCancel">再看看</button> <button class="btn primary" type="button" id="treeOk">开门</button> </div> </div></div>
-
-<!-- ===== 手记编辑弹窗 ===== --><div class="modal" id="postModal" role="dialog" aria-modal="true" aria-labelledby="postModalTitle"> <div class="modal-card wide"> <h2 id="postModalTitle">编辑手记</h2> <p class="hint">正文每行一段；段内可用「<em>着重</em>」标记。保存后仅存于本机浏览器，导出备份可作为后续调整依据。</p> <div class="form-grid"> <div class="form-row"><label for="fTitle">标题</label><input id="fTitle" type="text" autocomplete="off" spellcheck="false"></div> <div class="form-row two"> <div class="form-row"><label for="fDate">卡片日期</label><input id="fDate" type="text" autocomplete="off" spellcheck="false" placeholder="二〇二六 · 十 · 二五"></div> <div class="form-row"><label for="fDateFull">正文日期</label><input id="fDateFull" type="text" autocomplete="off" spellcheck="false" placeholder="二〇二六年十月二十五日"></div> </div> <div class="form-row two"> <div class="form-row"><label for="fCat">分类</label><input id="fCat" type="text" autocomplete="off" spellcheck="false"></div> <div class="form-row"><label for="fMin">阅读时长（分钟）</label><input id="fMin" type="number" min="1" max="120" step="1"></div> </div> <div class="form-row"><label for="fExcerpt">列表摘要</label><input id="fExcerpt" type="text" autocomplete="off" spellcheck="false"></div> <div class="form-row"><label for="fBody">正文（每行一段）</label><textarea id="fBody" rows="10" spellcheck="false"></textarea></div> </div> <div class="modal-acts"> <button class="btn danger" id="fDel" type="button">删除本篇</button> <button class="btn" id="fCancel" type="button">取消</button> <button class="btn primary" id="fSave" type="button">保存</button> </div> </div></div><input type="file" id="postImport" accept="application/json,.json" hidden>
-
-<!-- ===== 纸色抽屉 ===== --><div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle"> <div class="sheet-box"> <div class="sheet-head"> <h3 id="sheetTitle">纸色</h3> <button type="button" id="sheetClose" aria-label="关闭"> <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg> </button> </div> <div class="themes" id="themes"> <button class="theme" type="button" data-theme-set="paper" aria-pressed="true"><span class="sw paper"></span>宣纸</button> <button class="theme" type="button" data-theme-set="rice" aria-pressed="false"><span class="sw rice"></span>竹青</button> <button class="theme" type="button" data-theme-set="cream" aria-pressed="false"><span class="sw cream"></span>缃黄</button> <button class="theme" type="button" data-theme-set="mist" aria-pressed="false"><span class="sw mist"></span>月白</button> <button class="theme" type="button" data-theme-set="sand" aria-pressed="false"><span class="sw sand"></span>砂褐</button> <button class="theme" type="button" data-theme-set="ink" aria-pressed="false"><span class="sw ink"></span>墨夜</button> <button class="theme" type="button" data-theme-set="pine" aria-pressed="false"><span class="sw pine"></span>松烟</button> <button class="theme" type="button" data-theme-set="ebony" aria-pressed="false"><span class="sw ebony"></span>檀褐</button> <button class="theme" type="button" data-theme-set="indigo" aria-pressed="false"><span class="sw indigo"></span>靛青</button> <button class="theme" type="button" data-theme-set="plum" aria-pressed="false"><span class="sw plum"></span>绛紫</button> </div> </div></div>
-
-<script>(function(){ 'use strict';
-
- /* ---------- 纸色 ---------- */ var root = document.documentElement; var THEMES = ['paper','rice','cream','mist','sand','ink','pine','ebony','indigo','plum']; var DEFAULT_THEME = 'paper'; var saved = DEFAULT_THEME; try { saved = localStorage.getItem('djjm.theme') || DEFAULT_THEME; } catch(e){} if (THEMES.indexOf(saved) < 0) saved = DEFAULT_THEME;
-
- function applyTheme(id){ root.setAttribute('data-theme', id); try { localStorage.setItem('djjm.theme', id); } catch(e){} document.querySelectorAll('[data-theme-set]').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-theme-set') === id)); }); } applyTheme(saved);
-
- var sheet = document.getElementById('sheet'); function openSheet(){ sheet.classList.add('open'); document.getElementById('sheetClose').focus(); } function closeSheet(){ sheet.classList.remove('open'); } document.getElementById('themeBtn').addEventListener('click', openSheet); document.getElementById('sheetClose').addEventListener('click', closeSheet); sheet.addEventListener('click', function(e){ if (e.target === sheet) closeSheet(); }); document.querySelectorAll('[data-theme-set]').forEach(function(b){ b.addEventListener('click', function(){ applyTheme(b.getAttribute('data-theme-set')); closeSheet(); }); });
-
- /* ---------- 导航底色 ---------- */ var nav = document.getElementById('nav'); var ticking = false; function onScroll(){ if (ticking) return; ticking = true; requestAnimationFrame(function(){ nav.classList.toggle('solid', window.scrollY > 64); ticking = false; }); } window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
-
- /* ---------- 手记：默认文稿 / 阅读层 / 本机编辑 ---------- */ var POST_KEY = 'djjm.posts.v1';
-
- var DEFAULT_POSTS = [
-  {
-    "id": "king-mountain",
-    "title": "大王山徒步记",
-    "date": "二〇二六 · 十 · 二五",
-    "dateFull": "二〇二六年十月二十五日",
-    "cat": "游记",
-    "min": 3,
-    "excerpt": "双休腿走两公里上大王山，看过上锁的旧防空洞，也看了修到一半停工的惠云寺。",
-    "body": [
-      "2026年10月25号，星期天，晴。厂里双休，闲着也是闲着，想去大王山走走。厂离山就两公里，没车，腿着去。",
-      "出了厂门，沿着路走，两边先是围栏和厂房，走一段才看见树。二十来分钟就到山脚了，早上七点。路上人不多，周末这个点这条道更冷清，偶尔一辆车从里面开出来。没人拦，也没见什么管制，从哪边上都行。我是从出口那边逆着上去的，也没人管。",
-      "上山的路修好了，石阶一路铺上去，脚底下是实的。有的地方挺陡，小腿发酸，汗照样出，但路不用挑着踩，走起来省心。藤王在路边，十月底没有禾雀花，牌子上写着花廊的名字，花不在，藤还在。古树群那几棵大树也还在，标牌上写着几百年，树皮裂着，叶子绿着。",
-      "半路上我想着找找那个防空洞。网上说大王山有东江纵队活动留下的防空洞，我顺着路边看，还真看到一处洞口。不知道是不是传说的那个，没牌子，也没介绍。洞口上了一把锁，锁锈得不成样子，一看就是挂了好些年的旧锁。门板烂了，边上的水泥也塌了一块。我扒着往里看了一眼，黑，什么都看不清。洞口水泥上没见着什么字迹或编号，边上的土坡也没立桩子。说是防空洞，现在也就是个锁着的破洞口，破败不堪。我站了一会儿，没多待，接着往上走。",
-      "一路石阶走到顶。",
-      "顶上没有大王阁。我之前听人说过什么大王阁，走到跟前根本没见着。山顶就一栋正在修的建筑，叫惠云寺，修到第二层，钢筋露在外面，没见人干活，停在那儿了。围挡不像正规工地那种，就是拦了一下，围挡上也没见着工程公示牌或停工告示，不知道停了多久。楼里面简单地摆了一尊佛像，别的什么都没有。我在旁边站了一会儿，没进去，也没什么可进的。",
-      "从山顶往下看，能看到清溪那边的厂房和远处的山。我能认出自己厂那片屋顶的大概方向，看不太真切。风有，汗干了。没什么特别的感慨，就是站高了一点，看了一眼自己平时干活的地方摆在这个位置。",
-      "下山走另一侧石阶，经过神鹿湖附近。湖不大，岸边有人坐着，小孩在跑。湖边没见着介绍牌，名字的来历也不清楚。石阶一路铺到山脚，脚底下是平的。",
-      "走回厂里，还是那两公里。树看了，汗出了，半山腰那个上锁的破洞口看了，山顶那栋修到一半停工的惠云寺也看了。我就是一个打工的，周末出来爬个山，走到哪儿看到什么就记下什么。防空洞锁着，惠云寺停着，佛像摆着，门没开，我也没硬闯。就这些。"
-    ]
-  },
-  {
-    "id": "radio",
-    "title": "一台旧收音机的重新通电",
-    "date": "二〇二六 · 十 · 一八",
-    "dateFull": "二〇二六年十月十八日",
-    "cat": "电台",
-    "min": 12,
-    "excerpt": "德生 R-909 在柜子里躺了十七年。换了电池，它先响起来的是一段戏曲。",
-    "body": [
-      "那只德生 R-909 是上初中时买的，银灰色，天线断了一截，用透明胶缠着。搬了几次家，它一直在柜子最上层，落满灰。",
-      "前天换了两节新电池，波段拨到 FM，旋钮慢慢转过去，先出来的是一段戏曲——很可能是隔壁市的电台，信号忽强忽弱，唱腔在杂音里时断时续。",
-      "那种声音很旧。不是音质旧，是它属于一个还需要「调」才能听清的年代。现在打开任何一个应用，声音都干干净净，我反而不太记得自己听的是什么了。",
-      "我把它放在书桌上，每天傍晚开半小时。频率固定在 97.4，那里有个讲旧书的节目。哪天节目没了，我大概也不会去换台。"
-    ]
-  },
-  {
-    "id": "film",
-    "title": "看片记：一年里的十二个夜晚",
-    "date": "二〇二六 · 九 · 二七",
-    "dateFull": "二〇二六年九月二十七日",
-    "cat": "影视",
-    "min": 10,
-    "excerpt": "不追新片，只把反复看过的十二部记下来，顺手写清每部的入口。",
-    "body": [
-      "我不追新片。一年下来，反复看的大概就那么十二部，每部都看过三遍以上，台词能接上。",
-      "记它们的理由很简单：有些片子适合深夜，有些只适合雨天，有些必须一个人看。把入口写清楚，比写影评有用。",
-      "所以我做了那张导航单。按年份排，再按导演排，不按平台排——平台会关，片子还在。",
-      "今年新加的两部，一部黑白，一部几乎不说话。都放在最下面。看到那儿的人不多，但看到了就会懂。"
-    ]
-  }
-];
-
- function cloneDefaults(){ return JSON.parse(JSON.stringify(DEFAULT_POSTS)); }
-
- function normalizePost(raw, i){ if (!raw || typeof raw !== 'object') return null; var body = Array.isArray(raw.body) ? raw.body.map(String).filter(function(s){return s.trim();}) : String(raw.body || '').split('\n').map(function(s){return s.trim();}).filter(Boolean); if (!String(raw.title || '').trim()) return null; return { id: String(raw.id || ('p' + Date.now().toString(36) + '_' + i)), title: String(raw.title).trim(), date: String(raw.date || '').trim() || '二〇二六年', dateFull: String(raw.dateFull || raw.date || '').trim(), cat: String(raw.cat || '随笔').trim() || '随笔', min: Math.max(1, parseInt(raw.min, 10) || 5), excerpt: String(raw.excerpt || '').trim(), body: body }; }
-
- function loadPosts(){ try { var raw = localStorage.getItem(POST_KEY); if (raw) { var arr = JSON.parse(raw); if (Array.isArray(arr) && arr.length) { var out = arr.map(normalizePost).filter(Boolean); if (out.length) return out; } } } catch (e) {} return cloneDefaults(); }
-
- function persistPosts(){ try { localStorage.setItem(POST_KEY, JSON.stringify(POSTS)); } catch (e) {} }
-
- function esc(s){ return String(s).replace(/[&<>"']/g, function(m){ return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[m]; }); }
-
- var POSTS = loadPosts(); var editingPosts = false;
-
- var reader = document.getElementById('reader'); var readerTitle = document.getElementById('readerTitle'); var readerMeta = document.getElementById('readerMeta'); var readerBody = document.getElementById('readerBody'); var lastFocus = null;
-
- function findPost(id){ for (var i = 0; i < POSTS.length; i++) if (POSTS[i].id === id) return POSTS[i]; return null; }
-
- function openPost(id){ var p = findPost(id); if (!p) return; lastFocus = document.activeElement; readerTitle.textContent = p.title; readerMeta.innerHTML = '<span>' + esc(p.dateFull || p.date) + '</span><b>' + esc(p.cat) + '</b><span>约 ' + p.min + ' 分钟</span>'; readerBody.innerHTML = p.body.map(function(t){ return '<p>' + t + '</p>'; }).join(''); reader.classList.add('open'); reader.scrollTop = 0; document.body.classList.add('locked'); if (history.state && history.state.post) { history.replaceState({ post: id }, '', '#post-' + id); } else { history.pushState({ post: id }, '', '#post-' + id); } document.getElementById('readerClose').focus(); }
-
- function closePost(fromPop){ if (!reader.classList.contains('open')) return; reader.classList.remove('open'); document.body.classList.remove('locked'); if (!fromPop && history.state && history.state.post) { history.back(); return; } if (lastFocus && lastFocus.focus) lastFocus.focus(); }
-
- /* ---- 列表动态渲染 ---- */ var listEl = document.getElementById('postList');
-
- function renderList(){ var customized = false; try { customized = !!localStorage.getItem(POST_KEY); } catch (e) {} listEl.innerHTML = ''; POSTS.forEach(function(p){ var el = document.createElement('article'); el.className = 'post'; el.dataset.post = p.id; el.setAttribute('role', 'button'); if (!editingPosts) el.tabIndex = 0; el.innerHTML = '<time>' + esc(p.date) + '</time>' + '<h3>' + esc(p.title) + '</h3>' + '<p>' + esc(p.excerpt) + '</p>' + '<span class="cat">' + esc(p.cat) + '</span>' + '<span class="min">' + p.min + '</span>' + (editingPosts ? '<div class="post-tools">' + '<button class="tool-btn" type="button" data-act="edit">编辑</button>' + '<button class="tool-btn danger" type="button" data-act="del">删除</button></div>' : ''); listEl.appendChild(el); }); document.getElementById('postNote').textContent = '共' + POSTS.length + '篇 · ' + (customized ? '本机已自定义' : '站点默认文稿') + '，改动仅存于本浏览器'; }
-
- listEl.addEventListener('click', function(e){ var card = e.target.closest ? e.target.closest('.post') : null; if (!card) return; var id = card.dataset.post; if (editingPosts) { var tool = e.target.closest ? e.target.closest('[data-act]') : null; if (!tool) return; e.stopPropagation(); if (tool.dataset.act === 'edit') openEditor(id); else deletePost(id); return; } openPost(id); }); listEl.addEventListener('keydown', function(e){ if (editingPosts) return; var card = e.target.closest ? e.target.closest('.post') : null; if (!card) return; if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openPost(card.dataset.post); } });
-
- document.getElementById('readerClose').addEventListener('click', function(){ closePost(false); }); window.addEventListener('popstate', function(){ closePost(true); });
-
- /* ---- 编辑弹窗 ---- */ var postModal = document.getElementById('postModal'); var fTitle = document.getElementById('fTitle'); var fDate = document.getElementById('fDate'); var fDateFull = document.getElementById('fDateFull'); var fCat = document.getElementById('fCat'); var fMin = document.getElementById('fMin'); var fExcerpt = document.getElementById('fExcerpt'); var fBody = document.getElementById('fBody'); var fDel = document.getElementById('fDel'); var editingId = null;
-
- function openEditor(id){ var p = id ? findPost(id) : null; editingId = id || null; document.getElementById('postModalTitle').textContent = p ? '编辑手记' : '新增手记'; fTitle.value = p ? p.title : ''; fDate.value = p ? p.date : ''; fDateFull.value = p ? p.dateFull : ''; fCat.value = p ? p.cat : '随笔'; fMin.value = p ? p.min : 5; fExcerpt.value = p ? p.excerpt : ''; fBody.value = p ? p.body.join('\n') : ''; fDel.style.display = p ? '' : 'none'; postModal.classList.add('open'); document.body.classList.add('locked'); setTimeout(function(){ fTitle.focus(); }, 60); }
-
- function closeEditor(){ postModal.classList.remove('open'); if (!reader.classList.contains('open')) document.body.classList.remove('locked'); editingId = null; }
-
- function savePost(){ var title = fTitle.value.trim(); if (!title) { fTitle.focus(); return; } var body = fBody.value.split('\n').map(function(s){ return s.trim(); }).filter(Boolean); if (!body.length) { fBody.focus(); return; } var data = { title: title, date: fDate.value.trim(), dateFull: fDateFull.value.trim(), cat: fCat.value.trim() || '随笔', min: Math.max(1, parseInt(fMin.value, 10) || 5), excerpt: fExcerpt.value.trim(), body: body }; if (editingId) { var p = findPost(editingId); if (p) { Object.keys(data).forEach(function(k){ p[k] = data[k]; }); p.id = editingId; } } else { data.id = 'p' + Date.now().toString(36); POSTS.unshift(data); } persistPosts(); renderList(); closeEditor(); }
-
- function deletePost(id){ if (!confirm('确定删除这篇手记？本机已保存的自定义内容可先导出备份；恢复默认可随时还原站点文稿。')) return; POSTS = POSTS.filter(function(p){ return p.id !== id; }); persistPosts(); renderList(); }
-
- document.getElementById('fSave').addEventListener('click', savePost); document.getElementById('fCancel').addEventListener('click', closeEditor); fDel.addEventListener('click', function(){ if (editingId) deletePost(editingId); closeEditor(); }); postModal.addEventListener('click', function(e){ if (e.target === postModal) closeEditor(); });
-
- /* ---- 编辑模式开关 / 导出 / 导入 / 恢复默认 ---- */ var btnEdit = document.getElementById('btnEditPosts'); btnEdit.addEventListener('click', function(){ editingPosts = !editingPosts; document.body.classList.toggle('editing-posts', editingPosts); btnEdit.setAttribute('aria-pressed', String(editingPosts)); btnEdit.textContent = editingPosts ? '完成编辑' : '编辑手记'; document.getElementById('postTools').hidden = !editingPosts; renderList(); });
-
- document.getElementById('btnNewPost').addEventListener('click', function(){ openEditor(null); });
-
- document.getElementById('btnExportPosts').addEventListener('click', function(){ var blob = new Blob([JSON.stringify(POSTS, null, 2)], { type: 'application/json' }); var url = URL.createObjectURL(blob); var a = document.createElement('a'); var d = new Date(); var pad = function(n){ return String(n).padStart(2, '0'); }; a.href = url; a.download = 'djjm-posts-' + d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()) + '.json'; document.body.appendChild(a); a.click(); a.remove(); setTimeout(function(){ URL.revokeObjectURL(url); }, 400); });
-
- /* ---- 方案B：把当前手记固化进源码，生成完整 index.html 供手动提交（页面内不存放任何密钥） ---- */ document.getElementById('btnExportHtml').addEventListener('click', async function(){ var btn = this; var original = btn.textContent; function restore(){ btn.textContent = original; } try { if (location.protocol === 'file:') { alert('此功能需在网站线上页面使用；本地打开时读不到原始源码。请先把当前版本提交上线，之后再在网页里编辑并生成更新文件。'); return; } btn.textContent = '正在生成…'; var resp = await fetch(location.href.split('#')[0], { cache: 'no-store' }); if (!resp.ok) throw new Error('读取页面源码失败：HTTP ' + resp.status); var src = await resp.text(); var re = /var DEFAULT_POSTS = \[[\s\S]*?\];/; if (!re.test(src)) throw new Error('未在源码中定位到手记数据段'); var block = 'var DEFAULT_POSTS = ' + JSON.stringify(POSTS, null, 2) + ';'; var out = src.replace(re, block); var copied = false; try { await navigator.clipboard.writeText(out); copied = true; } catch (e) { copied = false; } if (!copied) { var blob = new Blob([out], { type: 'text/html;charset=utf-8' }); var url = URL.createObjectURL(blob); var a = document.createElement('a'); a.href = url; a.download = 'index.html'; document.body.appendChild(a); a.click(); a.remove(); setTimeout(function(){ URL.revokeObjectURL(url); }, 400); alert('浏览器未允许直接复制，已下载 index.html；打开后全选复制，到 GitHub 粘贴覆盖即可。'); } else { alert('已复制更新后的完整 index.html。请到 GitHub 仓库打开 index.html，全选粘贴覆盖并提交；本页面不含任何密码或密钥。'); } restore(); } catch (err) { restore(); alert('生成失败：' + err.message); } });
-
- var importInput = document.getElementById('postImport'); document.getElementById('btnImportPosts').addEventListener('click', function(){ importInput.click(); }); importInput.addEventListener('change', function(){ var file = importInput.files[0]; if (!file) return; var fr = new FileReader(); fr.onload = function(){ try { var arr = JSON.parse(fr.result); if (!Array.isArray(arr) || !arr.length) throw new Error('文件不是手记列表'); var out = arr.map(normalizePost).filter(Boolean); if (!out.length) throw new Error('没有可识别的手记'); POSTS = out; persistPosts(); renderList(); } catch (err) { alert('导入失败：' + err.message); } importInput.value = ''; }; fr.readAsText(file); });
-
- document.getElementById('btnResetPosts').addEventListener('click', function(){ if (!confirm('恢复为站点默认的三篇手记？本机自定义内容将被清除。')) return; POSTS = cloneDefaults(); try { localStorage.removeItem(POST_KEY); } catch (e) {} renderList(); });
-
- renderList();
-
- /* ---------- 族谱：密码 ---------- */ /* 链接以 AES-GCM 加密保存，页面中没有密码与真实地址 */ var ENC = { salt: 'fyfZqoWZ7Tv60rKHi7k1HQ==', iv: 'llH2E/skyASQZf3i', ct: 'nnsy+QejN/a4SQkv5rHFVE8blhxMIM50P01lmlF13tMP7h10s+g=', iter: 210000 }; var modal = document.getElementById('treeModal'); var treeCard = document.getElementById('treeCard'); var pw = document.getElementById('pw'); var treeErr = document.getElementById('treeErr');
-
- function b64ToBytes(b64){ var bin = atob(b64), out = new Uint8Array(bin.length); for (var i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i); return out; } async function decryptUrl(password){ var base = await crypto.subtle.importKey('raw', new TextEncoder().encode(password), 'PBKDF2', false, ['deriveKey']); var key = await crypto.subtle.deriveKey( { name:'PBKDF2', salt:b64ToBytes(ENC.salt), iterations:ENC.iter, hash:'SHA-256' }, base, { name:'AES-GCM', length:256 }, false, ['decrypt'] ); var plain = await crypto.subtle.decrypt({ name:'AES-GCM', iv:b64ToBytes(ENC.iv) }, key, b64ToBytes(ENC.ct)); return new TextDecoder().decode(plain); } function openTree(){ unlockedUrl = null; pw.value = ''; pw.disabled = false; document.getElementById('treeOk').textContent = '开门'; treeCard.querySelector('.hint').textContent = '这一间的门是锁着的。密码由家里人保管，输入后即可进入。'; treeErr.classList.remove('show'); modal.classList.add('open'); document.body.classList.add('locked'); setTimeout(function(){ pw.focus(); }, 60); } function closeTree(){ modal.classList.remove('open'); if (!reader.classList.contains('open')) document.body.classList.remove('locked'); } var unlockedUrl = null; async function submitTree(){ if (unlockedUrl) { window.open(unlockedUrl, '_blank', 'noopener'); closeTree(); return; } var v = pw.value.trim(); if (!v) { pw.focus(); return; } try { unlockedUrl = await decryptUrl(v); treeErr.classList.remove('show'); treeCard.querySelector('.hint').textContent = '密码正确。点「进入」打开族谱。'; var ok = document.getElementById('treeOk'); ok.textContent = '进入'; pw.value = ''; pw.disabled = true; } catch (e) { treeErr.textContent = '密码不对，再试一次'; treeErr.classList.add('show'); treeCard.classList.remove('shake'); void treeCard.offsetWidth; treeCard.classList.add('shake'); pw.select(); } } document.querySelectorAll('[data-open-tree]').forEach(function(b){ b.addEventListener('click', openTree); }); document.getElementById('treeCancel').addEventListener('click', closeTree); document.getElementById('treeOk').addEventListener('click', submitTree); pw.addEventListener('keydown', function(e){ if (e.key === 'Enter') submitTree(); }); modal.addEventListener('click', function(e){ if (e.target === modal) closeTree(); });
-
- /* ---------- 键盘 ---------- */ document.addEventListener('keydown', function(e){ if (e.key !== 'Escape') return; if (modal.classList.contains('open')) { closeTree(); return; } if (postModal.classList.contains('open')) { closeEditor(); return; } if (sheet.classList.contains('open')) { closeSheet(); return; } if (reader.classList.contains('open')) closePost(false); });})();</script></body></html>
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="paper">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>杜绝加密 · 站点导航</title>
+<meta name="description" content="杜绝加密的站点导航：电台、族谱、影视导航、新闻导航，四个子站一站直达。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='10' fill='%23b03527'/%3E%3Ctext x='50' y='53' font-size='62' fill='%23f3ead9' text-anchor='middle' dominant-baseline='middle' font-family='serif'%3E%E6%9D%9C%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://miaoda.feishu.cn/">
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500&display=swap">
+<style>
+/* ===== 纸色变量（沿用宣纸一套） ===== */
+:root{
+  --serif:"Noto Serif SC","Songti SC","STSong","SimSun",serif;
+  --sans:"Noto Sans SC","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --wrap:1180px;
+  --ease:cubic-bezier(.22,1,.36,1);
+  --bg:#eee9df; --bg2:#f5f1e8; --bg3:#e7e1d5;
+  --ink:#1c1b18; --dim:#5f5a50; --dim2:#8b8578;
+  --line:rgba(28,27,24,.15); --line2:rgba(28,27,24,.34);
+  --seal:#b03527; --seal-soft:rgba(176,53,39,.12);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg); color:var(--ink);
+  font-family:var(--sans); font-weight:300;
+  -webkit-font-smoothing:antialiased;
+  transition:background .4s var(--ease), color .4s var(--ease);
+  min-height:100svh; display:flex; flex-direction:column;
+}
+/* 纸纹颗粒 */
+body::after{
+  content:""; position:fixed; inset:0; z-index:60; pointer-events:none;
+  opacity:.05; mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--seal);color:#f6ecdc}
+:focus-visible{outline:2px solid var(--seal);outline-offset:3px}
+
+/* ===== 顶部导航 ===== */
+.nav{
+  display:flex; align-items:center; gap:12px;
+  padding:22px clamp(20px,4vw,52px);
+  border-bottom:1px solid var(--line);
+}
+.brand{display:flex;align-items:center;gap:12px;font-family:var(--serif);font-weight:700;font-size:17px;letter-spacing:.14em}
+.brand .stamp{
+  width:28px;height:28px;flex:none;display:grid;place-items:center;
+  background:var(--seal); color:#f7eddd; font-size:16px; border-radius:3px;
+  font-family:var(--serif); font-weight:700; line-height:1;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.14);
+}
+.nav-domain{margin-left:auto;font-size:12px;letter-spacing:.16em;color:var(--dim2);font-variant-numeric:tabular-nums}
+
+/* ===== 首屏标题 ===== */
+.hero{
+  text-align:center;
+  padding:clamp(64px,10vh,110px) clamp(22px,4vw,40px) clamp(34px,5vh,54px);
+}
+.hero-kicker{
+  font-size:12px; letter-spacing:.62em; text-indent:.62em; color:var(--dim2);
+  margin-bottom:clamp(24px,3.5vh,38px);
+}
+.hero h1{
+  font-family:var(--serif); font-weight:900;
+  font-size:clamp(52px,9vw,104px); line-height:.96;
+  letter-spacing:.06em; text-indent:.06em;
+}
+.hero-rule{
+  width:1px; height:clamp(28px,4.5vh,48px);
+  background:linear-gradient(180deg,var(--seal-soft),var(--seal));
+  margin:clamp(22px,3.4vh,34px) auto clamp(16px,2.4vh,24px);
+}
+.hero-lede{
+  font-family:var(--serif); font-weight:400;
+  font-size:clamp(15px,1.5vw,19px); letter-spacing:.22em;
+  color:var(--dim); max-width:36em; margin:0 auto; line-height:2.1;
+}
+
+/* ===== 导航卡片 ===== */
+main{flex:1}
+.rooms-wrap{max-width:var(--wrap);margin:0 auto;padding:clamp(24px,3vw,40px) clamp(22px,4vw,40px) clamp(56px,8vh,96px)}
+.rooms{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line2);border-left:1px solid var(--line2)}
+.room{
+  position:relative; display:flex; flex-direction:column; gap:16px;
+  padding:clamp(26px,3vw,38px) clamp(18px,2.4vw,30px) clamp(28px,3.4vw,42px);
+  border-right:1px solid var(--line); border-bottom:1px solid var(--line);
+  text-align:left; transition:background .35s var(--ease), color .35s;
+  min-width:0;
+}
+.room:nth-child(4n){border-right:none}
+.room:last-child{border-bottom:none}
+.room .no{font-family:var(--serif);font-size:12px;letter-spacing:.2em;color:var(--dim2);display:flex;align-items:center;gap:10px}
+.room .no i{display:block;width:22px;height:1px;background:var(--line2)}
+.room h3{font-family:var(--serif);font-weight:700;font-size:clamp(23px,1.9vw,29px);letter-spacing:.12em;line-height:1.2;transition:color .25s}
+.room .desc{font-size:13px;line-height:2;color:var(--dim);letter-spacing:.02em;max-width:22em}
+.room .state{margin-top:auto;padding-top:clamp(18px,2.6vw,28px);font-size:11.5px;letter-spacing:.16em;color:var(--dim2);display:flex;align-items:center;gap:8px;font-variant-numeric:tabular-nums;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.room .state svg{width:12px;height:12px;flex:none;transition:transform .25s var(--ease)}
+.room:hover{background:color-mix(in srgb, var(--ink) 5%, transparent)}
+.room:hover h3{color:var(--seal)}
+.room:hover .state svg{transform:translate(3px,-3px)}
+
+@media(max-width:999px){
+  .rooms{grid-template-columns:repeat(2,1fr)}
+  .room:nth-child(4n){border-right:1px solid var(--line)}
+  .room:nth-child(2n){border-right:none}
+  .room:nth-child(n+3){border-bottom:none}
+}
+@media(max-width:600px){
+  .rooms{grid-template-columns:1fr}
+  .room{border-right:none}
+  .room:nth-child(n+3){border-bottom:1px solid var(--line)}
+  .room:last-child{border-bottom:none}
+  .nav-domain{display:none}
+}
+
+/* ===== 页脚 ===== */
+footer{
+  border-top:1px solid var(--line);
+  padding:30px clamp(22px,4vw,40px) 38px;
+  display:flex; align-items:center; justify-content:space-between;
+  gap:14px; flex-wrap:wrap;
+  font-size:11.5px; letter-spacing:.18em; color:var(--dim2);
+  max-width:var(--wrap); margin:0 auto; width:100%;
+}
+
+/* ===== 入场 ===== */
+.hero > *{animation:heroIn .72s var(--ease) both}
+.hero > *:nth-child(1){animation-delay:.05s}
+.hero > *:nth-child(2){animation-delay:.14s}
+.hero > *:nth-child(3){animation-delay:.26s}
+.hero > *:nth-child(4){animation-delay:.34s}
+.rooms .room{animation:heroIn .72s var(--ease) both}
+.rooms .room:nth-child(1){animation-delay:.18s}
+.rooms .room:nth-child(2){animation-delay:.26s}
+.rooms .room:nth-child(3){animation-delay:.34s}
+.rooms .room:nth-child(4){animation-delay:.42s}
+@keyframes heroIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== 顶部导航 ===== -->
+<header class="nav">
+  <a class="brand" href="https://mydjjm.cn/" aria-label="回到站点导航首页">
+    <span class="stamp" aria-hidden="true">杜</span>
+    <span>杜绝加密</span>
+  </a>
+  <span class="nav-domain">mydjjm.cn</span>
+</header>
+
+<!-- ===== 标题 ===== -->
+<section class="hero">
+  <p class="hero-kicker">站 点 导 航</p>
+  <h1>杜绝加密</h1>
+  <div class="hero-rule" aria-hidden="true"></div>
+  <p class="hero-lede">四个子站，一站直达。</p>
+</section>
+
+<main>
+  <div class="rooms-wrap">
+    <div class="rooms">
+      <a class="room" href="https://radio.mydjjm.cn/" target="_blank" rel="noopener">
+        <span class="no"><i></i>01</span>
+        <h3>电台</h3>
+        <p class="desc">一间只放声音的屋子。节目单循环播放，不设门槛，也不必登录。</p>
+        <span class="state">
+          radio.mydjjm.cn
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
+        </span>
+      </a>
+
+      <a class="room" href="https://zupu.mydjjm.cn/" target="_blank" rel="noopener">
+        <span class="no"><i></i>02</span>
+        <h3>族谱</h3>
+        <p class="desc">家人的名字与世系，谱系记录在线查阅。</p>
+        <span class="state">
+          zupu.mydjjm.cn
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
+        </span>
+      </a>
+
+      <a class="room" href="https://media.mydjjm.cn/" target="_blank" rel="noopener">
+        <span class="no"><i></i>03</span>
+        <h3>影视导航</h3>
+        <p class="desc">一张手写的放映单，按年份和导演归置片源入口，不按平台排。</p>
+        <span class="state">
+          media.mydjjm.cn
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
+        </span>
+      </a>
+
+      <a class="room" href="https://news.mydjjm.cn/" target="_blank" rel="noopener">
+        <span class="no"><i></i>04</span>
+        <h3>新闻导航</h3>
+        <p class="desc">五十九家中、外新闻站点，按综合、财经、科技、国际、深度与热榜归置，一站直达。</p>
+        <span class="state">
+          news.mydjjm.cn
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
+        </span>
+      </a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <span>© 2026 杜绝加密</span>
+  <span>电台 · 族谱 · 影视 · 新闻</span>
+</footer>
+
+</body>
+</html>
