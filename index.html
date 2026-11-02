@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>杜绝加密 · 站点导航</title>
-<meta name="description" content="杜绝加密的站点导航：电台、族谱、影视导航、新闻导航，四个子站一站直达。">
+<meta name="description" content="杜绝加密的站点导航：电台、族谱、影视导航、新闻导航与全年历，五处入口一站直达。">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='10' fill='%23b03527'/%3E%3Ctext x='50' y='53' font-size='62' fill='%23f3ead9' text-anchor='middle' dominant-baseline='middle' font-family='serif'%3E%E6%9D%9C%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://miaoda.feishu.cn/">
 <link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500&display=swap">
@@ -137,6 +137,7 @@ footer{
 .rooms .room:nth-child(2){animation-delay:.26s}
 .rooms .room:nth-child(3){animation-delay:.34s}
 .rooms .room:nth-child(4){animation-delay:.42s}
+.rooms .room:nth-child(5){animation-delay:.50s}
 @keyframes heroIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
 
 @media (prefers-reduced-motion:reduce){
@@ -160,7 +161,7 @@ footer{
   <p class="hero-kicker">站 点 导 航</p>
   <h1>杜绝加密</h1>
   <div class="hero-rule" aria-hidden="true"></div>
-  <p class="hero-lede">四个子站，一站直达。</p>
+  <p class="hero-lede">五处入口，一站直达。</p>
 </section>
 
 <main>
@@ -205,13 +206,23 @@ footer{
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
         </span>
       </a>
+
+      <a class="room" href="../year-calendar/viewer/年历查看器.html">
+        <span class="no"><i></i>05</span>
+        <h3>全年历</h3>
+        <p class="desc">公元 1–2200 现行农历、二十四节气、月相与逐日干支；在本机选择 year-calendar/data 目录，即可逐年离线浏览。</p>
+        <span class="state">
+          year-calendar/viewer
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
+        </span>
+      </a>
     </div>
   </div>
 </main>
 
 <footer>
   <span>© 2026 杜绝加密</span>
-  <span>电台 · 族谱 · 影视 · 新闻</span>
+  <span>电台 · 族谱 · 影视 · 新闻 · 全年历</span>
 </footer>
 
 </body>
